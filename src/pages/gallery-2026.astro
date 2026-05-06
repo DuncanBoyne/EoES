@@ -48,7 +48,27 @@ const photos = existsSync(galleryDir)
   <Hero
     title="2026 Gallery"
     subtitle="Photos from the East of England Power Platform Summit."
-  />
+  >
+    <div class="mt-8 flex flex-col items-center gap-3">
+      <p class="text-white/80 text-sm uppercase tracking-widest font-semibold">Photography by</p>
+      <a
+        href="https://www.instagram.com/lacunaaspect/"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="flex flex-col items-center gap-3 group"
+        aria-label="Martin Eley-Kemp – Lacuna Aspect on Instagram"
+      >
+        <img
+          src="/images/lacuna-logo.jpg"
+          alt="Lacuna Aspect logo"
+          class="h-14 w-auto object-contain opacity-90 group-hover:opacity-100 transition-opacity"
+        />
+        <span class="text-white/90 group-hover:text-white transition-colors font-medium">
+          Martin Eley-Kemp &nbsp;·&nbsp; @lacunaaspect
+        </span>
+      </a>
+    </div>
+  </Hero>
 
   <section class="py-16 md:py-24 bg-background-alt">
     <div class="container mx-auto px-4">
