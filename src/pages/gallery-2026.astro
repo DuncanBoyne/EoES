@@ -1,0 +1,235 @@
+---
+import { existsSync, readdirSync } from 'node:fs';
+import { join } from 'node:path';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/Hero.astro';
+
+const galleryDir = join(process.cwd(), 'public', 'images', 'gallery', '2026');
+const imageExtensions = new Set(['.avif', '.webp', '.jpg', '.jpeg', '.png']);
+const hiddenNamePattern = /(?:^|[-_\s.])hide(?:[-_\s.]|$)/i;
+
+const toTitle = (fileName: string) => {
+  const withoutExtension = fileName.replace(/\.[^.]+$/, '');
+  const cleaned = withoutExtension
+    .replace(/^\d+[\s._-]*/, '')
+    .replace(/[-_]+/g, ' ')
+    .replace(/\s+/g, ' ')
+    .trim();
+
+  return cleaned || 'EoEPPS 2026 gallery photo';
+};
+
+const getSortRank = (fileName: string) => {
+  const match = fileName.match(/^(\d+)/);
+  return match ? Number(match[1]) : Number.MAX_SAFE_INTEGER;
+};
+
+const photos = existsSync(galleryDir)
+  ? readdirSync(galleryDir, { withFileTypes: true })
+      .filter((entry) => entry.isFile())
+      .map((entry) => entry.name)
+      .filter((fileName) => imageExtensions.has(fileName.slice(fileName.lastIndexOf('.')).toLowerCase()))
+      .filter((fileName) => !hiddenNamePattern.test(fileName))
+      .sort((a, b) => {
+        const rankDifference = getSortRank(a) - getSortRank(b);
+        return rankDifference || a.localeCompare(b, undefined, { numeric: true, sensitivity: 'base' });
+      })
+      .map((fileName, index) => ({
+        src: encodeURI(`/images/gallery/2026/${fileName}`),
+        alt: `${toTitle(fileName)} - EoEPPS 2026 photo ${index + 1}`,
+      }))
+  : [];
+---
+
+<BaseLayout
+  title="2026 Gallery"
+  description="Photos from the East of England Power Platform Summit 2026 in Norwich."
+>
+  <Hero
+    title="2026 Gallery"
+    subtitle="Photos from the East of England Power Platform Summit."
+  />
+
+  <section class="py-16 md:py-24 bg-background-alt">
+    <div class="container mx-auto px-4">
+      <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-10">
+        <div>
+          <h2 class="text-3xl md:text-4xl font-extrabold text-text mb-3 tracking-tight">Event Photos</h2>
+          <div class="w-14 h-1.5 bg-secondary rounded-full" aria-hidden="true"></div>
+        </div>
+        {photos.length > 0 && (
+          <p class="text-text-light font-semibold">{photos.length} photos</p>
+        )}
+      </div>
+
+      {photos.length > 0 ? (
+        <div class="gallery-grid" aria-label="EoEPPS 2026 photo gallery">
+          {photos.map((photo, index) => (
+            <button
+              type="button"
+              class="gallery-item"
+              data-gallery-src={photo.src}
+              data-gallery-alt={photo.alt}
+              aria-label={`Open ${photo.alt}`}
+            >
+              <img
+                src={photo.src}
+                alt={photo.alt}
+                width="640"
+                height="480"
+                loading={index < 8 ? 'eager' : 'lazy'}
+                decoding="async"
+              />
+            </button>
+          ))}
+        </div>
+      ) : (
+        <div class="bg-white rounded-2xl shadow-md p-8 md:p-10 text-center max-w-3xl mx-auto">
+          <h2 class="text-2xl font-bold text-text mb-3">Photos coming soon</h2>
+          <p class="text-text-light leading-relaxed">
+            The 2026 gallery will appear here once the web-optimised event photos are ready.
+          </p>
+        </div>
+      )}
+    </div>
+  </section>
+
+  <dialog id="gallery-dialog" class="gallery-dialog" aria-label="Expanded gallery photo">
+    <button type="button" class="gallery-close" data-gallery-close aria-label="Close photo">
+      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18 18 6M6 6l12 12" />
+      </svg>
+    </button>
+    <img id="gallery-dialog-image" src="" alt="" />
+  </dialog>
+</BaseLayout>
+
+<script>
+  const dialog = document.getElementById('gallery-dialog') as HTMLDialogElement | null;
+  const dialogImage = document.getElementById('gallery-dialog-image') as HTMLImageElement | null;
+
+  document.addEventListener('click', (event) => {
+    const target = event.target as HTMLElement | null;
+    const item = target?.closest('[data-gallery-src]') as HTMLElement | null;
+    const closeButton = target?.closest('[data-gallery-close]');
+
+    if (closeButton) {
+      dialog?.close();
+      return;
+    }
+
+    if (!item || !dialog || !dialogImage) {
+      return;
+    }
+
+    dialogImage.src = item.dataset.gallerySrc || '';
+    dialogImage.alt = item.dataset.galleryAlt || 'Expanded EoEPPS 2026 gallery photo';
+    dialog.showModal();
+  });
+
+  dialog?.addEventListener('click', (event) => {
+    if (event.target === dialog) {
+      dialog.close();
+    }
+  });
+
+  dialog?.addEventListener('close', () => {
+    if (dialogImage) {
+      dialogImage.removeAttribute('src');
+      dialogImage.alt = '';
+    }
+  });
+</script>
+
+<style>
+  .gallery-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  @media (min-width: 640px) {
+    .gallery-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .gallery-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+  }
+
+  @media (min-width: 1280px) {
+    .gallery-grid {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+  }
+
+  .gallery-item {
+    display: block;
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    padding: 0;
+    border: 0;
+    border-radius: 8px;
+    overflow: hidden;
+    background: #fff;
+    box-shadow: 0 8px 22px -14px rgba(0, 0, 0, 0.55);
+    cursor: zoom-in;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .gallery-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 18px 36px -22px rgba(0, 0, 0, 0.65);
+  }
+
+  .gallery-item img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .gallery-dialog {
+    width: min(94vw, 1200px);
+    max-width: 1200px;
+    max-height: 92vh;
+    padding: 0;
+    border: 0;
+    border-radius: 8px;
+    background: transparent;
+    overflow: visible;
+  }
+
+  .gallery-dialog::backdrop {
+    background: rgba(18, 12, 31, 0.88);
+  }
+
+  .gallery-dialog img {
+    display: block;
+    width: 100%;
+    max-height: 92vh;
+    object-fit: contain;
+    border-radius: 8px;
+    background: #111827;
+  }
+
+  .gallery-close {
+    position: absolute;
+    top: -0.75rem;
+    right: -0.75rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.75rem;
+    height: 2.75rem;
+    border: 0;
+    border-radius: 999px;
+    color: #323130;
+    background: #fff;
+    box-shadow: 0 12px 30px -12px rgba(0, 0, 0, 0.6);
+    cursor: pointer;
+  }
+</style>

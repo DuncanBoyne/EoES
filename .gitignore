@@ -25,3 +25,6 @@ pnpm-debug.log*
 
 # Claude Code
 .claude/
+
+# Local gallery photos not ready to publish
+.gallery-hold/
