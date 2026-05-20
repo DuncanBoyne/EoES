@@ -37,8 +37,8 @@ jobs:
       - name: Build
         run: npm run build
         env:
-          PUBLIC_FIREBASE_PROJECT_ID: eoepps-tickets
-          PUBLIC_FIREBASE_API_KEY: AIzaSyDyvttRMwHF2U2fGEcWYJ5k8lQq-iMAA3s
+          PUBLIC_FIREBASE_PROJECT_ID: ${{ vars.PUBLIC_FIREBASE_PROJECT_ID }}
+          PUBLIC_FIREBASE_API_KEY: ${{ secrets.PUBLIC_FIREBASE_API_KEY }}
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v5
