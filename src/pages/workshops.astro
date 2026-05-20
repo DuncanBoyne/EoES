@@ -6,7 +6,7 @@ const TICKETING_URL = 'https://EoEStickets.netlify.app';
 
 <BaseLayout
   title="Workshops"
-  description="Hands-on Power Platform workshops at EoES 2026 — a full day of instructor-led sessions covering Power Apps, Power Automate, Power BI, and Copilot Studio. Friday 30 April 2026, Norwich."
+  description="Hands-on Power Platform workshops at EoES 2026 - a full day of instructor-led sessions covering Power Apps, Power Automate, Power BI, and Copilot Studio. Friday 30 April 2026, Norwich."
 >
 
 <section class="page-hero">
@@ -14,20 +14,18 @@ const TICKETING_URL = 'https://EoEStickets.netlify.app';
   <span class="spark" style="top: 22%; left: 7%;"></span>
   <span class="spark sm" style="top: 60%; right: 10%;"></span>
   <div class="container">
-    <div class="hero-eyebrow"><div class="chip chip--yellow"><span class="dot"></span><span>Workshop Day · 2026 · Ticketed</span></div></div>
+    <div class="hero-eyebrow"><div class="chip chip--yellow"><span class="dot"></span><span>Workshop Day - 2026 - Ticketed</span></div></div>
     <h1 class="display-1 hero-title" style="max-width: 16ch;">Hands-on<br>workshops.<br><span class="display-italic">Day one.</span></h1>
-    <p class="hero-sub">Friday 30 April 2026 · The Digital Hub, Norwich. Small-group, instructor-led workshops — bring your laptop.</p>
+    <p class="hero-sub">Friday 30 April 2026 - The Digital Hub, Norwich. Small-group, instructor-led workshops - bring your laptop.</p>
   </div>
-  <div class="issue-mark"><b>Vol — 01</b> &nbsp;·&nbsp; Workshop Day</div>
+  <div class="issue-mark"><b>Vol - 01</b> &nbsp;-&nbsp; Workshop Day</div>
 </section>
 
 <section class="section">
   <div class="container">
-
-    <!-- Day info banner -->
     <div class="frame-panel" style="display: flex; flex-wrap: wrap; gap: 24px; align-items: center; justify-content: space-between; margin-bottom: 48px;">
       <div>
-        <div class="eyebrow" style="margin-bottom: 8px;">— Hands-on learning · Day 01 —</div>
+        <div class="eyebrow" style="margin-bottom: 8px;">- Hands-on learning - Day 01 -</div>
         <h2 class="h3" style="margin-bottom: 4px;">Small-group workshops with expert facilitators.</h2>
         <p class="muted" style="margin: 0; font-size: 14px;">Bring your laptop and get ready to build.</p>
       </div>
@@ -37,31 +35,20 @@ const TICKETING_URL = 'https://EoEStickets.netlify.app';
       </a>
     </div>
 
-    <!-- Loading state -->
-    <div id="workshops-loading" style="text-align: center; padding: 64px 0;">
-      <div id="workshops-spinner" style="display: inline-block; width: 40px; height: 40px; border: 3px solid rgba(251,191,36,0.2); border-top-color: var(--yellow); border-radius: 50%; margin-bottom: 16px;"></div>
-      <p class="muted">Loading workshops…</p>
-    </div>
-
-    <!-- Workshop cards grid -->
-    <div id="workshops-grid" class="hidden grid-3"></div>
-
-    <!-- No workshops yet -->
-    <div id="workshops-empty" class="hidden" style="padding: 48px 0;">
+    <div style="padding: 48px 0;">
       <div class="frame-panel center" style="max-width: 560px; margin: 0 auto;">
-        <div class="eyebrow eyebrow--center" style="margin-bottom: 14px;">— Coming soon —</div>
+        <div class="eyebrow eyebrow--center" style="margin-bottom: 14px;">- Coming soon -</div>
         <h3 class="display-3" style="margin-bottom: 14px;">Workshops announced<br><span class="display-italic">shortly.</span></h3>
         <p class="muted" style="max-width: 48ch; margin: 0 auto 24px;">Follow us on LinkedIn to be the first to know when workshops are confirmed.</p>
         <a href="https://www.linkedin.com/company/eoes/" target="_blank" rel="noopener noreferrer" class="btn btn--primary">Follow on LinkedIn</a>
       </div>
     </div>
-
   </div>
 </section>
 
 <section class="cta-strip">
   <div class="container center">
-    <div class="eyebrow eyebrow--center" style="margin-bottom: 22px;">— Secure your place —</div>
+    <div class="eyebrow eyebrow--center" style="margin-bottom: 22px;">- Secure your place -</div>
     <h2 class="display-2" style="max-width: 20ch; margin: 0 auto 22px;">Ready to<br><span class="display-italic">learn?</span></h2>
     <p class="lead muted" style="max-width: 48ch; margin: 0 auto 32px;">Register on the ticketing app to secure your place at a workshop.</p>
     <a href={TICKETING_URL} target="_blank" rel="noopener noreferrer" class="btn btn--primary btn--lg">
@@ -71,261 +58,4 @@ const TICKETING_URL = 'https://EoEStickets.netlify.app';
   </div>
 </section>
 
-<!-- Detail modal -->
-<div id="workshop-modal" class="fixed inset-0 z-50 hidden items-center justify-center p-4">
-  <!-- Backdrop -->
-  <div id="modal-backdrop" class="absolute inset-0 bg-black/60 backdrop-blur-sm"></div>
-  <!-- Panel -->
-  <div class="relative bg-white rounded-2xl shadow-2xl w-full max-w-lg max-h-[90vh] overflow-y-auto">
-    <!-- Close button -->
-    <button id="modal-close" class="absolute top-4 right-4 w-9 h-9 rounded-full bg-gray-100 hover:bg-gray-200 flex items-center justify-center text-gray-500 hover:text-gray-800 transition-colors" aria-label="Close">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-5 h-5">
-        <path d="M6.28 5.22a.75.75 0 0 0-1.06 1.06L8.94 10l-3.72 3.72a.75.75 0 1 0 1.06 1.06L10 11.06l3.72 3.72a.75.75 0 1 0 1.06-1.06L11.06 10l3.72-3.72a.75.75 0 0 0-1.06-1.06L10 8.94 6.28 5.22Z" />
-      </svg>
-    </button>
-    <!-- Modal content injected by JS -->
-    <div id="modal-content" class="p-6 sm:p-8"></div>
-  </div>
-</div>
-
 </BaseLayout>
-
-<style is:global>
-  #workshops-spinner { animation: workshops-spin 0.8s linear infinite; }
-  @keyframes workshops-spin { to { transform: rotate(360deg); } }
-
-  .workshop-card {
-    cursor: pointer;
-    transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
-    border-top: 3px solid transparent;
-  }
-  .workshop-card:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 8px 24px -4px rgba(251,191,36,0.25), 0 2px 8px -2px rgba(0,0,0,0.4);
-    border-top-color: var(--yellow);
-  }
-  #workshop-modal.open {
-    display: flex;
-  }
-</style>
-
-<script>
-  import { initializeApp, getApps } from 'firebase/app';
-  import { getFirestore, collection, query, where, orderBy, getDocs, doc, getDoc } from 'firebase/firestore';
-
-  const TICKETING_URL = 'https://EoEStickets.netlify.app';
-
-  const firebaseConfig = {
-    apiKey: import.meta.env.PUBLIC_FIREBASE_API_KEY,
-    authDomain: 'EoES-tickets.firebaseapp.com',
-    projectId: import.meta.env.PUBLIC_FIREBASE_PROJECT_ID,
-    storageBucket: 'EoES-tickets.firebasestorage.app',
-    messagingSenderId: '846064456782',
-    appId: '1:846064456782:web:133ff91f29568addf15f1f',
-  };
-
-  const app = getApps().length ? getApps()[0] : initializeApp(firebaseConfig);
-  const db = getFirestore(app, 'default');
-
-  function formatTime(ts: any) {
-    if (!ts) return '';
-    const d = ts.toDate ? ts.toDate() : new Date(ts);
-    if (isNaN(d.getTime())) return '';
-    return d.toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit', hour12: false });
-  }
-
-  async function fetchWorkshops() {
-    const q = query(
-      collection(db, 'sessions'),
-      where('type', '==', 'workshop'),
-      orderBy('startTime', 'asc')
-    );
-    const snap = await getDocs(q);
-    return snap.docs.map(d => ({ id: d.id, ...d.data() }));
-  }
-
-  async function fetchSpeakers(ids: string[]) {
-    const results = await Promise.all(
-      ids.map(async (id) => {
-        try {
-          const snap = await getDoc(doc(db, 'speakers', id));
-          if (!snap.exists()) return { id, name: '', photoUrl: '' };
-          const d = snap.data();
-          return { id, name: `${d.firstName ?? ''} ${d.lastName ?? ''}`.trim(), photoUrl: d.photoUrl ?? '' };
-        } catch {
-          return { id, name: '', photoUrl: '' };
-        }
-      })
-    );
-    return Object.fromEntries(results.map(s => [s.id, s]));
-  }
-
-  function initials(name: string) {
-    return name.split(' ').map((n: string) => n[0]).slice(0, 2).join('');
-  }
-
-  function avatarHtml(s: any, px = 32) {
-    const dim = `width:${px}px;height:${px}px;min-width:${px}px;`;
-    return s.photoUrl
-      ? `<img src="${s.photoUrl}" alt="${s.name}" style="${dim}" loading="lazy" class="rounded-full object-cover border-2 border-white shadow-sm" />`
-      : `<div style="${dim}font-size:${Math.round(px * 0.35)}px;" class="rounded-full bg-primary text-white font-bold flex items-center justify-center border-2 border-white">${initials(s.name)}</div>`;
-  }
-
-  // Store workshop data for modal access
-  let allWorkshops: any[] = [];
-  let speakerMap: Record<string, any> = {};
-
-  function openModal(workshopId: string) {
-    const w = allWorkshops.find(w => w.id === workshopId);
-    if (!w) return;
-
-    const modal = document.getElementById('workshop-modal')!;
-    const content = document.getElementById('modal-content')!;
-    const speakers = (w.speakerIds || []).map((id: string) => speakerMap[id]).filter(Boolean);
-    const speakerNames = speakers.map((s: any) => s.name).filter(Boolean);
-    const timeStr = w.startTime && w.endTime
-      ? `${formatTime(w.startTime)} – ${formatTime(w.endTime)}`
-      : 'Time TBC';
-    const isFree = !w.price || w.price === 0;
-    const currentPrice = Number(w.price);
-    const modalPriceBadge = isFree
-      ? `<span class="inline-block bg-secondary/20 text-secondary-dark px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wide">Free</span>`
-      : `<span class="inline-block bg-secondary/20 text-secondary-dark px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wide">£${currentPrice.toFixed(2)}</span>`;
-    const capacityStr = w.capacity ? `${w.capacity} places` : '';
-    const sessionUrl = `${TICKETING_URL}/sessions/${w.id}`;
-
-    const speakerBioHtml = speakers.length > 0 ? `
-      <div class="flex flex-wrap gap-4 mb-5">
-        ${speakers.map((s: any) => `
-          <div class="flex items-center gap-3">
-            ${avatarHtml(s, 40)}
-            <span class="font-semibold text-text text-sm">${s.name}</span>
-          </div>
-        `).join('')}
-      </div>` : '';
-
-    const videoId = w.videoUrl ? (w.videoUrl.match(/(?:youtu\.be\/|youtube\.com\/(?:watch\?v=|embed\/))([^&?/]+)/) || [])[1] : null;
-    const videoHtml = videoId ? `
-      <div class="aspect-video rounded-lg overflow-hidden bg-black mb-6">
-        <iframe
-          src="https://www.youtube.com/embed/${videoId}"
-          title="${w.title}"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowfullscreen
-          class="w-full h-full"
-        ></iframe>
-      </div>` : '';
-
-    content.innerHTML = `
-      <div class="flex flex-wrap items-start gap-3 mb-4">
-        ${modalPriceBadge}
-        ${capacityStr ? `<span class="inline-block bg-gray-100 text-gray-600 px-3 py-1 rounded-full text-xs font-medium">${capacityStr}</span>` : ''}
-        <span class="inline-block bg-primary/10 text-primary px-3 py-1 rounded-full text-xs font-medium">Full day · Fri 30 Apr</span>
-      </div>
-      <h2 class="text-xl sm:text-2xl font-bold text-text mb-4 leading-tight">${w.title}</h2>
-      ${speakerBioHtml}
-      ${videoHtml}
-      ${w.abstract ? `<p class="text-text-light text-sm leading-relaxed mb-6">${w.abstract}</p>` : ''}
-      <a
-        href="${sessionUrl}"
-        target="_blank"
-        rel="noopener noreferrer"
-        class="inline-block w-full text-center bg-primary text-white px-6 py-3 rounded-lg font-bold hover:bg-primary-dark transition-colors"
-      >
-        Book your place →<span class="sr-only"> (opens in new tab)</span>
-      </a>
-    `;
-
-    modal.classList.add('open');
-    document.body.style.overflow = 'hidden';
-  }
-
-  function closeModal() {
-    const modal = document.getElementById('workshop-modal')!;
-    modal.classList.remove('open');
-    document.body.style.overflow = '';
-  }
-
-  async function render() {
-    const loading = document.getElementById('workshops-loading')!;
-    const grid = document.getElementById('workshops-grid')!;
-    const empty = document.getElementById('workshops-empty')!;
-
-    try {
-      const workshops = await fetchWorkshops();
-
-      if (workshops.length === 0) {
-        loading.classList.add('hidden');
-        empty.classList.remove('hidden');
-        return;
-      }
-
-      allWorkshops = workshops;
-
-      const allSpeakerIds = [...new Set(workshops.flatMap((w: any) => w.speakerIds ?? []))] as string[];
-      speakerMap = await fetchSpeakers(allSpeakerIds);
-
-      grid.innerHTML = workshops.map((w: any) => {
-        const speakers = (w.speakerIds || []).map((id: string) => speakerMap[id]).filter(Boolean);
-        const speakerNames = speakers.map((s: any) => s.name).filter(Boolean);
-        const isFree = !w.price || w.price === 0;
-        const currentPrice = Number(w.price);
-        const priceHtml = isFree
-          ? `<span class="text-secondary font-bold text-sm">Free</span>`
-          : `<span class="text-secondary font-bold text-sm">£${currentPrice.toFixed(2)}</span>`;
-        const keywords: string[] = w.keywords ?? w.tags ?? [];
-        const keywordsHtml = keywords.length > 0
-          ? `<div class="flex flex-wrap gap-1 mt-2">${keywords.map((k: string) => `<span class="inline-block bg-primary/8 text-primary text-xs px-2 py-0.5 rounded-full">${k}</span>`).join('')}</div>`
-          : '';
-
-        const avatarsHtml = speakers.length > 0 ? `
-          <div class="flex items-center gap-2 mt-auto pt-3">
-            <div class="flex -space-x-2">
-              ${speakers.map((s: any) => avatarHtml(s, 28)).join('')}
-            </div>
-            <span class="text-text-light text-xs truncate">${speakerNames.join(' & ')}</span>
-          </div>` : '';
-
-        return `
-          <button
-            class="workshop-card text-left bg-white rounded-xl shadow-sm border border-border overflow-hidden flex flex-col"
-            data-workshop-id="${w.id}"
-            aria-label="View details for ${w.title}"
-          >
-            <div class="bg-primary px-4 py-3 flex items-center justify-between">
-              <span class="text-white/80 text-xs font-medium">Full day workshop</span>
-              ${priceHtml}
-            </div>
-            <div class="p-4 flex flex-col flex-1">
-              <h3 class="font-bold text-text text-base leading-snug mb-1 line-clamp-3">${w.title}</h3>
-              ${keywordsHtml}
-              ${avatarsHtml}
-            </div>
-          </button>
-        `;
-      }).join('');
-
-      // Attach click handlers
-      grid.querySelectorAll('[data-workshop-id]').forEach(el => {
-        el.addEventListener('click', () => {
-          const id = (el as HTMLElement).dataset.workshopId!;
-          openModal(id);
-        });
-      });
-
-      loading.classList.add('hidden');
-      grid.classList.remove('hidden');
-    } catch (err: any) {
-      console.error('❌ Workshop load error:', err?.code, err?.message, err);
-      loading.classList.add('hidden');
-      empty.classList.remove('hidden');
-    }
-  }
-
-  // Modal close handlers
-  document.getElementById('modal-close')!.addEventListener('click', closeModal);
-  document.getElementById('modal-backdrop')!.addEventListener('click', closeModal);
-  document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeModal(); });
-
-  render().then(() => console.log('✅ Workshop render complete'));
-</script>
