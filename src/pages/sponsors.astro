@@ -1,55 +1,50 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import Hero from '../components/Hero.astro';
 ---
 
-<BaseLayout title="2027 Sponsors" description="The organisations backing East of England Power Platform Summit 2027 — supporting the Power Platform community across the East of England.">
-  <Hero
-    title="2027 Sponsors"
-    subtitle="The organisations making EoEPPS 2027 possible."
-  />
+<BaseLayout
+  title="2027 Sponsors"
+  description="The organisations making EoES 2027 possible. First sponsors announced shortly."
+>
 
-  <section class="py-16">
-    <div class="container mx-auto px-4">
+<section class="page-hero">
+  <div class="bg-year" aria-hidden="true">+</div>
+  <span class="spark" style="top: 22%; left: 7%;"></span>
+  <span class="spark sm" style="top: 60%; right: 10%;"></span>
+  <div class="container">
+    <div class="hero-eyebrow"><div class="chip chip--yellow"><span class="dot"></span><span>Sponsors · 2027 · TBA</span></div></div>
+    <h1 class="display-1 hero-title" style="max-width: 16ch;">Sponsors <span class="display-italic">2027.</span></h1>
+    <p class="hero-sub">The organisations making EoES 2027 possible. First sponsors will be announced shortly — five tiers from £250 to £5,000, plus three premium add-ons.</p>
+  </div>
+  <div class="issue-mark"><b>Vol — 02</b> &nbsp;·&nbsp; 2027 Sponsors</div>
+</section>
 
-      <div class="max-w-2xl mx-auto bg-primary/5 border border-primary/20 rounded-2xl p-10 text-center mb-12">
-        <p class="text-text-light text-lg mb-6 leading-relaxed">More sponsors to be announced. If you'd like your organisation listed here, get in touch about our 2027 packages.</p>
-        <a
-          href="mailto:info@eoepps.co.uk?subject=Sponsorship%20Enquiry%20-%20EoEPPS%202027"
-          class="inline-block bg-primary text-white px-8 py-4 rounded-xl font-bold text-lg hover:bg-primary-dark transition-colors"
-        >
-          Become a 2027 Sponsor
-        </a>
-      </div>
-
-      <div class="text-center">
-        <p class="text-text-light mb-4">Looking for our 2026 sponsors?</p>
-        <a
-          href="/sponsors/2026"
-          class="inline-flex items-center text-primary font-semibold hover:text-primary-dark transition-colors"
-        >
-          View 2026 Sponsors
-          <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-          </svg>
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <!-- Why Sponsor CTA -->
-  <section class="py-16 bg-gradient-to-br from-primary to-accent text-white">
-    <div class="container mx-auto px-4 text-center">
-      <h2 class="text-3xl font-bold mb-4">Support the East of England Power Platform Community</h2>
-      <p class="text-xl text-white/90 mb-8 max-w-2xl mx-auto">
-        Sponsoring EoEPPS puts your brand in front of Power Platform professionals from across the region.
-      </p>
-      <a
-        href="/sponsorship"
-        class="inline-block bg-white text-primary px-8 py-4 rounded-lg font-bold text-lg hover:bg-gray-100 transition-colors"
-      >
-        View 2027 Packages
+<section class="section">
+  <div class="container" style="max-width: 880px;">
+    <div class="frame-panel center">
+      <div class="eyebrow eyebrow--center" style="margin-bottom: 18px;">— Coming soon —</div>
+      <h2 class="display-3" style="margin-bottom: 18px;">First 2027 sponsors<br><span class="display-italic">announce soon.</span></h2>
+      <p class="lead muted" style="max-width: 56ch; margin: 0 auto 32px;">More sponsors to be announced. If you'd like your organisation listed here, get in touch about our 2027 packages.</p>
+      <a href="mailto:info@eoes.co.uk?subject=Sponsorship%20Enquiry%20-%20EoES%202027" class="btn btn--primary btn--lg">
+        Become a 2027 sponsor
+        <svg class="arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"/></svg>
       </a>
     </div>
-  </section>
+
+    <div class="center" style="margin-top: 56px;">
+      <p class="muted">Looking for 2026 sponsors?</p>
+      <a href="/sponsors/2026" class="mono" style="color: var(--yellow); margin-top: 12px; display: inline-block;">View 2026 Sponsors →</a>
+    </div>
+  </div>
+</section>
+
+<section class="cta-strip">
+  <div class="container center">
+    <div class="eyebrow eyebrow--center" style="margin-bottom: 22px;">— Support the community —</div>
+    <h2 class="display-2" style="max-width: 22ch; margin: 0 auto 22px;">Put your brand<br><span class="display-italic">in front of the East.</span></h2>
+    <p class="lead muted" style="max-width: 56ch; margin: 0 auto 36px;">Sponsoring EoES puts your brand in front of Power Platform professionals from across the region.</p>
+    <a href="/sponsorship" class="btn btn--primary btn--lg">View 2027 packages</a>
+  </div>
+</section>
+
 </BaseLayout>

@@ -5,12 +5,8 @@ import tailwindcss from '@tailwindcss/vite';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://eoepps.co.uk',
-  integrations: [
-    sitemap({
-      filter: (page) => !page.endsWith('/HP2/'),
-    }),
-  ],
+  site: 'https://eoes.co.uk',
+  integrations: [sitemap()],
   vite: {
     plugins: [tailwindcss()]
   }

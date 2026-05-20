@@ -1,258 +1,158 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import Hero from '../../components/Hero.astro';
 ---
 
-<BaseLayout title="2026 Sponsors" description="The organisations and businesses who sponsored the East of England Power Platform Summit 2026 — supporting the Power Platform community in Norwich, Norfolk, and the wider East of England.">
-  <Hero
-    title="2026 Sponsors"
-    subtitle="Thank you to the organisations who made EoEPPS 2026 possible."
-  />
+<BaseLayout
+  title="2026 Sponsors"
+  description="The organisations and businesses who sponsored EoES 2026 — supporting the Power Platform community in Norwich, Norfolk, and the wider East of England."
+>
 
-  <section class="py-16">
-    <div class="container mx-auto px-4">
+<section class="page-hero">
+  <div class="bg-year" aria-hidden="true">★</div>
+  <span class="spark" style="top: 22%; left: 7%;"></span>
+  <span class="spark sm" style="top: 70%; right: 12%;"></span>
+  <div class="container">
+    <div class="hero-eyebrow"><div class="chip"><span class="dot" style="background: var(--ink-3); box-shadow: 0 0 0 4px rgba(255,255,255,0.08);"></span><span>2026 Archive · Sponsors</span></div></div>
+    <h1 class="display-1 hero-title" style="max-width: 18ch;">2026 <span class="display-italic">sponsors.</span></h1>
+    <p class="hero-sub">Thank you to the organisations who made EoES 2026 possible — without them, none of this happens.</p>
+  </div>
+  <div class="issue-mark"><b>Vol — 01</b> &nbsp;·&nbsp; 2026 Archive</div>
+</section>
 
-      <!-- Gold Sponsors -->
-      <div class="mb-4 text-center">
-        <span class="inline-block bg-secondary text-gray-900 font-bold text-sm px-4 py-1 rounded-full uppercase tracking-wide">Gold Sponsor</span>
+<section class="section">
+  <div class="container" style="max-width: 720px;">
+    <div class="eyebrow eyebrow--center" style="margin-bottom: 18px; color: var(--yellow);">— Gold Sponsor · 2026 —</div>
+    <article class="card" style="border-color: var(--yellow); padding: 0; background: linear-gradient(180deg, rgba(251,191,36,0.10) 0%, transparent 100%);">
+      <div style="background: #fff; height: 140px; display: grid; place-items: center; padding: 24px; border-radius: 22px 22px 0 0;">
+        <img src="/images/sponsors/GTP-Tech.png" alt="GTP Tech Recruitment" loading="lazy" style="max-height: 100%; max-width: 80%;">
       </div>
-      <div class="max-w-xl mx-auto mb-16">
-        <div class="sponsor-card-gold bg-white rounded-xl shadow-md border-2 border-secondary p-8 text-center">
-          <div class="h-24 flex items-center justify-center mb-6 bg-[#1e2235] rounded-lg px-6">
-            <img src="/images/sponsors/GTP-Tech.png" alt="GTP Tech Recruitment" width="758" height="300" loading="lazy" class="max-h-full max-w-full object-contain" />
-          </div>
-          <p class="font-bold text-text text-xl mb-2">GTP Tech Recruitment</p>
-          <p class="text-text-light mb-6">
-            Specialist technology recruitment connecting exceptional tech talent with leading organisations across the UK.
-          </p>
-          <a
-            href="https://gtptech.co.uk/"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="inline-block bg-secondary text-gray-900 px-6 py-2.5 rounded-lg font-semibold hover:opacity-90 transition-opacity"
-          >
-            Visit gtptech.co.uk<span class="sr-only"> (opens in new tab)</span>
-          </a>
+      <div style="padding: 32px; text-align: center;">
+        <h3 class="h3" style="font-size: 22px; margin-bottom: 12px;">GTP Tech Recruitment</h3>
+        <p class="muted" style="margin-bottom: 24px;">Specialist technology recruitment connecting exceptional tech talent with leading organisations across the UK.</p>
+        <a href="https://gtptech.co.uk/" target="_blank" rel="noopener noreferrer" class="btn btn--primary">Visit gtptech.co.uk</a>
+      </div>
+    </article>
+  </div>
+</section>
+
+<section class="section section--tight">
+  <div class="container" style="max-width: 1100px;">
+    <div class="eyebrow eyebrow--center" style="margin-bottom: 18px;">— Community Sponsors · 2026 —</div>
+    <div class="grid-3" style="margin-bottom: 64px;">
+      <article class="sponsor-lockup">
+        <div class="tier">Community</div>
+        <div class="logo-box"><img src="/images/sponsors/Powercademy.png" alt="Powercademy" loading="lazy"></div>
+        <div class="body">
+          <p class="name">Powercademy</p>
+          <p>The Power Platform's Only Platform — practical, hands-on Power Platform, Copilot, and AI training for all skill levels.</p>
+          <a href="https://www.powercademy.com/" target="_blank" rel="noopener noreferrer" class="btn btn--ghost btn--sm" style="align-self: flex-start; margin-top: 6px;">Visit powercademy.com</a>
         </div>
-      </div>
-
-      <!-- Community Sponsors -->
-      <div class="mb-4 text-center">
-        <span class="inline-block bg-secondary text-gray-900 font-bold text-sm px-4 py-1 rounded-full uppercase tracking-wide">Community Sponsors</span>
-      </div>
-      <div class="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto mb-16">
-        <div class="sponsor-card-community bg-white rounded-xl shadow-md border border-gray-200 p-8 text-center flex flex-col">
-          <div class="h-20 flex items-center justify-center mb-6">
-            <img src="/images/sponsors/Powercademy.png" alt="Powercademy" width="613" height="196" loading="lazy" class="max-h-full max-w-full object-contain" />
-          </div>
-          <p class="font-bold text-text text-xl mb-2">Powercademy</p>
-          <p class="text-text-light mb-6 flex-1">
-            The Power Platform's Only Platform — practical, hands-on Power Platform, Copilot, and AI training for all skill levels.
-          </p>
-          <a
-            href="https://www.powercademy.com/"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="inline-block bg-secondary text-gray-900 px-6 py-2.5 rounded-lg font-semibold hover:opacity-90 transition-opacity"
-          >
-            Visit powercademy.com<span class="sr-only"> (opens in new tab)</span>
-          </a>
+      </article>
+      <article class="sponsor-lockup">
+        <div class="tier">Community</div>
+        <div class="logo-box"><img src="/images/sponsors/ExtraLife.png" alt="Extra Life" loading="lazy"></div>
+        <div class="body">
+          <p class="name">Extra Life</p>
+          <p>The ultimate freelancing course for Power Platform professionals — practical strategies for sustainable independent consultancy.</p>
+          <a href="https://francomusso.com/extralife" target="_blank" rel="noopener noreferrer" class="btn btn--ghost btn--sm" style="align-self: flex-start; margin-top: 6px;">Learn more</a>
         </div>
-
-        <div class="sponsor-card-community bg-white rounded-xl shadow-md border border-gray-200 p-8 text-center flex flex-col">
-          <div class="h-20 flex items-center justify-center mb-6">
-            <img src="/images/sponsors/ExtraLife.png" alt="Extra Life" width="800" height="200" loading="lazy" class="max-h-full max-w-full object-contain" />
-          </div>
-          <p class="font-bold text-text text-xl mb-2">Extra Life</p>
-          <p class="text-text-light mb-6 flex-1">
-            The ultimate freelancing course for Power Platform professionals — practical strategies for building a sustainable independent consultancy, attracting clients, and maintaining work-life balance.
-          </p>
-          <a
-            href="https://francomusso.com/extralife"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="inline-block bg-secondary text-gray-900 px-6 py-2.5 rounded-lg font-semibold hover:opacity-90 transition-opacity"
-          >
-            Learn more<span class="sr-only"> (opens in new tab)</span>
-          </a>
+      </article>
+      <article class="sponsor-lockup">
+        <div class="tier">Community</div>
+        <div class="logo-box"><img src="/images/sponsors/P3 on Light Background.png" alt="Proximo3" loading="lazy"></div>
+        <div class="body">
+          <p class="name">Proximo3</p>
+          <p>A senior-led consultancy built around Microsoft MVP expertise in Dynamics 365 and the Power Platform.</p>
+          <a href="https://proximo3.com/" target="_blank" rel="noopener noreferrer" class="btn btn--ghost btn--sm" style="align-self: flex-start; margin-top: 6px;">Visit proximo3.com</a>
         </div>
-
-        <div class="sponsor-card-community bg-white rounded-xl shadow-md border border-gray-200 p-8 text-center flex flex-col">
-          <div class="h-20 flex items-center justify-center mb-6">
-            <img src="/images/sponsors/P3 on Light Background.png" alt="Proximo3" width="800" height="200" loading="lazy" class="max-h-full max-w-full object-contain" />
-          </div>
-          <p class="font-bold text-text text-xl mb-2">Proximo3</p>
-          <p class="text-text-light mb-6 flex-1">
-            A senior-led consultancy built around Microsoft MVP expertise in Dynamics 365 and the Power Platform — fixing delivery challenges, simplifying complexity, and helping teams get real value from their projects.
-          </p>
-          <a
-            href="https://proximo3.com/"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="inline-block bg-secondary text-gray-900 px-6 py-2.5 rounded-lg font-semibold hover:opacity-90 transition-opacity"
-          >
-            Visit proximo3.com<span class="sr-only"> (opens in new tab)</span>
-          </a>
-        </div>
-
-      </div>
-
-      <!-- Sponsor Spotlights -->
-      <div class="max-w-5xl mx-auto mb-8">
-        <div class="sponsor-card-community bg-white rounded-xl shadow-md border border-gray-200 p-8 flex flex-col">
-          <div class="flex flex-col lg:flex-row gap-8 items-start">
-            <div class="flex flex-col items-center text-center lg:items-start lg:text-left flex-shrink-0 lg:w-64">
-              <div class="h-20 w-full flex items-center justify-center mb-6 bg-[#0d1b35] rounded-lg px-4">
-                <img src="/images/sponsors/Untethered365.png" alt="Untethered 365" width="800" height="200" loading="lazy" class="max-h-full max-w-full object-contain" />
-              </div>
-              <p class="font-bold text-text text-xl mb-2">Untethered 365</p>
-              <p class="text-text-light mb-6">
-                Want AI to replace 95% of your tasks instead of 100% of you? Join their free 5-day live training on Extremely Accurate AI &amp; Architecture — and stay ahead of the curve.
-              </p>
-              <a
-                href="https://www.untethered365.com/freetraining?utm_source=conference&utm_medium=conference&utm_content=norfolk-summit"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="inline-block bg-secondary text-gray-900 px-6 py-2.5 rounded-lg font-semibold hover:opacity-90 transition-opacity"
-              >
-                Join free training<span class="sr-only"> (opens in new tab)</span>
-              </a>
-            </div>
-            <div class="w-full">
-              <div class="relative w-full" style="padding-bottom: 56.25%;">
-                <iframe
-                  class="absolute inset-0 w-full h-full rounded-xl shadow-md"
-                  src="https://www.youtube.com/embed/mAfnViTfPkQ"
-                  title="Untethered 365 free AI training"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowfullscreen
-                ></iframe>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="max-w-5xl mx-auto mb-8">
-        <div class="sponsor-card-community bg-white rounded-xl shadow-md border border-gray-200 p-8 flex flex-col">
-          <div class="flex flex-col lg:flex-row gap-8 items-start">
-            <div class="flex flex-col items-center text-center lg:items-start lg:text-left flex-shrink-0 lg:w-64">
-              <div class="h-20 w-full flex items-center justify-center mb-6 rounded-lg px-4">
-                <img src="/images/sponsors/PowerPagesMastery.png" alt="Power Pages Mastery" width="800" height="200" loading="lazy" class="max-h-full max-w-full object-contain" />
-              </div>
-              <p class="font-bold text-text text-xl mb-2">Power Pages Mastery</p>
-              <p class="text-text-light mb-6">
-                A structured programme teaching Power Platform professionals how to deliver customer-facing portal projects with confidence.
-              </p>
-              <a
-                href="https://francomusso.com/power-pages-course"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="inline-block bg-secondary text-gray-900 px-6 py-2.5 rounded-lg font-semibold hover:opacity-90 transition-opacity"
-              >
-                Learn more<span class="sr-only"> (opens in new tab)</span>
-              </a>
-            </div>
-            <div class="w-full">
-              <div class="relative w-full" style="padding-bottom: 56.25%;">
-                <iframe
-                  class="absolute inset-0 w-full h-full rounded-xl shadow-md"
-                  src="https://www.youtube.com/embed/EHOtXHHm9uo"
-                  title="Power Pages Mastery"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowfullscreen
-                ></iframe>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="max-w-5xl mx-auto mb-16">
-        <div class="sponsor-card-community bg-white rounded-xl shadow-md border border-gray-200 p-8 flex flex-col">
-          <div class="flex flex-col lg:flex-row gap-8 items-start">
-            <div class="flex flex-col items-center text-center lg:items-start lg:text-left flex-shrink-0 lg:w-64">
-              <div class="h-20 w-full flex items-center justify-center mb-6 bg-gray-900 rounded-lg px-4">
-                <img src="/images/sponsors/ExpertsLiveUK.png" alt="Experts Live UK" width="800" height="200" loading="lazy" class="max-h-full max-w-full object-contain" />
-              </div>
-              <p class="font-bold text-text text-xl mb-2">Experts Live UK</p>
-              <p class="text-text-light mb-4">
-                Experts Live UK is a community-driven tech conference bringing together Microsoft technology professionals for a day of learning, networking, and inspiration.
-              </p>
-              <div class="bg-secondary/15 border border-secondary/40 rounded-lg px-4 py-3 mb-6 text-sm">
-                Use code <span class="font-mono font-bold text-text">EoEPPs-Love</span> for <span class="font-bold text-text">10% off</span>
-              </div>
-              <a
-                href="https://eluk26.expertslive.co.uk/"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="inline-block bg-secondary text-gray-900 px-6 py-2.5 rounded-lg font-semibold hover:opacity-90 transition-opacity"
-              >
-                Visit expertslive.co.uk<span class="sr-only"> (opens in new tab)</span>
-              </a>
-            </div>
-            <div class="w-full">
-              <div class="relative w-full" style="padding-bottom: 56.25%;">
-                <iframe
-                  class="absolute inset-0 w-full h-full rounded-xl shadow-md"
-                  src="https://www.youtube.com/embed/Hj5BUOH-MZ8"
-                  title="Experts Live UK"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowfullscreen
-                ></iframe>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="text-center">
-        <a
-          href="/sponsors"
-          class="inline-flex items-center text-primary font-semibold hover:text-primary-dark transition-colors"
-        >
-          <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
-          </svg>
-          Back to 2027 Sponsors
-        </a>
-      </div>
+      </article>
     </div>
-  </section>
 
-  <!-- Why Sponsor CTA -->
-  <section class="py-16 bg-gradient-to-br from-primary to-accent text-white">
-    <div class="container mx-auto px-4 text-center">
-      <h2 class="text-3xl font-bold mb-4">Support EoEPPS 2027</h2>
-      <p class="text-xl text-white/90 mb-8 max-w-2xl mx-auto">
-        Sponsorship packages for 2027 are now open. Put your brand in front of Power Platform professionals from across the East of England.
-      </p>
-      <a
-        href="/sponsorship"
-        class="inline-block bg-white text-primary px-8 py-4 rounded-lg font-bold text-lg hover:bg-gray-100 transition-colors"
-      >
-        View 2027 Packages
-      </a>
+    <div class="eyebrow eyebrow--center" style="margin-bottom: 28px;">— Sponsor Spotlights —</div>
+    <div class="stack-6">
+      <article class="card" style="padding: 32px;">
+        <div style="display: grid; grid-template-columns: 280px 1fr; gap: 36px; align-items: center;" class="spotlight">
+          <div>
+            <div class="logo-box dark" style="height: 80px; border-radius: 10px; margin-bottom: 18px;"><img src="/images/sponsors/Untethered365.png" alt="Untethered 365" loading="lazy"></div>
+            <h3 class="h3" style="font-size: 20px; margin-bottom: 10px;">Untethered 365</h3>
+            <p class="muted" style="margin-bottom: 18px;">Want AI to replace 95% of your tasks instead of 100% of you? Join their free 5-day live training on Extremely Accurate AI &amp; Architecture.</p>
+            <a href="https://www.untethered365.com/freetraining?utm_source=conference&utm_medium=conference&utm_content=norfolk-summit" target="_blank" rel="noopener noreferrer" class="btn btn--primary btn--sm">Join free training</a>
+          </div>
+          <div style="aspect-ratio: 16/9; border-radius: 12px; overflow: hidden;">
+            <iframe
+              width="100%" height="100%"
+              src="https://www.youtube.com/embed/mAfnViTfPkQ"
+              title="Untethered 365 free AI training"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen
+              style="border: 0; display: block;"
+            ></iframe>
+          </div>
+        </div>
+      </article>
+
+      <article class="card" style="padding: 32px;">
+        <div style="display: grid; grid-template-columns: 280px 1fr; gap: 36px; align-items: center;" class="spotlight">
+          <div>
+            <div class="logo-box" style="height: 80px; border-radius: 10px; margin-bottom: 18px;"><img src="/images/sponsors/PowerPagesMastery.png" alt="Power Pages Mastery" loading="lazy"></div>
+            <h3 class="h3" style="font-size: 20px; margin-bottom: 10px;">Power Pages Mastery</h3>
+            <p class="muted" style="margin-bottom: 18px;">A structured programme teaching Power Platform professionals how to deliver customer-facing portal projects with confidence.</p>
+            <a href="https://francomusso.com/power-pages-course" target="_blank" rel="noopener noreferrer" class="btn btn--primary btn--sm">Learn more</a>
+          </div>
+          <div style="aspect-ratio: 16/9; border-radius: 12px; overflow: hidden;">
+            <iframe
+              width="100%" height="100%"
+              src="https://www.youtube.com/embed/EHOtXHHm9uo"
+              title="Power Pages Mastery"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen
+              style="border: 0; display: block;"
+            ></iframe>
+          </div>
+        </div>
+      </article>
+
+      <article class="card" style="padding: 32px;">
+        <div style="display: grid; grid-template-columns: 280px 1fr; gap: 36px; align-items: center;" class="spotlight">
+          <div>
+            <div class="logo-box dark" style="height: 80px; border-radius: 10px; margin-bottom: 18px;"><img src="/images/sponsors/ExpertsLiveUK.png" alt="Experts Live UK" loading="lazy"></div>
+            <h3 class="h3" style="font-size: 20px; margin-bottom: 10px;">Experts Live UK</h3>
+            <p class="muted" style="margin-bottom: 14px;">A community-driven tech conference bringing together Microsoft technology professionals for a day of learning and networking.</p>
+            <div style="font-size: 14px; padding: 12px; background: rgba(251,191,36,0.08); border: 1px solid rgba(251,191,36,0.3); border-radius: 10px; margin-bottom: 14px;">
+              Use code <span style="font-family: var(--font-mono); color: var(--yellow);">EoES-Love</span> for <strong style="color: var(--ink-0);">10% off</strong>
+            </div>
+            <a href="https://eluk26.expertslive.co.uk/" target="_blank" rel="noopener noreferrer" class="btn btn--primary btn--sm">Visit expertslive.co.uk</a>
+          </div>
+          <div style="aspect-ratio: 16/9; border-radius: 12px; overflow: hidden;">
+            <iframe
+              width="100%" height="100%"
+              src="https://www.youtube.com/embed/Hj5BUOH-MZ8"
+              title="Experts Live UK"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen
+              style="border: 0; display: block;"
+            ></iframe>
+          </div>
+        </div>
+      </article>
     </div>
-  </section>
-</BaseLayout>
+  </div>
+</section>
+
+<section class="cta-strip">
+  <div class="container center">
+    <div class="eyebrow eyebrow--center" style="margin-bottom: 22px;">— Support EoES 2027 —</div>
+    <h2 class="display-2" style="max-width: 22ch; margin: 0 auto 22px;">Become a<br><span class="display-italic">2027 sponsor.</span></h2>
+    <p class="lead muted" style="max-width: 56ch; margin: 0 auto 36px;">Sponsorship packages for 2027 are now open. Put your brand in front of Power Platform professionals from across the East of England.</p>
+    <div class="row" style="justify-content: center; gap: 12px;">
+      <a href="/sponsorship" class="btn btn--primary btn--lg">View 2027 packages</a>
+      <a href="/sponsors" class="btn btn--ghost btn--lg">2027 sponsors</a>
+    </div>
+  </div>
+</section>
 
 <style>
-.sponsor-card-gold {
-    border-top: 4px solid #FBBF24;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-  }
-  .sponsor-card-gold:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 12px 32px -4px rgba(251, 191, 36, 0.3), 0 4px 12px -2px rgba(0, 0, 0, 0.08);
-  }
-  .sponsor-card-community {
-    border-top: 4px solid transparent;
-    transition: transform 0.2s ease, box-shadow 0.2s ease, border-top-color 0.2s ease;
-  }
-  .sponsor-card-community:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 12px 32px -4px rgba(251, 191, 36, 0.25), 0 4px 12px -2px rgba(0, 0, 0, 0.08);
-    border-top-color: #FBBF24;
-  }
+  @media (max-width: 800px) { .spotlight { grid-template-columns: 1fr !important; gap: 24px !important; } }
 </style>
+
+</BaseLayout>

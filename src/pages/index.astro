@@ -1,452 +1,307 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-
 ---
 
 <BaseLayout
   title="Home"
-  description="EoEPPS — the East of England Power Platform Summit. Returning in 2027. A community-led conference covering Power Apps, Power Automate, Power BI, and Copilot Studio. Based in Norwich, Norfolk."
+  description="EoES 2027 — East of England Summit returns 30 April – 1 May 2027. Two days of hands-on workshops and conference sessions in Norwich, Norfolk."
 >
 
-  <!-- Hero Section -->
-  <section class="relative bg-gradient-to-br from-primary via-primary-dark to-accent text-white overflow-hidden">
-    <div class="py-24 md:py-36">
-    <!-- Ambient glow orbs -->
-    <div class="absolute -top-40 -right-40 w-[28rem] h-[28rem] rounded-full bg-secondary/10 blur-3xl pointer-events-none" aria-hidden="true"></div>
-    <div class="absolute -bottom-40 -left-40 w-[28rem] h-[28rem] rounded-full bg-accent/15 blur-3xl pointer-events-none" aria-hidden="true"></div>
+<section class="page-hero">
+  <div class="bg-year" aria-hidden="true">27</div>
+  <span class="spark" style="top: 18%; left: 6%;"></span>
+  <span class="spark sm" style="top: 32%; right: 8%;"></span>
+  <span class="spark" style="top: 70%; left: 12%;"></span>
+  <span class="spark sm" style="top: 84%; right: 18%;"></span>
+  <span class="spark sm" style="top: 12%; left: 38%;"></span>
 
-    <div class="relative container mx-auto px-4">
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-
-        <!-- Right: Logo + Featured Sponsor -->
-        <div class="flex flex-col items-center gap-8 lg:order-2">
-          <!-- Main logo with glow -->
-          <div class="relative">
-            <div class="absolute inset-0 bg-white/10 rounded-full blur-3xl scale-125" aria-hidden="true"></div>
-            <img src="/images/Logo.png" alt="EoEPPS Logo" width="320" height="320" class="relative w-48 sm:w-60 lg:w-72 h-auto drop-shadow-2xl" />
-          </div>
-
-          <!-- Featured Sponsor -->
-          <div class="text-center">
-            <p class="text-secondary text-xs font-bold uppercase tracking-widest mb-3">⭐ Featured Sponsor ⭐</p>
-            <a
-              id="featured-sponsor-link"
-              href="https://www.untethered365.com/freetraining?utm_source=conference&utm_medium=conference&utm_content=norfolk-summit"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="inline-block hover:opacity-80 hover:-translate-y-0.5 transition-all duration-200"
-              aria-label="Featured Sponsor: Untethered 365 (opens in new tab)"
-            >
-              <img
-                id="featured-sponsor-img"
-                src="/images/sponsors/Untethered365.png"
-                alt="Untethered 365"
-                class="h-16 w-auto object-contain drop-shadow-xl"
-              />
-            </a>
-            <div class="mt-3">
-              <a
-                id="featured-sponsor-cta"
-                href="https://www.untethered365.com/freetraining?utm_source=conference&utm_medium=conference&utm_content=norfolk-summit"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="inline-block bg-secondary text-gray-900 px-6 py-2.5 rounded-lg font-semibold hover:opacity-90 transition-opacity text-sm"
-              >
-                Join free training<span class="sr-only"> (opens in new tab)</span>
-              </a>
-            </div>
-          </div>
+  <div class="container">
+    <div style="display: grid; grid-template-columns: 1.4fr 1fr; gap: clamp(40px, 6vw, 96px); align-items: center;" class="hero-grid">
+      <div>
+        <div class="chip chip--yellow" style="margin-bottom: 28px;">
+          <span class="dot"></span>
+          <span>Save the Date · Vol 02 · 2027</span>
         </div>
 
-        <!-- Left: Text -->
-        <div class="text-center lg:text-left lg:order-1">
-          <!-- "Returning in 2027" pill -->
-          <div class="inline-flex items-center gap-2 bg-secondary text-gray-900 rounded-full px-4 py-1.5 text-sm font-bold mb-7 uppercase tracking-wider">
-            ✦ Returning in 2027 ✦
-          </div>
+        <h1 class="display-1" style="margin-bottom: 28px;">
+          <span class="gradient-white-lavender">East of England</span><br>
+          <span class="display-italic">Summit.</span>
+        </h1>
 
-          <!-- Big display headline -->
-          <h1 class="text-5xl md:text-7xl font-extrabold leading-[0.95] tracking-tight mb-6">
-            East of England<br />
-            <span class="text-secondary">Power Platform</span><br />
-            Summit
-          </h1>
-
-          <p class="text-lg md:text-xl text-white/80 mb-10 max-w-xl mx-auto lg:mx-0 leading-relaxed">
-            Thank you to everyone who made EoEPPS 2026 an incredible success. We'll see you in 2027.
-          </p>
-
-          <!-- CTAs -->
-          <div class="flex flex-col sm:flex-row gap-3 justify-center lg:justify-start">
-            <a
-              href="https://www.linkedin.com/company/eoepps/"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="inline-flex items-center justify-center gap-2 bg-secondary text-gray-900 px-7 py-3.5 rounded-xl font-bold text-base hover:bg-secondary-light hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200 shadow-lg"
-            >
-              Follow on LinkedIn<span class="sr-only"> (opens in new tab)</span>
-              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7" />
-              </svg>
-            </a>
-            <a
-              href="/gallery-2026"
-              class="inline-flex items-center justify-center gap-2 bg-white/10 border border-white/25 text-white px-7 py-3.5 rounded-xl font-bold text-base hover:bg-white/20 hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200 backdrop-blur-sm"
-            >
-              View 2026 Gallery
-            </a>
-          </div>
-        </div>
-
-      </div>
-    </div>
-    </div>
-  </section>
-
-
-  <!-- 2027 Return Announcement -->
-  <section class="py-20 md:py-24 bg-primary">
-    <div class="container mx-auto px-4 text-center">
-      <h2 class="text-3xl md:text-4xl font-extrabold text-white mb-4 tracking-tight">EoEPPS Returns in 2027</h2>
-      <div class="w-14 h-1.5 bg-secondary rounded-full mx-auto mb-6" aria-hidden="true"></div>
-      <p class="text-white/80 text-lg max-w-2xl mx-auto mb-10 leading-relaxed">
-        East of England Power Platform Summit will return in 2027. Save the date and full roadmap will be announced soon — follow us on LinkedIn to be the first to hear about speakers, workshops, and how to get involved.
-      </p>
-      <div class="flex flex-col sm:flex-row gap-4 justify-center">
-        <a
-          href="https://www.linkedin.com/company/eoepps/"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="inline-flex items-center justify-center gap-2 bg-secondary text-gray-900 px-8 py-3.5 rounded-xl font-bold text-base hover:bg-secondary-light hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200 shadow-lg"
-        >
-          Follow us on LinkedIn<span class="sr-only"> (opens in new tab)</span>
-          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7" />
-          </svg>
-        </a>
-        <span class="inline-flex items-center justify-center gap-2 bg-white/10 border border-white/20 text-white/70 px-8 py-3.5 rounded-xl font-semibold text-base cursor-default select-none">
-          Save the date coming soon
-        </span>
-      </div>
-    </div>
-  </section>
-
-
-  <!-- What EoEPPS Offers -->
-  <section class="py-24 md:py-32 bg-primary-dark">
-    <div class="container mx-auto px-4">
-      <div class="text-center mb-16">
-        <h2 class="text-4xl md:text-5xl font-extrabold text-white mb-4 tracking-tight">What EoEPPS Offers</h2>
-        <div class="w-14 h-1.5 bg-secondary rounded-full mx-auto mb-5" aria-hidden="true"></div>
-        <p class="text-white/75 text-lg max-w-2xl mx-auto leading-relaxed">
-          A community-led conference bringing Power Platform professionals together for two days of learning, sharing, and connecting.
+        <p class="lead" style="max-width: 56ch; margin-bottom: 36px;">
+          The Microsoft Power Platform community of the East returns to Norwich for <b>two days</b> of hands-on workshops and conference sessions. <b>Build, learn, connect.</b>
         </p>
+
+        <div class="row" style="gap: 12px;">
+          <a href="/sponsorship" class="btn btn--primary btn--lg">
+            Sponsor EoES 2027
+            <svg class="arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+          <a href="https://www.linkedin.com/company/eoes/" target="_blank" rel="noopener noreferrer" class="btn btn--ghost btn--lg">
+            Follow updates<span class="sr-only"> (opens in new tab)</span>
+          </a>
+        </div>
       </div>
 
-      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div style="position: relative;">
+        <div class="orbit" style="width: 480px; height: 480px; top: -60px; right: -120px; opacity: 0.5;"></div>
+        <div class="orbit" style="width: 360px; height: 360px; top: 0; right: -60px; border-style: solid; border-color: rgba(255,255,255,0.06);"></div>
 
-        <!-- Card 01 -->
-        <div class="relative bg-white p-7 rounded-2xl shadow-md overflow-hidden group hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
-          <span class="absolute top-4 right-5 text-7xl font-black text-primary/10 leading-none select-none pointer-events-none" aria-hidden="true">01</span>
-          <div class="w-14 h-14 bg-primary/10 rounded-xl flex items-center justify-center mb-5">
-            <svg class="w-7 h-7 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
-            </svg>
-          </div>
-          <h3 class="text-xl font-bold text-text mb-2">Hands-on Workshops</h3>
-          <p class="text-text-light leading-relaxed">A dedicated workshop day lets you get hands-on and build real solutions — guided by expert instructors from the Power Platform community.</p>
+        <div class="halo" style="width: 200px; height: 200px; margin: 0 auto 36px;">
+          <div class="halo-inner"><img src="/images/logo-hero.png" alt="EoES logo"></div>
         </div>
 
-        <!-- Card 02 -->
-        <div class="relative bg-white p-7 rounded-2xl shadow-md overflow-hidden group hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
-          <span class="absolute top-4 right-5 text-7xl font-black text-primary/10 leading-none select-none pointer-events-none" aria-hidden="true">02</span>
-          <div class="w-14 h-14 bg-primary/10 rounded-xl flex items-center justify-center mb-5">
-            <svg class="w-7 h-7 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z" />
-            </svg>
+        <div class="ticket">
+          <div class="tk">
+            <div class="tk-label">Day 01 · Workshops</div>
+            <div class="tk-day-row">
+              <div class="tk-day">30</div>
+              <div>
+                <div class="tk-month">April</div>
+                <div class="tk-weekday">Friday</div>
+              </div>
+            </div>
+            <div class="tk-venue">
+              <b>Norwich</b>
+              <span class="pending">Venue announced soon</span>
+            </div>
           </div>
-          <h3 class="text-xl font-bold text-text mb-2">Expert Sessions</h3>
-          <p class="text-text-light leading-relaxed">Multiple tracks of conference sessions from community experts, Microsoft MVPs, and industry professionals sharing real-world Power Platform experience.</p>
-        </div>
-
-        <!-- Card 03 -->
-        <div class="relative bg-white p-7 rounded-2xl shadow-md overflow-hidden group hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
-          <span class="absolute top-4 right-5 text-7xl font-black text-primary/10 leading-none select-none pointer-events-none" aria-hidden="true">03</span>
-          <div class="w-14 h-14 bg-primary/10 rounded-xl flex items-center justify-center mb-5">
-            <svg class="w-7 h-7 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
-            </svg>
+          <div class="tk tk-right">
+            <div class="tk-label">Day 02 · Conference</div>
+            <div class="tk-day-row">
+              <div class="tk-day">01</div>
+              <div>
+                <div class="tk-month">May</div>
+                <div class="tk-weekday">Saturday</div>
+              </div>
+            </div>
+            <div class="tk-venue">
+              <b>Norwich</b>
+              <span class="pending">Venue announced soon</span>
+            </div>
           </div>
-          <h3 class="text-xl font-bold text-text mb-2">Networking</h3>
-          <p class="text-text-light leading-relaxed">Connect with Power Platform professionals from across the region. Build relationships that go beyond the conference.</p>
         </div>
-
-        <!-- Card 04 -->
-        <div class="relative bg-white p-7 rounded-2xl shadow-md overflow-hidden group hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
-          <span class="absolute top-4 right-5 text-7xl font-black text-secondary/15 leading-none select-none pointer-events-none" aria-hidden="true">04</span>
-          <div class="w-14 h-14 bg-secondary/10 rounded-xl flex items-center justify-center mb-5">
-            <svg class="w-7 h-7 text-secondary-dark" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
-            </svg>
-          </div>
-          <h3 class="text-xl font-bold text-text mb-2">Multiple Tracks</h3>
-          <p class="text-text-light leading-relaxed">Sessions covering Power Apps, Power Automate, Power BI, Power Pages, Copilot Studio, Dataverse, and more.</p>
-        </div>
-
-        <!-- Card 05 -->
-        <div class="relative bg-white p-7 rounded-2xl shadow-md overflow-hidden group hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
-          <span class="absolute top-4 right-5 text-7xl font-black text-secondary/15 leading-none select-none pointer-events-none" aria-hidden="true">05</span>
-          <div class="w-14 h-14 bg-secondary/10 rounded-xl flex items-center justify-center mb-5">
-            <svg class="w-7 h-7 text-secondary-dark" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
-            </svg>
-          </div>
-          <h3 class="text-xl font-bold text-text mb-2">Exhibition Area</h3>
-          <p class="text-text-light leading-relaxed">An exhibition area with sponsors, partners, and vendors showcasing the latest in the Power Platform ecosystem.</p>
-        </div>
-
-        <!-- Card 06 -->
-        <div class="relative bg-white p-7 rounded-2xl shadow-md overflow-hidden group hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
-          <span class="absolute top-4 right-5 text-7xl font-black text-accent/15 leading-none select-none pointer-events-none" aria-hidden="true">06</span>
-          <div class="w-14 h-14 bg-accent/10 rounded-xl flex items-center justify-center mb-5">
-            <svg class="w-7 h-7 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
-            </svg>
-          </div>
-          <h3 class="text-xl font-bold text-text mb-2">Community-Led</h3>
-          <p class="text-text-light leading-relaxed">Organised entirely by volunteers from the Norfolk Power Platform User Group — built for the community, by the community.</p>
-        </div>
-
       </div>
     </div>
-  </section>
+  </div>
 
+  <div class="issue-mark"><b>Vol — 02</b> &nbsp;·&nbsp; Norwich · 2027</div>
+</section>
 
-  <!-- EoEPPS 2026 in Review -->
-  <section class="py-20 md:py-24 bg-background-alt">
-    <div class="container mx-auto px-4 text-center">
-      <h2 class="text-3xl md:text-4xl font-extrabold text-text mb-4 tracking-tight">EoEPPS 2026 in Review</h2>
-      <div class="w-14 h-1.5 bg-secondary rounded-full mx-auto mb-5" aria-hidden="true"></div>
-      <p class="text-text-light text-lg max-w-2xl mx-auto mb-10 leading-relaxed">
-        Thank you to everyone who attended, spoke, sponsored, and volunteered to make EoEPPS 2026 a success. Take a look back at what we created together.
-      </p>
-      <div class="flex flex-col sm:flex-row gap-4 justify-center">
-        <a
-          href="/gallery-2026"
-          class="inline-flex items-center justify-center gap-2 bg-primary text-white px-8 py-3.5 rounded-xl font-bold text-base hover:bg-primary-dark hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200 shadow-md"
-        >
-          View 2026 Gallery
-        </a>
-        <a
-          href="/speakers"
-          class="inline-flex items-center justify-center gap-2 border-2 border-primary text-primary px-8 py-3.5 rounded-xl font-bold text-base hover:bg-primary/5 hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200"
-        >
-          2026 Speakers
-        </a>
+<section class="section">
+  <div class="container">
+    <div class="section-head section-head--center">
+      <div class="eyebrow eyebrow--center">— What EoES Offers —</div>
+      <h2 class="display-2">Two days of Power Platform,<br><span class="display-italic">built for the community.</span></h2>
+      <p class="sub">A community-led conference bringing Power Platform professionals together for hands-on learning, expert sessions, and real connections.</p>
+    </div>
+
+    <div class="grid-3">
+      <article class="card">
+        <span class="card-num">01</span>
+        <div class="card-icon yellow">
+          <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 6.25v13M12 6.25C10.83 5.48 9.25 5 7.5 5S4.17 5.48 3 6.25v13C4.17 18.48 5.75 18 7.5 18s3.33.48 4.5 1.25M12 6.25C13.17 5.48 14.75 5 16.5 5c1.75 0 3.33.48 4.5 1.25v13c-1.17-.77-2.75-1.25-4.5-1.25-1.75 0-3.33.48-4.5 1.25" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <h3 class="card-title">Hands-on Workshops</h3>
+        <p class="card-body">A dedicated workshop day on Friday — small-group sessions where you actually build, guided by expert instructors from the Power Platform community.</p>
+      </article>
+
+      <article class="card">
+        <span class="card-num">02</span>
+        <div class="card-icon pink">
+          <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 11a7 7 0 01-14 0M12 18v4m-4 0h8M9 5a3 3 0 016 0v6a3 3 0 01-6 0V5z" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <h3 class="card-title">Expert Sessions</h3>
+        <p class="card-body">Parallel tracks of conference talks from community experts, Microsoft MVPs, and practitioners sharing real-world Power Platform experience.</p>
+      </article>
+
+      <article class="card">
+        <span class="card-num">03</span>
+        <div class="card-icon cyan">
+          <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 20h5v-2a3 3 0 00-5.36-1.86M17 20H7m10 0v-2c0-.66-.13-1.28-.36-1.86M7 20H2v-2a3 3 0 015.36-1.86M7 20v-2c0-.66.13-1.28.36-1.86m0 0a5 5 0 019.28 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <h3 class="card-title">Networking</h3>
+        <p class="card-body">Connect with Power Platform professionals from across the region. Build relationships that go beyond the conference floor.</p>
+      </article>
+
+      <article class="card">
+        <span class="card-num">04</span>
+        <div class="card-icon purple">
+          <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <h3 class="card-title">Multiple Tracks</h3>
+        <p class="card-body">Sessions covering Power Apps, Power Automate, Power BI, Power Pages, Copilot Studio, Dataverse and the broader Microsoft cloud ecosystem.</p>
+      </article>
+
+      <article class="card">
+        <span class="card-num">05</span>
+        <div class="card-icon yellow">
+          <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <h3 class="card-title">Exhibition Area</h3>
+        <p class="card-body">An expo hall with sponsors, partners and vendors showcasing the latest tooling, services and opportunities across the Power Platform ecosystem.</p>
+      </article>
+
+      <article class="card">
+        <span class="card-num">06</span>
+        <div class="card-icon pink">
+          <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2"><path d="M4.32 6.32a4.5 4.5 0 000 6.36L12 20.36l7.68-7.68a4.5 4.5 0 00-6.36-6.36L12 7.64l-1.32-1.32a4.5 4.5 0 00-6.36 0z" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <h3 class="card-title">Community-Led</h3>
+        <p class="card-body">Organised entirely by volunteers from the Norfolk Power Platform User Group — built for the community, by the community, every single year.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="section section--tight">
+  <div class="container">
+    <div class="frame-panel" style="display: grid; grid-template-columns: 1.2fr 1fr; gap: clamp(32px, 5vw, 72px); align-items: center;">
+      <div>
+        <div class="eyebrow" style="margin-bottom: 22px;">— Returning, bigger —</div>
+        <h2 class="display-3" style="margin-bottom: 22px;">
+          Same community.<br>
+          <span class="gradient-yellow-pink">Broader scope.</span>
+        </h2>
+        <p class="lead muted">EoES 2027 builds on the foundation of 2026 with two full days of programming. Friday workshops in small-group, hands-on format. Saturday conference with parallel tracks, keynote, expo hall and lunch included.</p>
+        <div class="row" style="margin-top: 28px; gap: 12px;">
+          <a href="/why-attend" class="btn btn--pink">Why attend</a>
+          <a href="/sponsorship" class="btn btn--ghost">Sponsor options</a>
+        </div>
+      </div>
+
+      <div style="display: grid; gap: 16px;">
+        <div style="display: grid; grid-template-columns: auto 1fr; gap: 18px; align-items: center; padding: 18px 22px; background: rgba(251,191,36,0.06); border: 1px solid rgba(251,191,36,0.25); border-radius: 14px;">
+          <div class="mono" style="color: var(--yellow);">DAY 01</div>
+          <div>
+            <div style="font-family: var(--font-display); font-size: 24px; color: var(--ink-0); letter-spacing: -0.02em;">Friday 30 April</div>
+            <div class="mono" style="color: var(--ink-3); margin-top: 4px;">Workshops · Ticketed · Limited places</div>
+          </div>
+        </div>
+        <div style="display: grid; grid-template-columns: auto 1fr; gap: 18px; align-items: center; padding: 18px 22px; background: rgba(236,72,153,0.06); border: 1px solid rgba(236,72,153,0.25); border-radius: 14px;">
+          <div class="mono" style="color: var(--pink);">DAY 02</div>
+          <div>
+            <div style="font-family: var(--font-display); font-size: 24px; color: var(--ink-0); letter-spacing: -0.02em;">Saturday 01 May</div>
+            <div class="mono" style="color: var(--ink-3); margin-top: 4px;">Conference · Free to attend</div>
+          </div>
+        </div>
+        <div style="display: grid; grid-template-columns: auto 1fr; gap: 18px; align-items: center; padding: 18px 22px; background: rgba(34,211,238,0.06); border: 1px solid rgba(34,211,238,0.25); border-radius: 14px;">
+          <div class="mono" style="color: var(--cyan);">CITY</div>
+          <div>
+            <div style="font-family: var(--font-display); font-size: 24px; color: var(--ink-0); letter-spacing: -0.02em;">Norwich, Norfolk</div>
+            <div class="mono" style="color: var(--ink-3); margin-top: 4px;">East of England · UK</div>
+          </div>
+        </div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-
-  <!-- Sponsors Section -->
-  <section class="py-24 md:py-32">
-    <div class="container mx-auto px-4 text-center">
-      <h2 class="text-4xl md:text-5xl font-extrabold text-text mb-4 tracking-tight">Thank You, 2026 Sponsors</h2>
-      <div class="w-14 h-1.5 bg-secondary rounded-full mx-auto mb-5" aria-hidden="true"></div>
-      <p class="text-text-light text-lg max-w-2xl mx-auto mb-12">
-        EoEPPS 2026 was made possible by the generous support of our sponsors.
-      </p>
-
-      <div class="flex flex-wrap justify-center gap-6 mb-12">
-
-        <!-- Gold Sponsor -->
-        <a href="https://gtptech.co.uk/" target="_blank" rel="noopener noreferrer" class="bg-white rounded-2xl shadow-md border-2 border-secondary overflow-hidden hover:shadow-xl hover:-translate-y-0.5 transition-all duration-300 w-56">
-          <div class="bg-secondary text-gray-900 text-xs font-bold text-center py-2 uppercase tracking-wider">Gold Sponsor</div>
-          <div class="p-6">
-            <div class="h-14 flex items-center justify-center bg-[#1e2235] rounded-lg px-3">
-              <img src="/images/sponsors/GTP-Tech.png" alt="GTP Tech Recruitment" width="758" height="300" loading="lazy" class="max-h-full max-w-full object-contain" />
-            </div>
-          </div>
-        </a>
-
-        <!-- Community Sponsors -->
-        <a href="https://www.powercademy.com/" target="_blank" rel="noopener noreferrer" class="bg-white rounded-2xl shadow-md border border-border overflow-hidden hover:shadow-xl hover:-translate-y-0.5 transition-all duration-300 w-56">
-          <div class="bg-gray-100 text-gray-600 text-xs font-bold text-center py-2 uppercase tracking-wider">Community Sponsor</div>
-          <div class="p-6">
-            <div class="h-14 flex items-center justify-center">
-              <img src="/images/sponsors/Powercademy.png" alt="Powercademy" width="613" height="196" loading="lazy" class="max-h-full max-w-full object-contain" />
-            </div>
-          </div>
-        </a>
-
-        <a href="https://francomusso.com/power-pages-course" target="_blank" rel="noopener noreferrer" class="bg-white rounded-2xl shadow-md border border-border overflow-hidden hover:shadow-xl hover:-translate-y-0.5 transition-all duration-300 w-56">
-          <div class="bg-gray-100 text-gray-600 text-xs font-bold text-center py-2 uppercase tracking-wider">Community Sponsor</div>
-          <div class="p-6">
-            <div class="h-14 flex items-center justify-center">
-              <img src="/images/sponsors/PowerPagesMastery.png" alt="Power Pages Mastery" width="800" height="200" loading="lazy" class="max-h-full max-w-full object-contain" />
-            </div>
-          </div>
-        </a>
-
-        <a href="https://francomusso.com/extralife" target="_blank" rel="noopener noreferrer" class="bg-white rounded-2xl shadow-md border border-border overflow-hidden hover:shadow-xl hover:-translate-y-0.5 transition-all duration-300 w-56">
-          <div class="bg-gray-100 text-gray-600 text-xs font-bold text-center py-2 uppercase tracking-wider">Community Sponsor</div>
-          <div class="p-6">
-            <div class="h-14 flex items-center justify-center">
-              <img src="/images/sponsors/ExtraLife.png" alt="Extra Life" width="800" height="200" loading="lazy" class="max-h-full max-w-full object-contain" />
-            </div>
-          </div>
-        </a>
-
-        <a href="https://eluk26.expertslive.co.uk/" target="_blank" rel="noopener noreferrer" class="bg-white rounded-2xl shadow-md border border-border overflow-hidden hover:shadow-xl hover:-translate-y-0.5 transition-all duration-300 w-56">
-          <div class="bg-gray-100 text-gray-600 text-xs font-bold text-center py-2 uppercase tracking-wider">Community Sponsor</div>
-          <div class="p-6">
-            <div class="h-14 flex items-center justify-center bg-gray-900 rounded-lg px-2">
-              <img src="/images/sponsors/ExpertsLiveUK.png" alt="Experts Live UK" width="800" height="200" loading="lazy" class="max-h-full max-w-full object-contain" />
-            </div>
-          </div>
-        </a>
-
-        <a href="https://www.untethered365.com/freetraining?utm_source=conference&utm_medium=conference&utm_content=norfolk-summit" target="_blank" rel="noopener noreferrer" class="bg-white rounded-2xl shadow-md border border-border overflow-hidden hover:shadow-xl hover:-translate-y-0.5 transition-all duration-300 w-56">
-          <div class="bg-gray-100 text-gray-600 text-xs font-bold text-center py-2 uppercase tracking-wider">Community Sponsor</div>
-          <div class="p-6">
-            <div class="h-14 flex items-center justify-center bg-[#0d1b35] rounded-lg px-2">
-              <img src="/images/sponsors/Untethered365.png" alt="Untethered 365" width="800" height="200" loading="lazy" class="max-h-full max-w-full object-contain" />
-            </div>
-          </div>
-        </a>
-
-        <a href="https://proximo3.com/" target="_blank" rel="noopener noreferrer" class="bg-white rounded-2xl shadow-md border border-border overflow-hidden hover:shadow-xl hover:-translate-y-0.5 transition-all duration-300 w-56">
-          <div class="bg-gray-100 text-gray-600 text-xs font-bold text-center py-2 uppercase tracking-wider">Community Sponsor</div>
-          <div class="p-6">
-            <div class="h-14 flex items-center justify-center">
-              <img src="/images/sponsors/P3 on Light Background.png" alt="Proximo3" width="800" height="200" loading="lazy" class="max-h-full max-w-full object-contain" />
-            </div>
-          </div>
-        </a>
-
-      </div>
-
-      <div class="flex flex-col sm:flex-row gap-3 justify-center">
-        <a href="/sponsors" class="inline-flex items-center justify-center gap-2 bg-primary text-white px-8 py-3.5 rounded-xl font-bold text-base hover:bg-primary-dark hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200 shadow-md">
-          View All 2026 Sponsors
-        </a>
-        <a href="/sponsorship" class="inline-flex items-center justify-center gap-2 border-2 border-primary text-primary px-8 py-3.5 rounded-xl font-bold text-base hover:bg-primary/5 hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200">
-          Become a 2027 Sponsor
-        </a>
-      </div>
+<section class="section">
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow">— 2026 Archive —</div>
+      <h2 class="display-3">A look back at <span class="display-italic">2026.</span></h2>
+      <p class="sub">Thank you to everyone who attended, spoke, sponsored and volunteered. EoES 2026 in full — gallery, speakers, sponsors and the full session catalogue still online.</p>
     </div>
-  </section>
 
-
-  <!-- Stay Connected CTA -->
-  <section class="relative py-24 md:py-32 bg-primary text-white overflow-hidden">
-    <div class="absolute -top-32 -right-32 w-96 h-96 rounded-full bg-secondary/10 blur-3xl pointer-events-none" aria-hidden="true"></div>
-    <div class="relative container mx-auto px-4 text-center">
-      <h2 class="text-4xl md:text-5xl font-extrabold mb-4 tracking-tight">Stay Connected</h2>
-      <div class="w-14 h-1.5 bg-secondary rounded-full mx-auto mb-6" aria-hidden="true"></div>
-      <p class="text-xl text-white/80 mb-10 max-w-2xl mx-auto leading-relaxed">
-        Follow EoEPPS on LinkedIn for 2027 announcements — save the date, speakers, and how to get involved will all be shared there first.
-      </p>
-      <div class="flex flex-col sm:flex-row gap-4 justify-center">
-        <a
-          href="https://www.linkedin.com/company/eoepps/"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="inline-flex items-center justify-center gap-2 bg-secondary text-gray-900 px-8 py-3.5 rounded-xl font-bold text-lg hover:bg-secondary-light hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200 shadow-lg"
-        >
-          Follow on LinkedIn<span class="sr-only"> (opens in new tab)</span>
-        </a>
-        <a
-          href="/sponsorship"
-          class="inline-flex items-center justify-center gap-2 border-2 border-white text-white px-8 py-3.5 rounded-xl font-bold text-lg hover:bg-white/10 hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200"
-        >
-          Become a Sponsor
-        </a>
-      </div>
+    <div class="grid-3">
+      <a href="/gallery-2026" class="card" style="display: block; text-decoration: none;">
+        <div class="mono" style="color: var(--yellow); margin-bottom: 14px;">PHOTOGRAPHY</div>
+        <h3 class="card-title">Gallery 2026</h3>
+        <p class="card-body">Event photography by Martin Eley-Kemp · Lacuna Aspect.</p>
+        <div class="mono" style="margin-top: 22px; color: var(--ink-0);">View gallery &nbsp;→</div>
+      </a>
+      <a href="/speakers" class="card" style="display: block; text-decoration: none;">
+        <div class="mono" style="color: var(--pink); margin-bottom: 14px;">CONTRIBUTORS</div>
+        <h3 class="card-title">Speakers 2026</h3>
+        <p class="card-body">All speakers from EoES 2026 including keynote Chris Huntingford.</p>
+        <div class="mono" style="margin-top: 22px; color: var(--ink-0);">View speakers &nbsp;→</div>
+      </a>
+      <a href="/sessions" class="card" style="display: block; text-decoration: none;">
+        <div class="mono" style="color: var(--cyan); margin-bottom: 14px;">PROGRAMME</div>
+        <h3 class="card-title">Sessions 2026</h3>
+        <p class="card-body">31 sessions across 4 tracks — filterable by topic, level and room.</p>
+        <div class="mono" style="margin-top: 22px; color: var(--ink-0);">Browse catalogue &nbsp;→</div>
+      </a>
     </div>
-  </section>
+  </div>
+</section>
 
-<script>
-  const featuredSponsors = [
-    {
-      name: 'Untethered 365',
-      logo: '/images/sponsors/Untethered365.png',
-      href: 'https://www.untethered365.com/freetraining?utm_source=conference&utm_medium=conference&utm_content=norfolk-summit',
-      cta: 'Join free training',
-    },
-    {
-      name: 'GTP Tech Recruitment',
-      logo: '/images/sponsors/GTP-Tech.png',
-      href: 'https://gtptech.co.uk/',
-      cta: 'Visit gtptech.co.uk',
-    },
-    {
-      name: 'Powercademy',
-      logo: '/images/sponsors/Powercademy.png',
-      href: 'https://www.powercademy.com/',
-      cta: 'Visit powercademy.com',
-    },
-    {
-      name: 'Power Pages Mastery',
-      logo: '/images/sponsors/PowerPagesMastery.png',
-      href: 'https://francomusso.com/power-pages-course',
-      cta: 'Learn more',
-    },
-    {
-      name: 'Extra Life',
-      logo: '/images/sponsors/ExtraLife.png',
-      href: 'https://francomusso.com/extralife',
-      cta: 'Learn more',
-    },
-    {
-      name: 'Experts Live UK',
-      logo: '/images/sponsors/ExpertsLiveUK.png',
-      href: 'https://eluk26.expertslive.co.uk/',
-      cta: 'Visit expertslive.co.uk',
-    },
-    {
-      name: 'Proximo3',
-      logo: '/images/sponsors/P3 for Dark Background.png',
-      href: 'https://proximo3.com/',
-      cta: 'Visit proximo3.com',
-    },
-  ];
+<section class="section section--tight">
+  <div class="container">
+    <div class="section-head section-head--center">
+      <div class="eyebrow eyebrow--center">— Thank you · 2026 Sponsors —</div>
+      <h2 class="display-3">EoES 2026 was made possible<br>by these companies.</h2>
+    </div>
 
-  const HOUR_MS = 60 * 60 * 1000;
+    <div class="grid-4" style="margin-bottom: 28px;">
+      <div class="sponsor-lockup gold">
+        <div class="tier">Gold Sponsor 2026</div>
+        <div class="logo-box artwork"><img src="/images/sponsors/GTP-Tech.png" alt="GTP Tech Recruitment"></div>
+        <div class="body"><p class="name">GTP Tech Recruitment</p></div>
+      </div>
+      <div class="sponsor-lockup">
+        <div class="tier">Community 2026</div>
+        <div class="logo-box dark"><img src="/images/sponsors/Powercademy.png" alt="Powercademy"></div>
+        <div class="body"><p class="name">Powercademy</p></div>
+      </div>
+      <div class="sponsor-lockup">
+        <div class="tier">Community 2026</div>
+        <div class="logo-box artwork"><img src="/images/sponsors/PowerPagesMastery.png" alt="Power Pages Mastery"></div>
+        <div class="body"><p class="name">Power Pages Mastery</p></div>
+      </div>
+      <div class="sponsor-lockup">
+        <div class="tier">Community 2026</div>
+        <div class="logo-box artwork"><img src="/images/sponsors/ExtraLife.png" alt="Extra Life"></div>
+        <div class="body"><p class="name">Extra Life</p></div>
+      </div>
+      <div class="sponsor-lockup">
+        <div class="tier">Community 2026</div>
+        <div class="logo-box artwork"><img src="/images/sponsors/Untethered365.png" alt="Untethered 365"></div>
+        <div class="body"><p class="name">Untethered 365</p></div>
+      </div>
+      <div class="sponsor-lockup">
+        <div class="tier">Community 2026</div>
+        <div class="logo-box dark wide"><img src="/images/sponsors/ExpertsLiveUK.png" alt="Experts Live UK"></div>
+        <div class="body"><p class="name">Experts Live UK</p></div>
+      </div>
+      <div class="sponsor-lockup">
+        <div class="tier">Community 2026</div>
+        <div class="logo-box"><img src="/images/sponsors/P3 on Light Background.png" alt="Proximo3"></div>
+        <div class="body"><p class="name">Proximo3</p></div>
+      </div>
+      <a href="/sponsors/2026" class="sponsor-lockup" style="text-decoration: none; align-items: stretch;">
+        <div class="tier" style="color: var(--yellow);">View All →</div>
+        <div class="logo-box" style="background: rgba(255,255,255,0.02); border: 0;">
+          <div class="mono" style="color: var(--ink-2);">All 2026 Sponsors</div>
+        </div>
+        <div class="body"><p class="name">Full archive of EoES 2026 sponsors and partners.</p></div>
+      </a>
+    </div>
 
-  function getSponsorIndex() {
-    try {
-      const stored = localStorage.getItem('featuredSponsor');
-      if (stored) {
-        const { index, setAt } = JSON.parse(stored);
-        const elapsed = Date.now() - setAt;
-        const advanced = Math.floor(elapsed / HOUR_MS);
-        const next = (index + advanced) % featuredSponsors.length;
-        if (advanced > 0) {
-          localStorage.setItem('featuredSponsor', JSON.stringify({ index: next, setAt: setAt + advanced * HOUR_MS }));
-        }
-        return next;
-      }
-    } catch {}
-    const initial = { index: 0, setAt: Date.now() };
-    localStorage.setItem('featuredSponsor', JSON.stringify(initial));
-    return 0;
-  }
+    <div class="row" style="justify-content: center; gap: 12px;">
+      <a href="/sponsorship" class="btn btn--primary btn--lg">Become a 2027 sponsor</a>
+      <a href="/sponsors/2026" class="btn btn--ghost btn--lg">View 2026 sponsors</a>
+    </div>
+  </div>
+</section>
 
-  function applySponsor(index: number) {
-    const s = featuredSponsors[index];
-    const link = document.getElementById('featured-sponsor-link') as HTMLAnchorElement | null;
-    const cta = document.getElementById('featured-sponsor-cta') as HTMLAnchorElement | null;
-    const img = document.getElementById('featured-sponsor-img') as HTMLImageElement | null;
-    if (link) { link.href = s.href; link.setAttribute('aria-label', `Featured Sponsor: ${s.name} (opens in new tab)`); }
-    if (cta) { cta.href = s.href; cta.textContent = s.cta; }
-    if (img) { img.src = s.logo; img.alt = s.name; }
-  }
-
-  applySponsor(getSponsorIndex());
-
-  // Check every minute whether an hour has passed and rotate if so
-  setInterval(() => { applySponsor(getSponsorIndex()); }, 60 * 1000);
-</script>
+<section class="cta-strip">
+  <div class="container center">
+    <div class="eyebrow eyebrow--center" style="margin-bottom: 22px;">— Stay Connected —</div>
+    <h2 class="display-2" style="max-width: 22ch; margin: 0 auto 22px;">
+      Be first to hear<br><span class="display-italic">EoES 2027 news.</span>
+    </h2>
+    <p class="lead muted" style="max-width: 56ch; margin: 0 auto 36px;">Speaker reveals, workshop schedule, venue confirmation, sponsor announcements — all dropping on LinkedIn first.</p>
+    <div class="row" style="justify-content: center; gap: 12px;">
+      <a href="https://www.linkedin.com/company/eoes/" target="_blank" rel="noopener noreferrer" class="btn btn--primary btn--lg">
+        Follow on LinkedIn
+        <svg class="arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+      <a href="/sponsorship" class="btn btn--ghost btn--lg">Sponsor 2027</a>
+    </div>
+  </div>
+</section>
 
 </BaseLayout>

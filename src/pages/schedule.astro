@@ -1,180 +1,147 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import Hero from '../components/Hero.astro';
 ---
 
-<BaseLayout title="Event Schedule" description="Full two-day schedule for EoEPPS 2026 — Power Platform workshops on Friday 1 May and conference sessions on Saturday 2 May 2026, Norwich, Norfolk.">
-  <Hero
-    title="Schedule"
-    subtitle="Two days of Power Platform content in Norwich."
-  />
+<BaseLayout
+  title="Schedule"
+  description="Two-day schedule for EoES 2027 — workshops Friday 30 April, conference Saturday 1 May in Norwich."
+>
 
-  <section class="py-20 md:py-28">
-    <div class="container mx-auto px-4">
+<section class="page-hero">
+  <div class="bg-year" aria-hidden="true">2D</div>
+  <span class="spark" style="top: 22%; left: 7%;"></span>
+  <span class="spark sm" style="top: 60%; right: 10%;"></span>
+  <div class="container">
+    <div class="hero-eyebrow"><div class="chip chip--purple"><span class="dot"></span><span>Two-day schedule · 2027</span></div></div>
+    <h1 class="display-1 hero-title" style="max-width: 18ch;">Two days of<br>Power Platform<br><span class="display-italic">in Norwich.</span></h1>
+    <p class="hero-sub">Friday 30 April 2027 — workshops. Saturday 1 May 2027 — conference. Both days at venues in central Norwich, walking distance from the railway station.</p>
+  </div>
+  <div class="issue-mark"><b>Vol — 02</b> &nbsp;·&nbsp; Schedule</div>
+</section>
 
-      <!-- Day 1 -->
-      <div id="day1" class="mb-20">
-
-        <!-- Day header -->
-        <div class="flex items-center mb-8 gap-6">
-          <div class="bg-primary text-white rounded-2xl px-6 py-4 text-center min-w-24 flex-shrink-0">
-            <div class="text-xs font-bold text-white/80 uppercase tracking-widest">Friday</div>
-            <div class="text-3xl font-extrabold leading-none my-1">1</div>
-            <div class="text-xs text-white/80 uppercase tracking-widest">May</div>
-          </div>
-          <div>
-            <h2 class="text-3xl md:text-4xl font-extrabold text-text tracking-tight">Day 1: Workshop Day</h2>
-            <div class="flex flex-wrap items-center gap-4 text-text-light mt-2">
-              <span class="flex items-center gap-1.5 text-sm">
-                <svg class="w-4 h-4 text-primary flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-                </svg>
-                9:00 AM – 4:00 PM
-              </span>
-              <span class="flex items-center gap-1.5 text-sm">
-                <svg class="w-4 h-4 text-primary flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-                </svg>
-                The Digital Hub, Townshend House, 30 Crown Road, Norwich NR1 3DT &bull;
-                <a href="https://share.google/0XFQL3ShPVJXjfstT" target="_blank" rel="noopener noreferrer" class="text-primary hover:underline">
-                  Map<span class="sr-only"> (opens in new tab)</span>
-                </a>
-              </span>
-            </div>
-          </div>
+<section class="section">
+  <div class="container">
+    <div style="display: grid; grid-template-columns: 200px 1fr; gap: 36px; align-items: start; margin-bottom: 36px;" class="day-row">
+      <div class="card" style="padding: 28px; text-align: center; background: linear-gradient(180deg, rgba(251,191,36,0.10) 0%, transparent 100%); border-color: rgba(251,191,36,0.3);">
+        <div class="mono" style="color: var(--yellow); margin-bottom: 8px;">FRIDAY</div>
+        <div style="font-family: var(--font-display); font-size: 80px; line-height: 0.86; color: var(--yellow); letter-spacing: -0.06em;">30</div>
+        <div class="mono" style="color: var(--ink-2); margin-top: 8px;">APRIL · 2027</div>
+      </div>
+      <div>
+        <div class="eyebrow" style="margin-bottom: 14px;">— Day 01 —</div>
+        <h2 class="display-3" style="margin-bottom: 14px;">Workshop Day.</h2>
+        <div class="row" style="gap: 18px; color: var(--ink-3); font-size: 15px;">
+          <span class="mono" style="color: var(--ink-2);">09:00 — 16:30</span>
+          <span class="mono" style="color: var(--ink-2);">Norwich (venue TBA)</span>
         </div>
+        <p class="muted" style="margin-top: 18px; max-width: 60ch;">Bring your laptop and get ready to build. Workshop details and speakers will be confirmed closer to the event — keep an eye on LinkedIn.</p>
+      </div>
+    </div>
 
-        <!-- Schedule card -->
-        <div class="bg-white rounded-2xl shadow-md overflow-hidden">
-          <div class="bg-primary/5 px-6 py-4 border-b border-border">
-            <p class="text-text-light text-sm">
-              Bring your laptop and get ready to build. Workshop details and speakers will be confirmed closer to the event.
-            </p>
+    <div class="card" style="padding: 0; background: rgba(255,255,255,0.02);">
+      <div style="padding: 24px 36px; border-bottom: 1px solid var(--line-1);">
+        <p class="muted" style="margin: 0; font-size: 14px;">Indicative timings — final agenda confirmed alongside workshop announcements.</p>
+      </div>
+      <div class="schedule-list" style="padding: 0 36px;">
+        <div class="schedule-row">
+          <div class="when">09:00</div>
+          <div>
+            <span class="kind" style="color: var(--ink-3);">REGISTRATION</span>
+            <h3 class="title">Registration &amp; welcome</h3>
+            <p class="desc">Arrive, grab a coffee, and get settled. Quick welcome from the team.</p>
           </div>
-
-          <div class="divide-y divide-border">
-
-            <!-- Registration + Welcome (15 mins) -->
-            <div class="flex items-start px-6 py-5 gap-6">
-              <div class="w-16 flex-shrink-0 text-sm font-semibold text-text-light tabular-nums pt-0.5">09:00</div>
-              <div class="flex-1">
-                <span class="inline-block px-2.5 py-0.5 bg-gray-100 text-gray-600 text-xs font-medium rounded-full mb-2">Registration</span>
-                <div class="font-semibold text-text">Registration &amp; Welcome</div>
-                <div class="text-text-light text-sm mt-0.5">Arrive, grab a coffee, and get settled. Quick welcome from the team at 09:00.</div>
-              </div>
-              <div class="text-xs text-text-light flex-shrink-0 pt-0.5 tabular-nums">15 min</div>
-            </div>
-
-            <!-- Morning Workshop -->
-            <div class="flex items-start px-6 py-5 gap-6">
-              <div class="w-16 flex-shrink-0 text-sm font-semibold text-text-light tabular-nums pt-0.5">09:15</div>
-              <div class="flex-1">
-                <span class="inline-block px-2.5 py-0.5 bg-primary/10 text-primary text-xs font-medium rounded-full mb-2">Workshop</span>
-                <div class="font-semibold text-text">Morning Workshop</div>
-                <div class="text-text-light text-sm mt-0.5">Speaker and topic to be announced.</div>
-              </div>
-              <div class="text-xs text-text-light flex-shrink-0 pt-0.5 tabular-nums">3 hr 15 min</div>
-            </div>
-
-            <!-- Lunch -->
-            <div class="flex items-start px-6 py-5 gap-6 bg-background-alt">
-              <div class="w-16 flex-shrink-0 text-sm font-semibold text-text-light tabular-nums pt-0.5">12:30</div>
-              <div class="flex-1">
-                <span class="inline-block px-2.5 py-0.5 bg-secondary/15 text-secondary-dark text-xs font-medium rounded-full mb-2">Lunch</span>
-                <div class="font-semibold text-text">Lunch &amp; Networking</div>
-                <div class="text-text-light text-sm mt-0.5">Lunch provided. A great opportunity to connect with fellow attendees.</div>
-              </div>
-              <div class="text-xs text-text-light flex-shrink-0 pt-0.5 tabular-nums">1 hr</div>
-            </div>
-
-            <!-- Afternoon Workshop -->
-            <div class="flex items-start px-6 py-5 gap-6">
-              <div class="w-16 flex-shrink-0 text-sm font-semibold text-text-light tabular-nums pt-0.5">13:30</div>
-              <div class="flex-1">
-                <span class="inline-block px-2.5 py-0.5 bg-primary/10 text-primary text-xs font-medium rounded-full mb-2">Workshop</span>
-                <div class="font-semibold text-text">Afternoon Workshop</div>
-                <div class="text-text-light text-sm mt-0.5">Speaker and topic to be announced.</div>
-              </div>
-              <div class="text-xs text-text-light flex-shrink-0 pt-0.5 tabular-nums">2 hr 30 min</div>
-            </div>
-
-            <!-- Close -->
-            <div class="flex items-start px-6 py-5 gap-6">
-              <div class="w-16 flex-shrink-0 text-sm font-semibold text-text-light tabular-nums pt-0.5">16:00</div>
-              <div class="flex-1">
-                <span class="inline-block px-2.5 py-0.5 bg-gray-100 text-gray-600 text-xs font-medium rounded-full mb-2">Close</span>
-                <div class="font-semibold text-text">Close</div>
-                <div class="text-text-light text-sm mt-0.5">Wrap up and close. Venue closes at 4:30 PM.</div>
-              </div>
-            </div>
-
+          <div class="dur">15 min</div>
+        </div>
+        <div class="schedule-row">
+          <div class="when">09:15</div>
+          <div>
+            <span class="kind" style="color: var(--yellow);">WORKSHOP</span>
+            <h3 class="title">Morning workshop</h3>
+            <p class="desc">Speaker and topic to be announced.</p>
           </div>
+          <div class="dur">3h 15m</div>
+        </div>
+        <div class="schedule-row" style="background: rgba(251,191,36,0.04);">
+          <div class="when" style="color: var(--pink);">12:30</div>
+          <div>
+            <span class="kind" style="color: var(--pink);">LUNCH</span>
+            <h3 class="title">Lunch &amp; networking</h3>
+            <p class="desc">Lunch provided. A great opportunity to connect with fellow attendees.</p>
+          </div>
+          <div class="dur">1h</div>
+        </div>
+        <div class="schedule-row">
+          <div class="when">13:30</div>
+          <div>
+            <span class="kind" style="color: var(--yellow);">WORKSHOP</span>
+            <h3 class="title">Afternoon workshop</h3>
+            <p class="desc">Speaker and topic to be announced.</p>
+          </div>
+          <div class="dur">2h 30m</div>
+        </div>
+        <div class="schedule-row">
+          <div class="when">16:00</div>
+          <div>
+            <span class="kind" style="color: var(--ink-3);">CLOSE</span>
+            <h3 class="title">Close</h3>
+            <p class="desc">Wrap up and close. Venue closes at 16:30.</p>
+          </div>
+          <div class="dur">—</div>
         </div>
       </div>
+    </div>
+  </div>
+</section>
 
-      <!-- Day 2 -->
-      <div id="day2">
-
-        <!-- Day header -->
-        <div class="flex items-center mb-8 gap-6">
-          <div class="bg-accent text-white rounded-2xl px-6 py-4 text-center min-w-24 flex-shrink-0">
-            <div class="text-xs font-bold text-white/80 uppercase tracking-widest">Saturday</div>
-            <div class="text-3xl font-extrabold leading-none my-1">2</div>
-            <div class="text-xs text-white/80 uppercase tracking-widest">May</div>
-          </div>
-          <div>
-            <h2 class="text-3xl md:text-4xl font-extrabold text-text tracking-tight">Day 2: Conference Day</h2>
-            <div class="flex flex-wrap items-center gap-4 text-text-light mt-2">
-              <span class="flex items-center gap-1.5 text-sm">
-                <svg class="w-4 h-4 text-accent flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-                </svg>
-                8:00 AM – 5:30 PM
-              </span>
-              <span class="flex items-center gap-1.5 text-sm">
-                <svg class="w-4 h-4 text-accent flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-                </svg>
-                The Digital Hub, Townshend House, 30 Crown Road, Norwich NR1 3DT &bull;
-                <a href="https://share.google/0XFQL3ShPVJXjfstT" target="_blank" rel="noopener noreferrer" class="text-accent hover:underline">
-                  Map<span class="sr-only"> (opens in new tab)</span>
-                </a>
-              </span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Sessionize embed -->
-        <link rel="stylesheet" href="https://sessionize.com/api/v2/9q20ek5l/embedstyle" />
-        <div class="sessionize-embed mt-6">
-          <script is:inline src="https://sessionize.com/api/v2/9q20ek5l/view/GridSmart"></script>
-        </div>
+<section class="section">
+  <div class="container">
+    <div style="display: grid; grid-template-columns: 200px 1fr; gap: 36px; align-items: start; margin-bottom: 36px;" class="day-row">
+      <div class="card" style="padding: 28px; text-align: center; background: linear-gradient(180deg, rgba(236,72,153,0.10) 0%, transparent 100%); border-color: rgba(236,72,153,0.3);">
+        <div class="mono" style="color: var(--pink); margin-bottom: 8px;">SATURDAY</div>
+        <div style="font-family: var(--font-display); font-size: 80px; line-height: 0.86; letter-spacing: -0.06em;" class="gradient-pink-purple">01</div>
+        <div class="mono" style="color: var(--ink-2); margin-top: 8px;">MAY · 2027</div>
       </div>
-
+      <div>
+        <div class="eyebrow" style="color: var(--pink); margin-bottom: 14px;">— Day 02 —</div>
+        <h2 class="display-3" style="margin-bottom: 14px;">Conference Day.</h2>
+        <div class="row" style="gap: 18px; color: var(--ink-3); font-size: 15px;">
+          <span class="mono" style="color: var(--ink-2);">08:00 — 17:30</span>
+          <span class="mono" style="color: var(--ink-2);">Norwich (venue TBA)</span>
+        </div>
+        <p class="muted" style="margin-top: 18px; max-width: 60ch;">Full conference programme with keynote, parallel tracks, sponsor exhibition, lunch and networking. Free to attend.</p>
+      </div>
     </div>
-  </section>
 
-  <!-- Modal container required by Sessionize -->
-  <div id="sz-modal-container" class="is-hidden"></div>
-
-  <!-- CTA -->
-  <section class="relative py-16 bg-primary text-white overflow-hidden">
-    <div class="absolute -top-32 -right-32 w-96 h-96 rounded-full bg-secondary/10 blur-3xl pointer-events-none" aria-hidden="true"></div>
-    <div class="relative container mx-auto px-4 text-center">
-      <h2 class="text-3xl font-extrabold mb-3 tracking-tight">Stay Up to Date</h2>
-      <p class="text-white/80 mb-8 max-w-xl mx-auto">
-        Follow us on LinkedIn for speaker announcements and event updates.
-      </p>
-      <a
-        href="https://www.linkedin.com/company/eoepps/"
-        target="_blank"
-        rel="noopener noreferrer"
-        class="inline-flex items-center gap-2 bg-secondary text-gray-900 px-8 py-3.5 rounded-xl font-bold text-lg hover:bg-secondary-light hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200 shadow-lg"
-      >
-        Follow on LinkedIn<span class="sr-only"> (opens in new tab)</span>
-      </a>
+    <!-- 2026 Archive session grid -->
+    <div class="section-head" style="margin-bottom: 32px;">
+      <div class="eyebrow">— 2026 Archive —</div>
+      <h3 class="display-3">Browse the 2026 sessions.</h3>
+      <p class="sub">The 2027 programme will be announced via LinkedIn. In the meantime, explore the full 2026 session grid below.</p>
     </div>
-  </section>
+
+    <link rel="stylesheet" href="https://sessionize.com/api/v2/9q20ek5l/embedstyle" />
+    <div class="sessionize-embed">
+      <script is:inline src="https://sessionize.com/api/v2/9q20ek5l/view/GridSmart"></script>
+    </div>
+  </div>
+</section>
+
+<!-- Modal container required by Sessionize -->
+<div id="sz-modal-container" class="is-hidden"></div>
+
+<section class="cta-strip">
+  <div class="container center">
+    <div class="eyebrow eyebrow--center" style="margin-bottom: 22px;">— Stay up to date —</div>
+    <h2 class="display-2" style="max-width: 20ch; margin: 0 auto 22px;">Programme drops<br><span class="display-italic">on LinkedIn first.</span></h2>
+    <div class="row" style="justify-content: center; gap: 12px;">
+      <a href="https://www.linkedin.com/company/eoes/" target="_blank" rel="noopener noreferrer" class="btn btn--primary btn--lg">Follow on LinkedIn</a>
+      <a href="/sessions" class="btn btn--ghost btn--lg">View 2026 sessions</a>
+    </div>
+  </div>
+</section>
+
+<style>
+  @media (max-width: 700px) { .day-row { grid-template-columns: 1fr !important; } }
+</style>
+
 </BaseLayout>

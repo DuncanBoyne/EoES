@@ -1,6 +1,5 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import Hero from '../components/Hero.astro';
 
 // Fetch room assignments from GridSmart at build time
 const gridRes = await fetch('https://sessionize.com/api/v2/9q20ek5l/view/GridSmart?under=True', {
@@ -24,117 +23,151 @@ const rooms = [
 const roomMapJson = JSON.stringify(roomMap);
 ---
 
-<BaseLayout title="2026 Sessions" description="Browse all Power Platform sessions from EoEPPS 2026 — talks covering Power Apps, Power Automate, Power BI, Copilot Studio, and more.">
-  <Hero
-    title="Sessions"
-    subtitle="31 sessions from EoEPPS 2026 across 4 tracks."
-  />
+<BaseLayout
+  title="2026 Sessions"
+  description="Browse all Power Platform sessions from EoES 2026 — talks covering Power Apps, Power Automate, Power BI, Copilot Studio, and more."
+>
 
-  <!-- Filters -->
-  <div class="sticky top-[64px] z-40 bg-white border-b border-border shadow-sm">
-    <div class="container mx-auto px-4 py-4 space-y-3">
+<section class="page-hero">
+  <div class="bg-year" aria-hidden="true">26</div>
+  <span class="spark" style="top: 22%; left: 7%;"></span>
+  <span class="spark sm" style="top: 60%; right: 10%;"></span>
+  <div class="container">
+    <div class="hero-eyebrow"><div class="chip"><span class="dot" style="background: var(--ink-3); box-shadow: 0 0 0 4px rgba(255,255,255,0.08);"></span><span>2026 Archive · Sessions</span></div></div>
+    <h1 class="display-1 hero-title" style="max-width: 18ch;">31 sessions.<br><span class="display-italic">4 tracks.</span></h1>
+    <p class="hero-sub">Browse every session from EoES 2026. Filter by track, level, or room to find exactly what you're looking for.</p>
+  </div>
+  <div class="issue-mark"><b>Vol — 01</b> &nbsp;·&nbsp; 2026 Archive</div>
+</section>
 
-      <!-- Row 1: Track + Level -->
-      <div class="flex flex-col sm:flex-row gap-3 sm:items-center sm:justify-between">
-        <!-- Track filter -->
-        <div class="flex flex-wrap gap-2 items-center">
-          <span class="text-xs font-semibold text-text-light uppercase tracking-widest mr-1 whitespace-nowrap">Track</span>
-          <button class="filter-btn filter-track active" data-track="all">All</button>
-          <button class="filter-btn filter-track" data-track="sz-tag_113750-409150">Technical</button>
-          <button class="filter-btn filter-track" data-track="sz-tag_113750-409151">Business Adoption</button>
-          <button class="filter-btn filter-track" data-track="sz-tag_113750-409148">Non-Technical</button>
-          <button class="filter-btn filter-track" data-track="sz-tag_113750-409149">New Speaker</button>
-        </div>
+<!-- Sticky filter bar -->
+<div class="sessions-filter-bar">
+  <div class="container">
 
-        <!-- Level filter -->
-        <div class="flex flex-wrap gap-2 items-center">
-          <span class="text-xs font-semibold text-text-light uppercase tracking-widest mr-1 whitespace-nowrap">Level</span>
-          <button class="filter-btn filter-level active" data-level="all">All</button>
-          <button class="filter-btn filter-level" data-level="sz-tag_113748-409142">100</button>
-          <button class="filter-btn filter-level" data-level="sz-tag_113748-409143">200</button>
-          <button class="filter-btn filter-level" data-level="sz-tag_113748-409144">300</button>
-          <button class="filter-btn filter-level" data-level="sz-tag_113748-409145">400</button>
-        </div>
+    <!-- Row 1: Track + Level -->
+    <div class="filter-row">
+      <div class="filter-group" role="group" aria-label="Filter sessions by track">
+        <span class="filter-label">Track</span>
+        <button class="filter-btn filter-track active" data-track="all" aria-pressed="true">All</button>
+        <button class="filter-btn filter-track" data-track="sz-tag_113750-409150" aria-pressed="false">Technical</button>
+        <button class="filter-btn filter-track" data-track="sz-tag_113750-409151" aria-pressed="false">Business Adoption</button>
+        <button class="filter-btn filter-track" data-track="sz-tag_113750-409148" aria-pressed="false">Non-Technical</button>
+        <button class="filter-btn filter-track" data-track="sz-tag_113750-409149" aria-pressed="false">New Speaker</button>
       </div>
-
-      <!-- Row 2: Room filter -->
-      <div class="flex flex-wrap gap-2 items-center">
-        <span class="text-xs font-semibold text-text-light uppercase tracking-widest mr-1 whitespace-nowrap">Room</span>
-        <button class="filter-btn filter-room active" data-room="all">All Rooms</button>
-        {rooms.map(r => (
-          <button class="filter-btn filter-room" data-room={r.id}>{r.label}</button>
-        ))}
+      <div class="filter-group" role="group" aria-label="Filter sessions by level">
+        <span class="filter-label">Level</span>
+        <button class="filter-btn filter-level active" data-level="all" aria-pressed="true">All</button>
+        <button class="filter-btn filter-level" data-level="sz-tag_113748-409142" aria-pressed="false">100</button>
+        <button class="filter-btn filter-level" data-level="sz-tag_113748-409143" aria-pressed="false">200</button>
+        <button class="filter-btn filter-level" data-level="sz-tag_113748-409144" aria-pressed="false">300</button>
+        <button class="filter-btn filter-level" data-level="sz-tag_113748-409145" aria-pressed="false">400</button>
       </div>
+    </div>
 
-      <!-- Session count -->
-      <p class="text-xs text-text-light" id="session-count" aria-live="polite">Loading sessions…</p>
+    <!-- Row 2: Room filter -->
+    <div class="filter-group" role="group" aria-label="Filter sessions by room">
+      <span class="filter-label">Room</span>
+      <button class="filter-btn filter-room active" data-room="all" aria-pressed="true">All Rooms</button>
+      {rooms.map(r => (
+        <button class="filter-btn filter-room" data-room={r.id} aria-pressed="false">{r.label}</button>
+      ))}
+    </div>
+
+    <!-- Session count -->
+    <p class="session-count" id="session-count" aria-live="polite">Loading sessions…</p>
+  </div>
+</div>
+
+<!-- Sessionize Sessions embed -->
+<section class="section" style="padding-top: 48px;">
+  <div class="container">
+    <link rel="stylesheet" href="https://sessionize.com/api/v2/9q20ek5l/embedstyle" />
+    <div class="sessionize-embed" id="sessions-embed-wrapper">
+      <script is:inline src="https://sessionize.com/api/v2/9q20ek5l/view/Sessions"></script>
     </div>
   </div>
+</section>
 
-  <!-- Sessionize Sessions embed -->
-  <section class="py-10 md:py-14 bg-background-alt">
-    <div class="container mx-auto px-4">
-      <link rel="stylesheet" href="https://sessionize.com/api/v2/9q20ek5l/embedstyle" />
-      <div id="sessions-embed-wrapper">
-        <script is:inline src="https://sessionize.com/api/v2/9q20ek5l/view/Sessions"></script>
-      </div>
+<!-- Modal container required by Sessionize -->
+<div id="sz-modal-container" class="is-hidden"></div>
+
+<section class="cta-strip">
+  <div class="container center">
+    <div class="eyebrow eyebrow--center" style="margin-bottom: 22px;">— EoES Returns —</div>
+    <h2 class="display-2" style="max-width: 22ch; margin: 0 auto 22px;">More sessions<br><span class="display-italic">in 2027.</span></h2>
+    <p class="lead muted" style="max-width: 52ch; margin: 0 auto 32px;">These are the sessions from EoES 2026. Follow us on LinkedIn for updates on EoES 2027.</p>
+    <div class="row" style="justify-content: center; gap: 12px;">
+      <a href="https://www.linkedin.com/company/eoes/" target="_blank" rel="noopener noreferrer" class="btn btn--primary btn--lg">Follow on LinkedIn</a>
+      <a href="/schedule" class="btn btn--ghost btn--lg">2027 Schedule</a>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- Modal container required by Sessionize -->
-  <div id="sz-modal-container" class="is-hidden"></div>
-
-  <!-- CTA -->
-  <section class="relative py-16 bg-primary text-white overflow-hidden">
-    <div class="absolute -top-32 -right-32 w-96 h-96 rounded-full bg-secondary/10 blur-3xl pointer-events-none" aria-hidden="true"></div>
-    <div class="relative container mx-auto px-4 text-center">
-      <h2 class="text-3xl font-extrabold mb-3 tracking-tight">EoEPPS Returns in 2027</h2>
-      <p class="text-white/80 mb-8 max-w-xl mx-auto">
-        These are the sessions from EoEPPS 2026. Follow us on LinkedIn for updates on EoEPPS 2027.
-      </p>
-      <a
-        href="https://www.linkedin.com/company/eoepps/"
-        target="_blank"
-        rel="noopener noreferrer"
-        class="inline-flex items-center gap-2 bg-secondary text-gray-900 px-8 py-3.5 rounded-xl font-bold text-lg hover:bg-secondary-light hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200 shadow-lg"
-      >
-        Follow on LinkedIn<span class="sr-only"> (opens in new tab)</span>
-      </a>
-    </div>
-  </section>
 </BaseLayout>
 
 <style is:global>
+  .sessions-filter-bar {
+    position: sticky;
+    top: 64px;
+    z-index: 40;
+    background: rgba(11, 1, 24, 0.96);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+    padding: 16px 0;
+  }
+  .sessions-filter-bar .container { display: flex; flex-direction: column; gap: 10px; }
+  .filter-row { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; justify-content: space-between; }
+  .filter-group { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
+  .filter-label {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+    margin-right: 4px;
+    white-space: nowrap;
+  }
+  .session-count {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--ink-3);
+    margin: 0;
+  }
+
   .filter-btn {
     display: inline-flex;
     align-items: center;
-    padding: 0.375rem 0.875rem;
+    padding: 5px 14px;
     border-radius: 9999px;
-    font-size: 0.875rem;
+    font-size: 13px;
     font-weight: 500;
-    background: #f1f5f9;
-    color: #64748b;
-    border: 1px solid transparent;
+    background: rgba(255,255,255,0.06);
+    color: var(--ink-2);
+    border: 1px solid rgba(255,255,255,0.1);
     cursor: pointer;
-    transition: background 0.15s, color 0.15s;
+    transition: background 0.15s, color 0.15s, border-color 0.15s;
+    font-family: var(--font-body);
   }
   .filter-btn:hover:not(.active) {
-    background: #e2e8f0;
-    color: #334155;
+    background: rgba(255,255,255,0.1);
+    color: var(--ink-1);
   }
   .filter-btn:focus-visible {
-    outline: 2px solid #5B21B6;
+    outline: 2px solid var(--purple);
     outline-offset: 2px;
   }
   .filter-btn.active {
-    background: #5B21B6;
+    background: var(--purple);
     color: #fff;
-    border-color: #5B21B6;
+    border-color: var(--purple);
   }
 
-  /* ── Sessionize brand overrides ── */
-  .sz-session__title { color: #1e1b4b; }
-  .sz-session a { color: #5B21B6; }
+  /* ── Sessionize session card overrides (dark theme) ── */
+  .sz-session__title { color: var(--ink-0); }
+  .sz-session a { color: var(--purple); }
 
   .sz-sessions--list {
     list-style: none !important;
@@ -146,46 +179,50 @@ const roomMapJson = JSON.stringify(roomMap);
     align-items: stretch !important;
   }
   .sz-session {
-    background: #fff !important;
+    background: rgba(255,255,255,0.04) !important;
     border-radius: 1rem !important;
     padding: 1.25rem 1.5rem !important;
-    box-shadow: 0 1px 3px rgba(0,0,0,.08), 0 4px 16px rgba(91,33,182,.06) !important;
+    box-shadow: 0 1px 3px rgba(0,0,0,.3), 0 4px 16px rgba(0,0,0,.2) !important;
     transition: box-shadow .2s, transform .2s !important;
-    border: 1px solid #f0edf8 !important;
+    border: 1px solid rgba(255,255,255,0.08) !important;
     display: flex !important;
     flex-direction: column !important;
     height: 100% !important;
     box-sizing: border-box !important;
     margin: 0 !important;
   }
-  .sz-session:hover { box-shadow: 0 4px 24px rgba(91,33,182,.12) !important; transform: translateY(-2px) !important; }
-  .sz-session__title { font-size: 1rem; font-weight: 700; line-height: 1.35; margin: 0.5rem 0 0.75rem; }
+  .sz-session:hover {
+    box-shadow: 0 4px 24px rgba(124,58,237,0.2) !important;
+    transform: translateY(-2px) !important;
+    border-color: rgba(124,58,237,0.3) !important;
+  }
+  .sz-session__title { font-size: 1rem; font-weight: 700; line-height: 1.35; margin: 0.5rem 0 0.75rem; color: var(--ink-0); }
   .sz-session__speakers { list-style: none; padding: 0; margin: 0 0 0.75rem; display: flex; flex-wrap: wrap; gap: 0.25rem; }
-  .sz-session__speakers li:not(:last-child)::after { content: ',\00a0'; }
-  .sz-session__speakers a { font-size: 0.875rem; font-weight: 600; color: #5B21B6; text-decoration: none; }
+  .sz-session__speakers li:not(:last-child)::after { content: ',\00a0'; color: var(--ink-3); }
+  .sz-session__speakers a { font-size: 0.875rem; font-weight: 600; color: var(--purple); text-decoration: none; }
   .sz-session__speakers a:hover { text-decoration: underline; }
   .sz-session__description { display: none; }
   .sz-tags { list-style: none; padding: 0; margin: 0.75rem 0 0; display: flex; flex-wrap: wrap; gap: 0.4rem; }
   .sz-tag { font-size: 0.7rem; font-weight: 600; padding: 0.2rem 0.6rem; border-radius: 99px; }
 
   /* Track tag colours */
-  .sz-tag_113750-409150 { background: #ede9fe; color: #5B21B6; }
-  .sz-tag_113750-409151 { background: #fef3c7; color: #92400e; }
-  .sz-tag_113750-409148 { background: #fce7f3; color: #9d174d; }
-  .sz-tag_113750-409149 { background: #ecfdf5; color: #065f46; }
+  .sz-tag_113750-409150 { background: rgba(124,58,237,0.2); color: #c4b5fd; }
+  .sz-tag_113750-409151 { background: rgba(251,191,36,0.15); color: #fbbf24; }
+  .sz-tag_113750-409148 { background: rgba(236,72,153,0.15); color: #f9a8d4; }
+  .sz-tag_113750-409149 { background: rgba(34,211,238,0.15); color: #67e8f9; }
 
   /* Level chips */
-  .sz-tag_113748-409142 { background: #f1f5f9; color: #475569; }
-  .sz-tag_113748-409143 { background: #dbeafe; color: #1e40af; }
-  .sz-tag_113748-409144 { background: #fde68a; color: #92400e; }
-  .sz-tag_113748-409145 { background: #fee2e2; color: #991b1b; }
+  .sz-tag_113748-409142 { background: rgba(255,255,255,0.08); color: var(--ink-2); }
+  .sz-tag_113748-409143 { background: rgba(59,130,246,0.15); color: #93c5fd; }
+  .sz-tag_113748-409144 { background: rgba(251,191,36,0.15); color: #fbbf24; }
+  .sz-tag_113748-409145 { background: rgba(239,68,68,0.15); color: #fca5a5; }
 
   /* Duration chip */
   .sz-tag_113832-409384,
   .sz-tag_113832-409385,
-  .sz-tag_113832-409386 { background: #f8fafc; color: #64748b; }
+  .sz-tag_113832-409386 { background: rgba(255,255,255,0.06); color: var(--ink-3); }
 
-  .sz-spinner { background-color: #5B21B6 !important; }
+  .sz-spinner { background-color: var(--purple) !important; }
   .sz-session--filtered { display: none !important; }
 
   /* Clickable card cursor */
@@ -197,7 +234,7 @@ const roomMapJson = JSON.stringify(roomMap);
     margin-top: 0.5rem;
     font-size: 0.75rem;
     font-weight: 600;
-    color: #5B21B6;
+    color: var(--purple);
   }
 
   /* ── Modal overlay ── */
@@ -215,7 +252,7 @@ const roomMapJson = JSON.stringify(roomMap);
   .sz-modal-overlay {
     position: fixed;
     inset: 0;
-    background: rgba(15, 10, 30, 0.65);
+    background: rgba(5, 0, 15, 0.8);
     backdrop-filter: blur(4px);
     cursor: pointer;
   }
@@ -229,7 +266,7 @@ const roomMapJson = JSON.stringify(roomMap);
     overflow-y: auto;
     border-radius: 1.25rem;
     background: #fff;
-    box-shadow: 0 25px 60px rgba(91, 33, 182, 0.2), 0 8px 20px rgba(0,0,0,0.15);
+    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.6), 0 8px 20px rgba(0,0,0,0.3);
     scrollbar-width: thin;
   }
 
@@ -456,8 +493,12 @@ const roomMapJson = JSON.stringify(roomMap);
     function bindGroup(selector, stateKey) {
       document.querySelectorAll(selector).forEach(function (btn) {
         btn.addEventListener('click', function () {
-          document.querySelectorAll(selector).forEach(function (b) { b.classList.remove('active'); });
+          document.querySelectorAll(selector).forEach(function (b) {
+            b.classList.remove('active');
+            b.setAttribute('aria-pressed', 'false');
+          });
           btn.classList.add('active');
+          btn.setAttribute('aria-pressed', 'true');
           var val = btn.getAttribute('data-' + stateKey) || 'all';
           if (stateKey === 'track') activeTrack = val;
           else if (stateKey === 'level') activeLevel = val;

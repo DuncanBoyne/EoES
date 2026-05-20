@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://eoepps.co.uk/sitemap-index.xml
+Sitemap: https://eoes.co.uk/sitemap-index.xml

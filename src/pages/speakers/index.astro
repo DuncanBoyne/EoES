@@ -2,74 +2,87 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 ---
 
-<BaseLayout title="2026 Speakers" description="Meet the expert Power Platform speakers from EoEPPS 2026 — practitioners from across the East of England and beyond who shared real-world experience with Power Apps, Power Automate, Power BI, and Copilot Studio.">
+<BaseLayout
+  title="2026 Speakers"
+  description="Meet the expert Power Platform speakers from EoES 2026 — practitioners from across the East of England and beyond who shared real-world experience with Power Apps, Power Automate, Power BI, and Copilot Studio."
+>
 
-  <!-- Combined hero + keynote — single banner -->
-  <section class="bg-gradient-to-br from-primary via-primary-dark to-accent text-white py-16 md:py-24">
-    <div class="container mx-auto px-4 text-center">
-      <h1 class="text-4xl md:text-5xl font-bold mb-2">2026 Speakers</h1>
-      <p class="text-white/80 text-lg mb-12">The inspiring voices from EoEPPS 2026.</p>
+<section class="page-hero">
+  <div class="bg-year" aria-hidden="true">26</div>
+  <span class="spark" style="top: 22%; left: 7%;"></span>
+  <span class="spark sm" style="top: 60%; right: 10%;"></span>
+  <div class="container">
+    <div class="hero-eyebrow"><div class="chip"><span class="dot" style="background: var(--ink-3); box-shadow: 0 0 0 4px rgba(255,255,255,0.08);"></span><span>2026 Archive · Speakers</span></div></div>
+    <h1 class="display-1 hero-title" style="max-width: 18ch;">2026 <span class="display-italic">speakers.</span></h1>
+    <p class="hero-sub">The inspiring voices from EoES 2026 — practitioners sharing real-world Power Platform experience.</p>
+  </div>
+  <div class="issue-mark"><b>Vol — 01</b> &nbsp;·&nbsp; 2026 Archive</div>
+</section>
 
-      <div class="border-t border-white/20 pt-12">
-        <p class="text-secondary font-bold uppercase tracking-widest text-sm mb-6">Keynote Speaker</p>
-        <img
-          src="/images/speakers/chris-huntingford.jpg"
-          alt="Chris Huntingford"
-          width="160"
-          height="160"
-          class="w-40 h-40 rounded-full object-cover border-4 border-secondary shadow-2xl mx-auto mb-6"
-        />
-        <h2 class="text-4xl md:text-5xl font-bold mb-6">Chris Huntingford</h2>
-        <div class="flex items-center gap-6 justify-center">
-          <a href="https://www.chrishuntingford.com/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 text-white/80 hover:text-white transition-colors">
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-            </svg>
-            chrishuntingford.com
-          </a>
-          <a href="https://www.linkedin.com/in/chrishuntingford/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 text-white/80 hover:text-white transition-colors">
-            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-              <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
-            </svg>
-            LinkedIn
-          </a>
+<!-- Keynote Speaker -->
+<section class="section section--tight">
+  <div class="container" style="max-width: 820px;">
+    <div class="eyebrow eyebrow--center" style="margin-bottom: 28px; color: var(--yellow);">— Keynote Speaker —</div>
+    <article class="card" style="padding: 0; background: linear-gradient(180deg, rgba(251,191,36,0.08) 0%, transparent 60%); border-color: rgba(251,191,36,0.35);">
+      <div style="padding: 40px; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 20px;">
+        <div style="position: relative;">
+          <div style="width: 128px; height: 128px; border-radius: 50%; border: 3px solid rgba(251,191,36,0.5); box-shadow: 0 0 0 8px rgba(251,191,36,0.08), 0 0 40px rgba(251,191,36,0.15); overflow: hidden;">
+            <img
+              src="/images/speakers/chris-huntingford.jpg"
+              alt="Chris Huntingford"
+              width="128"
+              height="128"
+              style="width: 100%; height: 100%; object-fit: cover;"
+            />
+          </div>
+        </div>
+        <div>
+          <div class="mono" style="color: var(--yellow); font-size: 11px; margin-bottom: 10px; letter-spacing: 0.12em; text-transform: uppercase;">Keynote Speaker · EoES 2026</div>
+          <h2 style="font-family: var(--font-display); font-size: clamp(32px, 5vw, 48px); letter-spacing: -0.04em; color: var(--ink-0); line-height: 1; margin-bottom: 16px;">Chris Huntingford</h2>
+          <div class="row" style="justify-content: center; gap: 16px; flex-wrap: wrap;">
+            <a href="https://www.chrishuntingford.com/" target="_blank" rel="noopener noreferrer" class="btn btn--ghost btn--sm">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              chrishuntingford.com
+            </a>
+            <a href="https://www.linkedin.com/in/chrishuntingford/" target="_blank" rel="noopener noreferrer" class="btn btn--ghost btn--sm">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.76 0-5 2.24-5 5v14c0 2.76 2.24 5 5 5h14c2.76 0 5-2.24 5-5v-14c0-2.76-2.24-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.27c-.97 0-1.75-.79-1.75-1.76s.78-1.76 1.75-1.76 1.75.79 1.75 1.76-.78 1.76-1.75 1.76zm13.5 12.27h-3v-5.6c0-3.37-4-3.11-4 0v5.6h-3v-11h3v1.77c1.4-2.59 7-2.78 7 2.47v6.76z"/></svg>
+              LinkedIn
+            </a>
+          </div>
         </div>
       </div>
-    </div>
-  </section>
+    </article>
+  </div>
+</section>
 
-  <!-- Conference Speakers (Sessionize SpeakerWall) -->
-  <section class="py-16">
-    <div class="container mx-auto px-4">
-      <div class="text-center mb-12">
-        <h2 class="text-3xl font-bold text-text mb-4">Conference Speakers</h2>
-        <p class="text-text-light text-lg max-w-2xl mx-auto">
-          Click any speaker to learn more about them and the sessions they presented at EoEPPS 2026.
-        </p>
-      </div>
-      <link rel="stylesheet" href="https://sessionize.com/api/v2/9q20ek5l/embedstyle" />
+<!-- Conference Speakers (Sessionize SpeakerWall) -->
+<section class="section">
+  <div class="container">
+    <div class="section-head section-head--center" style="margin-bottom: 40px;">
+      <div class="eyebrow eyebrow--center">— Conference Speakers —</div>
+      <h2 class="display-3">All 2026<br><span class="display-italic">speakers.</span></h2>
+      <p class="sub">Click any speaker to learn more about them and the sessions they presented at EoES 2026.</p>
+    </div>
+    <link rel="stylesheet" href="https://sessionize.com/api/v2/9q20ek5l/embedstyle" />
+    <div class="sessionize-embed">
       <script is:inline src="https://sessionize.com/api/v2/9q20ek5l/view/SpeakerWall"></script>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- Modal container required by Sessionize -->
-  <div id="sz-modal-container" class="is-hidden"></div>
+<!-- Modal container required by Sessionize -->
+<div id="sz-modal-container" class="is-hidden"></div>
 
-  <!-- EoEPPS 2027 CTA -->
-  <section class="py-16 bg-primary text-white">
-    <div class="container mx-auto px-4 text-center">
-      <h2 class="text-3xl font-bold mb-4">EoEPPS Returns in 2027</h2>
-      <p class="text-xl text-white/90 mb-8 max-w-2xl mx-auto">
-        Follow us on LinkedIn to be the first to hear about EoEPPS 2027 — save the date, speakers, and how to get involved.
-      </p>
-      <a
-        href="https://www.linkedin.com/company/eoepps/"
-        target="_blank"
-        rel="noopener noreferrer"
-        class="inline-block bg-white text-primary px-8 py-4 rounded-lg font-bold text-lg hover:bg-gray-100 transition-colors"
-      >
-        Follow on LinkedIn<span class="sr-only"> (opens in new tab)</span>
-      </a>
+<section class="cta-strip">
+  <div class="container center">
+    <div class="eyebrow eyebrow--center" style="margin-bottom: 22px;">— EoES Returns —</div>
+    <h2 class="display-2" style="max-width: 22ch; margin: 0 auto 22px;">More great speakers<br><span class="display-italic">in 2027.</span></h2>
+    <p class="lead muted" style="max-width: 52ch; margin: 0 auto 32px;">Follow us on LinkedIn to be the first to hear about EoES 2027 — speakers, schedule, and how to get involved.</p>
+    <div class="row" style="justify-content: center; gap: 12px;">
+      <a href="https://www.linkedin.com/company/eoes/" target="_blank" rel="noopener noreferrer" class="btn btn--primary btn--lg">Follow on LinkedIn</a>
+      <a href="/sessions" class="btn btn--ghost btn--lg">View 2026 sessions</a>
     </div>
-  </section>
+  </div>
+</section>
+
 </BaseLayout>

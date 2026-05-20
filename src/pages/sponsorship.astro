@@ -1,491 +1,477 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import Hero from '../components/Hero.astro';
+
+const tiers = [
+  { key: 'friend', name: 'Friend', price: '£250', availability: '', className: 'tier-friend' },
+  { key: 'community', name: 'Community', price: '£750', availability: '', className: 'tier-community' },
+  { key: 'silver', name: 'Silver', price: '£1,500', availability: '5 of 6 available', className: 'tier-silver' },
+  { key: 'gold', name: 'Gold', price: '£3,000', availability: '3 available', className: 'tier-gold' },
+  { key: 'platinum', name: 'Platinum', price: '£5,000', availability: '1 available', className: 'tier-platinum' },
+] as const;
+
+const comparisonSections = [
+  {
+    group: 'Brand & Logo',
+    rows: [
+      ['Website logo placement', 'Grouped panel', true, true, true, true],
+      ['Rotating sponsor slides', 'Shared slide', true, true, true, true],
+      ['Logo on venue roller banners', false, false, false, true, true],
+      ['Headline logo placement alongside EoES branding', false, false, false, false, true],
+      ['Exclusive branding on attendee lanyards', false, false, false, false, true],
+    ],
+  },
+  {
+    group: 'Social Media',
+    rows: [
+      ['Sponsor recognition and visibility', false, true, true, true, true],
+      ['Featured on at least 50% of build-up posts', false, false, false, false, true],
+    ],
+  },
+  {
+    group: 'Video & Keynote',
+    rows: [
+      ['1-minute video during keynote reel', false, true, true, true, true],
+      ['Additional video on venue screens throughout the day', false, true, true, true, true],
+      ['Logo size on rotating sponsor slides', 'Grouped', 'Standard', 'Prominent', 'Featured', 'Headline'],
+    ],
+  },
+  {
+    group: 'Expo Hall',
+    rows: [
+      ['Expo hall presence', false, false, true, true, true],
+      ['Expo space', null, null, '2m x 2m', '3m x 3m', '4m x 4m'],
+      ['Expo hall positioning', null, null, 'Standard', 'Premium', 'First choice'],
+    ],
+  },
+  {
+    group: 'Sponsored Session',
+    rows: [
+      ['Sponsored session', false, false, '15 min conference track', '30 min conference track', '45 min auditorium slot'],
+      ['Up to 20% promotional / sales content', false, false, true, true, true],
+    ],
+  },
+  {
+    group: 'Attendee Engagement',
+    rows: [
+      ['Workshop tickets', false, false, '1 ticket', '2 tickets', '4 tickets'],
+      ['Attendee information access', false, false, 'Post-event', 'Post-event', 'Early access'],
+    ],
+  },
+  {
+    group: 'Attendee Bags',
+    rows: [
+      ['Branded item in attendee bags', true, true, true, true, true],
+    ],
+  },
+] as const;
+
+const reasons = [
+  {
+    tone: 'yellow',
+    title: 'Promote your brand',
+    text: 'Reach a targeted audience of Power Platform professionals, decision-makers, and innovators from across the East of England.',
+  },
+  {
+    tone: 'pink',
+    title: 'Showcase your expertise',
+    text: "Position your brand at the centre of the East of England's fast-growing Microsoft Power Platform ecosystem.",
+  },
+  {
+    tone: 'cyan',
+    title: 'Support the community',
+    text: 'Demonstrate your commitment to the local tech community. EoES is built by volunteers, and sponsorship is what makes it possible.',
+  },
+  {
+    tone: 'purple',
+    title: 'Network directly',
+    text: 'Exhibition stands on Day 2 give you direct access to attendees, potential clients, partners, and candidates.',
+  },
+] as const;
+
+const audiences = [
+  {
+    title: 'The audience',
+    items: [
+      'Power Platform professionals from across the East of England',
+      'Developers, analysts, and IT decision-makers',
+      'Two full days of direct engagement',
+    ],
+  },
+  {
+    title: 'On the day',
+    items: [
+      'Exhibition area at the conference venue on Day 2',
+      'Your logo on event slides throughout both days',
+      'Verbal recognition in opening and closing remarks',
+    ],
+  },
+  {
+    title: 'Beyond the event',
+    items: [
+      'Your logo on the EoES website throughout the event year',
+      'Social media promotion to the NPPUG community and beyond',
+      "Association with the East of England's Power Platform community event",
+    ],
+  },
+] as const;
+
+const addOns = [
+  {
+    title: 'Workshop Day',
+    text: 'The workshop day is presented by your company, with your brand name attached to Day 1 across event materials and communications.',
+  },
+  {
+    title: 'Summit Lunch',
+    text: 'Sponsor the conference day lunch. Your brand is recognised across signage, slides, and announcements on the day.',
+  },
+  {
+    title: 'T-shirt Sponsor',
+    text: 'Your logo appears on the official EoES t-shirts worn by speakers and staff throughout both days of the event.',
+  },
+] as const;
+
+const tierDetails = [
+  {
+    className: 'tier-detail--platinum',
+    name: 'Platinum Sponsor',
+    price: '£5,000',
+    meta: '1 available',
+    badge: 'Exclusive Headline Sponsor',
+    text: 'The exclusive headline partnership tier for organisations wanting maximum visibility, premium event presence, and direct engagement with the Microsoft community ecosystem.',
+  },
+  {
+    className: 'tier-detail--gold',
+    name: 'Gold Sponsor',
+    price: '£3,000',
+    meta: '3 available',
+    badge: '',
+    text: 'A strong and highly visible presence with premium expo positioning, enhanced branding opportunities, attendee engagement, and direct access to the Microsoft community ecosystem.',
+  },
+  {
+    className: 'tier-detail--silver',
+    name: 'Silver Sponsor',
+    price: '£1,500',
+    meta: '5 of 6 available',
+    badge: '',
+    text: 'A visible and engaging presence with expo hall access, event branding opportunities, and direct interaction with attendees throughout the conference.',
+  },
+  {
+    className: 'tier-detail--community',
+    name: 'Community Sponsor',
+    price: '£750',
+    meta: '',
+    badge: '',
+    text: 'For organisations, creators, training providers, conferences, and community-focused businesses who want to support EoES while gaining visibility within the Microsoft ecosystem.',
+  },
+  {
+    className: 'tier-detail--friend',
+    name: 'Friend of EoES',
+    price: '£250',
+    meta: '',
+    badge: '',
+    text: 'An entry-level tier for local businesses, freelancers, podcasters, creators, and community supporters who want to back EoES 2027.',
+  },
+] as const;
+
+function cellLabel(value: boolean | string | null) {
+  if (value === true) return 'Included';
+  if (value === false) return 'Not included';
+  if (value === null) return 'Not applicable';
+  return value;
+}
 ---
 
-<BaseLayout title="Become a Sponsor" description="Sponsor EoEPPS 2027 and put your brand in front of Power Platform professionals, developers, and decision-makers from across the East of England.">
-  <Hero
-    title="Become a Sponsor"
-    subtitle="Partner with the East of England Power Platform community."
-  />
+<BaseLayout
+  title="Become a Sponsor"
+  description="Sponsor EoES 2027 and put your brand in front of Power Platform professionals, developers, and decision-makers from across the East of England."
+>
 
-  <!-- Why Sponsor -->
-  <section class="py-16">
-    <div class="container mx-auto px-4">
-      <div class="max-w-4xl mx-auto">
-        <h2 class="text-3xl font-bold text-text mb-8 text-center">Why Sponsor EoEPPS?</h2>
+<section class="page-hero">
+  <div class="bg-year" aria-hidden="true">£</div>
+  <span class="spark" style="top: 22%; left: 7%;"></span>
+  <span class="spark sm" style="top: 60%; right: 10%;"></span>
+  <div class="container">
+    <div class="hero-eyebrow"><div class="chip chip--yellow"><span class="dot"></span><span>Sponsorship · 2027</span></div></div>
+    <h1 class="display-1 hero-title" style="max-width: 18ch;">Sponsor<br><span class="display-italic">EoES 2027.</span></h1>
+    <p class="hero-sub">Five tiers from £250 to £5,000, plus three premium add-ons. Put your brand in front of Power Platform professionals from across the East of England.</p>
+  </div>
+  <div class="issue-mark"><b>Vol — 02</b> &nbsp;·&nbsp; Sponsorship</div>
+</section>
 
-        <div class="grid md:grid-cols-2 gap-6 mb-12">
-          <div class="flex items-start">
-            <div class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mr-4 flex-shrink-0">
-              <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 3.055A9.001 9.001 0 1020.945 13H11V3.055z" />
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.488 9H15V3.512A9.025 9.025 0 0120.488 9z" />
-              </svg>
-            </div>
-            <div>
-              <h3 class="font-bold text-text mb-1">Promote Your Brand</h3>
-              <p class="text-text-light">Reach a targeted audience of Power Platform professionals, decision-makers, and innovators from across the East of England.</p>
-            </div>
-          </div>
-
-          <div class="flex items-start">
-            <div class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mr-4 flex-shrink-0">
-              <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
-              </svg>
-            </div>
-            <div>
-              <h3 class="font-bold text-text mb-1">Showcase Your Expertise</h3>
-              <p class="text-text-light">Position your brand at the centre of the East of England's fast-growing Microsoft Power Platform ecosystem.</p>
-            </div>
-          </div>
-
-          <div class="flex items-start">
-            <div class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mr-4 flex-shrink-0">
-              <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
-              </svg>
-            </div>
-            <div>
-              <h3 class="font-bold text-text mb-1">Support the Community</h3>
-              <p class="text-text-light">Demonstrate your commitment to the local tech community. EoEPPS is built by volunteers — your sponsorship is what makes it possible.</p>
-            </div>
-          </div>
-
-          <div class="flex items-start">
-            <div class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mr-4 flex-shrink-0">
-              <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 116 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
-              </svg>
-            </div>
-            <div>
-              <h3 class="font-bold text-text mb-1">Network Directly</h3>
-              <p class="text-text-light">Exhibition stands on Day 2 give you direct access to attendees. Meet potential clients, partners, and candidates face-to-face.</p>
-            </div>
-          </div>
-        </div>
-      </div>
+<section class="section">
+  <div class="container">
+    <div class="section-head section-head--center">
+      <div class="eyebrow eyebrow--center">— Why sponsor —</div>
+      <h2 class="display-3">Four reasons to<br><span class="display-italic">partner with us.</span></h2>
     </div>
-  </section>
 
-  <!-- Reach Stats -->
-  <section class="py-16 bg-gradient-to-br from-primary to-accent text-white">
-    <div class="container mx-auto px-4">
-      <h2 class="text-3xl font-bold mb-12 text-center">Who You'll Reach</h2>
-
-      <div class="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-        <div class="text-center">
-          <div class="w-20 h-20 mx-auto mb-4 bg-white/20 rounded-full flex items-center justify-center">
-            <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 116 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
-            </svg>
-          </div>
-          <h3 class="text-xl font-bold mb-3">The Audience</h3>
-          <ul class="text-white/90 space-y-2 text-sm">
-            <li>Power Platform professionals from across the East of England</li>
-            <li>Developers, analysts, and IT decision-makers</li>
-            <li>Two full days of direct engagement</li>
-          </ul>
-        </div>
-
-        <div class="text-center">
-          <div class="w-20 h-20 mx-auto mb-4 bg-white/20 rounded-full flex items-center justify-center">
-            <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z" />
-            </svg>
-          </div>
-          <h3 class="text-xl font-bold mb-3">On the Day</h3>
-          <ul class="text-white/90 space-y-2 text-sm">
-            <li>Exhibition area at The Digital Hub on Day 2</li>
-            <li>Your logo on all event slides throughout both days</li>
-            <li>Verbal recognition in opening and closing remarks</li>
-          </ul>
-        </div>
-
-        <div class="text-center">
-          <div class="w-20 h-20 mx-auto mb-4 bg-white/20 rounded-full flex items-center justify-center">
-            <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
-            </svg>
-          </div>
-          <h3 class="text-xl font-bold mb-3">Beyond the Event</h3>
-          <ul class="text-white/90 space-y-2 text-sm">
-            <li>Your logo on the EoEPPS website throughout the event year</li>
-            <li>Social media promotion to the NPPUG community and beyond</li>
-            <li>Association with the East of England's premier Power Platform event</li>
-          </ul>
-        </div>
-      </div>
+    <div class="grid-2">
+      {reasons.map(reason => (
+        <article class="card">
+          <div class:list={['card-icon', reason.tone]} aria-hidden="true">+</div>
+          <h3 class="card-title">{reason.title}</h3>
+          <p class="card-body">{reason.text}</p>
+        </article>
+      ))}
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- Sponsorship Packages -->
-  <section class="py-16">
-    <div class="container mx-auto px-4">
-      <div class="text-center mb-12">
-        <h2 class="text-3xl font-bold text-text mb-4">2027 Sponsorship Packages</h2>
-        <div class="w-14 h-1.5 bg-secondary rounded-full mx-auto mb-6" aria-hidden="true"></div>
-        <p class="text-text-light text-lg max-w-2xl mx-auto">
-          Support EoEPPS 2027 and put your brand in front of Power Platform professionals, developers, and decision-makers from across the East of England.
-        </p>
-      </div>
-
-      <!-- Comparison Matrix -->
-      <div class="max-w-6xl mx-auto mb-16">
-        <h3 class="text-2xl font-bold text-text mb-8 text-center">Compare All Packages</h3>
-        <div class="overflow-x-auto rounded-2xl border border-primary/20 shadow-sm">
-          <table class="w-full text-sm min-w-[860px]">
-            <thead>
-              <tr>
-                <th class="text-left py-5 px-5 bg-primary/5 font-semibold text-text border-b border-primary/20">Benefit</th>
-                <th class="py-5 px-3 bg-primary/60 text-white font-semibold text-center border-b border-primary/20 w-24">
-                  <div class="text-white/70 text-xs uppercase tracking-wider mb-1">Friend</div>
-                  <div class="text-xl font-bold">£250</div>
-                </th>
-                <th class="py-5 px-3 bg-primary text-white font-semibold text-center border-b border-primary/20 w-24">
-                  <div class="text-white/70 text-xs uppercase tracking-wider mb-1">Community</div>
-                  <div class="text-xl font-bold">£750</div>
-                </th>
-                <th class="py-5 px-3 bg-gray-600 text-white font-semibold text-center border-b border-gray-500 w-24">
-                  <div class="text-white/70 text-xs uppercase tracking-wider mb-1">Silver</div>
-                  <div class="text-xl font-bold">£1,500</div>
-                  <div class="text-white/60 text-xs mt-1">5 of 6 available</div>
-                </th>
-                <th class="py-5 px-3 bg-secondary text-gray-900 font-semibold text-center border-b border-secondary/50 w-24">
-                  <div class="text-gray-700 text-xs uppercase tracking-wider mb-1">Gold</div>
-                  <div class="text-xl font-bold">£3,000</div>
-                  <div class="text-gray-600 text-xs mt-1">3 available</div>
-                </th>
-                <th class="py-5 px-3 bg-gradient-to-b from-primary to-accent text-white font-semibold text-center border-b border-primary/20 w-24">
-                  <div class="text-white/70 text-xs uppercase tracking-wider mb-1">Platinum</div>
-                  <div class="text-xl font-bold">£5,000</div>
-                  <div class="text-white/60 text-xs mt-1">1 available</div>
-                </th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr><td colspan="6" class="py-2 px-5 bg-primary/5 text-xs font-semibold uppercase tracking-widest text-primary border-t border-primary/20">Brand &amp; Logo</td></tr>
-              <tr class="border-t border-primary/10 hover:bg-primary/5 transition-colors">
-                <td class="py-3 px-5 text-text-light">Website logo placement</td>
-                <td class="py-3 text-center text-text text-xs font-semibold">Grouped<br/>panel</td>
-                <td class="py-3 text-center text-green-600 font-bold text-base">✔</td>
-                <td class="py-3 text-center text-green-600 font-bold text-base">✔</td>
-                <td class="py-3 text-center text-green-600 font-bold text-base">✔</td>
-                <td class="py-3 text-center text-green-600 font-bold text-base">✔</td>
-              </tr>
-              <tr class="border-t border-primary/10 hover:bg-primary/5 transition-colors">
-                <td class="py-3 px-5 text-text-light">Rotating sponsor slides</td>
-                <td class="py-3 text-center text-text text-xs font-semibold">Shared<br/>slide</td>
-                <td class="py-3 text-center text-green-600 font-bold text-base">✔</td>
-                <td class="py-3 text-center text-green-600 font-bold text-base">✔</td>
-                <td class="py-3 text-center text-green-600 font-bold text-base">✔</td>
-                <td class="py-3 text-center text-green-600 font-bold text-base">✔</td>
-              </tr>
-              <tr class="border-t border-primary/10 hover:bg-primary/5 transition-colors">
-                <td class="py-3 px-5 text-text-light">Logo on event roller banners throughout the venue</td>
-                <td class="py-3 text-center text-text-light/40 font-bold text-base">✘</td>
-                <td class="py-3 text-center text-text-light/40 font-bold text-base">✘</td>
-                <td class="py-3 text-center text-text-light/40 font-bold text-base">✘</td>
-                <td class="py-3 text-center text-green-600 font-bold text-base">✔</td>
-                <td class="py-3 text-center text-green-600 font-bold text-base">✔</td>
-              </tr>
-              <tr class="border-t border-primary/10 hover:bg-primary/5 transition-colors">
-                <td class="py-3 px-5 text-text-light">Headline logo placement alongside EoEPPS branding</td>
-                <td class="py-3 text-center text-text-light/40 font-bold text-base">✘</td>
-                <td class="py-3 text-center text-text-light/40 font-bold text-base">✘</td>
-                <td class="py-3 text-center text-text-light/40 font-bold text-base">✘</td>
-                <td class="py-3 text-center text-text-light/40 font-bold text-base">✘</td>
-                <td class="py-3 text-center text-green-600 font-bold text-base">✔</td>
-              </tr>
-              <tr class="border-t border-primary/10 hover:bg-primary/5 transition-colors">
-                <td class="py-3 px-5 text-text-light">Exclusive branding on attendee lanyards</td>
-                <td class="py-3 text-center text-text-light/40 font-bold text-base">✘</td>
-                <td class="py-3 text-center text-text-light/40 font-bold text-base">✘</td>
-                <td class="py-3 text-center text-text-light/40 font-bold text-base">✘</td>
-                <td class="py-3 text-center text-text-light/40 font-bold text-base">✘</td>
-                <td class="py-3 text-center text-green-600 font-bold text-base">✔</td>
-              </tr>
-
-              <tr><td colspan="6" class="py-2 px-5 bg-primary/5 text-xs font-semibold uppercase tracking-widest text-primary border-t border-primary/20">Social Media</td></tr>
-              <tr class="border-t border-primary/10 hover:bg-primary/5 transition-colors">
-                <td class="py-3 px-5 text-text-light">Sponsor recognition / visibility</td>
-                <td class="py-3 text-center text-text-light/40 font-bold text-base">✘</td>
-                <td class="py-3 text-center text-green-600 font-bold text-base">✔</td>
-                <td class="py-3 text-center text-green-600 font-bold text-base">✔</td>
-                <td class="py-3 text-center text-green-600 font-bold text-base">✔</td>
-                <td class="py-3 text-center text-green-600 font-bold text-base">✔</td>
-              </tr>
-              <tr class="border-t border-primary/10 hover:bg-primary/5 transition-colors">
-                <td class="py-3 px-5 text-text-light">Featured on at least 50% of build-up posts</td>
-                <td class="py-3 text-center text-text-light/40 font-bold text-base">✘</td>
-                <td class="py-3 text-center text-text-light/40 font-bold text-base">✘</td>
-                <td class="py-3 text-center text-text-light/40 font-bold text-base">✘</td>
-                <td class="py-3 text-center text-text-light/40 font-bold text-base">✘</td>
-                <td class="py-3 text-center text-green-600 font-bold text-base">✔</td>
-              </tr>
-
-              <tr><td colspan="6" class="py-2 px-5 bg-primary/5 text-xs font-semibold uppercase tracking-widest text-primary border-t border-primary/20">Video &amp; Keynote</td></tr>
-              <tr class="border-t border-primary/10 hover:bg-primary/5 transition-colors">
-                <td class="py-3 px-5 text-text-light">1-minute video during keynote reel</td>
-                <td class="py-3 text-center text-text-light/40 font-bold text-base">✘</td>
-                <td class="py-3 text-center text-green-600 font-bold text-base">✔</td>
-                <td class="py-3 text-center text-green-600 font-bold text-base">✔</td>
-                <td class="py-3 text-center text-green-600 font-bold text-base">✔</td>
-                <td class="py-3 text-center text-green-600 font-bold text-base">✔</td>
-              </tr>
-              <tr class="border-t border-primary/10 hover:bg-primary/5 transition-colors">
-                <td class="py-3 px-5 text-text-light">Additional video on venue screens throughout the day</td>
-                <td class="py-3 text-center text-text-light/40 font-bold text-base">✘</td>
-                <td class="py-3 text-center text-green-600 font-bold text-base">✔</td>
-                <td class="py-3 text-center text-green-600 font-bold text-base">✔</td>
-                <td class="py-3 text-center text-green-600 font-bold text-base">✔</td>
-                <td class="py-3 text-center text-green-600 font-bold text-base">✔</td>
-              </tr>
-              <tr class="border-t border-primary/10 hover:bg-primary/5 transition-colors">
-                <td class="py-3 px-5 text-text-light">Logo size on rotating sponsor slides</td>
-                <td class="py-3 text-center text-text text-xs font-semibold">Grouped</td>
-                <td class="py-3 text-center text-text text-xs font-semibold">Standard</td>
-                <td class="py-3 text-center text-text text-xs font-semibold">Prominent</td>
-                <td class="py-3 text-center text-text text-xs font-semibold">Featured</td>
-                <td class="py-3 text-center text-text text-xs font-semibold">Headline</td>
-              </tr>
-
-              <tr><td colspan="6" class="py-2 px-5 bg-primary/5 text-xs font-semibold uppercase tracking-widest text-primary border-t border-primary/20">Expo Hall</td></tr>
-              <tr class="border-t border-primary/10 hover:bg-primary/5 transition-colors">
-                <td class="py-3 px-5 text-text-light">Expo hall presence</td>
-                <td class="py-3 text-center text-text-light/40 font-bold text-base">✘</td>
-                <td class="py-3 text-center text-text-light/40 font-bold text-base">✘</td>
-                <td class="py-3 text-center text-green-600 font-bold text-base">✔</td>
-                <td class="py-3 text-center text-green-600 font-bold text-base">✔</td>
-                <td class="py-3 text-center text-green-600 font-bold text-base">✔</td>
-              </tr>
-              <tr class="border-t border-primary/10 hover:bg-primary/5 transition-colors">
-                <td class="py-3 px-5 text-text-light">Expo space</td>
-                <td class="py-3 text-center text-text-light/40">—</td>
-                <td class="py-3 text-center text-text-light/40">—</td>
-                <td class="py-3 text-center text-text text-xs font-semibold">2m × 2m</td>
-                <td class="py-3 text-center text-text text-xs font-semibold">3m × 3m</td>
-                <td class="py-3 text-center text-text text-xs font-semibold">4m × 4m</td>
-              </tr>
-              <tr class="border-t border-primary/10 hover:bg-primary/5 transition-colors">
-                <td class="py-3 px-5 text-text-light">Expo hall positioning</td>
-                <td class="py-3 text-center text-text-light/40">—</td>
-                <td class="py-3 text-center text-text-light/40">—</td>
-                <td class="py-3 text-center text-text text-xs font-semibold">Standard</td>
-                <td class="py-3 text-center text-text text-xs font-semibold">Premium</td>
-                <td class="py-3 text-center text-text text-xs font-semibold">First choice</td>
-              </tr>
-
-              <tr><td colspan="6" class="py-2 px-5 bg-primary/5 text-xs font-semibold uppercase tracking-widest text-primary border-t border-primary/20">Sponsored Session</td></tr>
-              <tr class="border-t border-primary/10 hover:bg-primary/5 transition-colors">
-                <td class="py-3 px-5 text-text-light">Sponsored session</td>
-                <td class="py-3 text-center text-text-light/40 font-bold text-base">✘</td>
-                <td class="py-3 text-center text-text-light/40 font-bold text-base">✘</td>
-                <td class="py-3 text-center text-text text-xs font-semibold leading-tight">15 min<br/>conference track</td>
-                <td class="py-3 text-center text-text text-xs font-semibold leading-tight">30 min<br/>conference track</td>
-                <td class="py-3 text-center text-text text-xs font-semibold leading-tight">45 min<br/>The Auditorium</td>
-              </tr>
-              <tr class="border-t border-primary/10 hover:bg-primary/5 transition-colors">
-                <td class="py-3 px-5 text-text-light">Up to 20% promotional / sales content</td>
-                <td class="py-3 text-center text-text-light/40 font-bold text-base">✘</td>
-                <td class="py-3 text-center text-text-light/40 font-bold text-base">✘</td>
-                <td class="py-3 text-center text-green-600 font-bold text-base">✔</td>
-                <td class="py-3 text-center text-green-600 font-bold text-base">✔</td>
-                <td class="py-3 text-center text-green-600 font-bold text-base">✔</td>
-              </tr>
-
-              <tr><td colspan="6" class="py-2 px-5 bg-primary/5 text-xs font-semibold uppercase tracking-widest text-primary border-t border-primary/20">Attendee Engagement</td></tr>
-              <tr class="border-t border-primary/10 hover:bg-primary/5 transition-colors">
-                <td class="py-3 px-5 text-text-light">Workshop tickets</td>
-                <td class="py-3 text-center text-text-light/40 font-bold text-base">✘</td>
-                <td class="py-3 text-center text-text-light/40 font-bold text-base">✘</td>
-                <td class="py-3 text-center text-text text-xs font-semibold">1 ticket</td>
-                <td class="py-3 text-center text-text text-xs font-semibold">2 tickets</td>
-                <td class="py-3 text-center text-text text-xs font-semibold">4 tickets</td>
-              </tr>
-              <tr class="border-t border-primary/10 hover:bg-primary/5 transition-colors">
-                <td class="py-3 px-5 text-text-light">Attendee information access</td>
-                <td class="py-3 text-center text-text-light/40 font-bold text-base">✘</td>
-                <td class="py-3 text-center text-text-light/40 font-bold text-base">✘</td>
-                <td class="py-3 text-center text-text text-xs font-semibold">Post-event</td>
-                <td class="py-3 text-center text-text text-xs font-semibold">Post-event</td>
-                <td class="py-3 text-center text-text text-xs font-semibold leading-tight">Early<br/>access</td>
-              </tr>
-
-              <tr><td colspan="6" class="py-2 px-5 bg-primary/5 text-xs font-semibold uppercase tracking-widest text-primary border-t border-primary/20">Attendee Bags</td></tr>
-              <tr class="border-t border-primary/10 hover:bg-primary/5 transition-colors">
-                <td class="py-3 px-5 text-text-light">Branded item in attendee bags <span class="text-xs text-text-light/60">(sponsor-supplied or EoEPPS-arranged — invoiced separately)</span></td>
-                <td class="py-3 text-center text-green-600 font-bold text-base">✔</td>
-                <td class="py-3 text-center text-green-600 font-bold text-base">✔</td>
-                <td class="py-3 text-center text-green-600 font-bold text-base">✔</td>
-                <td class="py-3 text-center text-green-600 font-bold text-base">✔</td>
-                <td class="py-3 text-center text-green-600 font-bold text-base">✔</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-
-      <!-- Sponsorship Add-ons -->
-      <div class="max-w-5xl mx-auto mb-16">
-        <h3 class="text-2xl font-bold text-text mb-3 text-center">Sponsorship Add-ons</h3>
-        <p class="text-text-light text-center mb-8">Available to any sponsorship tier. Each add-on is £1,000.</p>
-        <div class="grid md:grid-cols-3 gap-6">
-
-          <div class="bg-primary/5 border border-primary/20 rounded-2xl p-6">
-            <div class="flex items-center justify-between mb-4">
-              <span class="text-xs font-semibold uppercase tracking-wider text-primary bg-primary/10 px-3 py-1 rounded-full">Add-on</span>
-              <div class="text-right">
-                <div class="text-xl font-bold text-text">£1,000</div>
-                <div class="text-xs text-text-light/60">1 available</div>
-              </div>
-            </div>
-            <h4 class="text-lg font-bold text-text mb-2">Workshop Day</h4>
-            <p class="text-text-light text-sm leading-relaxed">The workshop day is presented by your company — your brand name attached to Day 1 across all event materials and communications.</p>
-          </div>
-
-          <div class="bg-primary/5 border border-primary/20 rounded-2xl p-6">
-            <div class="flex items-center justify-between mb-4">
-              <span class="text-xs font-semibold uppercase tracking-wider text-primary bg-primary/10 px-3 py-1 rounded-full">Add-on</span>
-              <div class="text-right">
-                <div class="text-xl font-bold text-text">£1,000</div>
-                <div class="text-xs text-text-light/60">1 available</div>
-              </div>
-            </div>
-            <h4 class="text-lg font-bold text-text mb-2">Summit Lunch</h4>
-            <p class="text-text-light text-sm leading-relaxed">Sponsor the conference day lunch. Your brand is recognised as the lunch sponsor across signage, slides, and announcements on the day.</p>
-          </div>
-
-          <div class="bg-primary/5 border border-primary/20 rounded-2xl p-6">
-            <div class="flex items-center justify-between mb-4">
-              <span class="text-xs font-semibold uppercase tracking-wider text-primary bg-primary/10 px-3 py-1 rounded-full">Add-on</span>
-              <div class="text-right">
-                <div class="text-xl font-bold text-text">£1,000</div>
-                <div class="text-xs text-text-light/60">1 available</div>
-              </div>
-            </div>
-            <h4 class="text-lg font-bold text-text mb-2">T-shirt Sponsor</h4>
-            <p class="text-text-light text-sm leading-relaxed">Your logo on the official EoEPPS t-shirts worn by speakers and staff throughout both days of the event.</p>
-          </div>
-
-        </div>
-      </div>
-
-      <!-- Tier descriptions: Platinum first, descending to Friend -->
-      <div class="max-w-4xl mx-auto space-y-8 mb-12">
-
-        <!-- Platinum -->
-        <div class="border border-primary rounded-2xl overflow-hidden">
-          <div class="bg-gradient-to-br from-primary to-accent px-8 py-6 text-white">
-            <div class="flex flex-wrap items-center justify-between gap-4">
-              <div>
-                <p class="text-white/70 text-sm font-medium uppercase tracking-wider mb-1">Platinum Sponsor</p>
-                <p class="text-4xl font-bold">£5,000</p>
-                <p class="text-white/60 text-sm mt-1">1 available</p>
-              </div>
-              <div class="bg-white/20 rounded-xl px-4 py-2">
-                <p class="text-white text-sm font-bold">Exclusive Headline Sponsor</p>
-              </div>
-            </div>
-          </div>
-          <div class="p-8">
-            <p class="text-text-light leading-relaxed">
-              The Platinum Sponsor package is the exclusive headline partnership tier for East of England Power Platform Summit 2027, designed for organisations wanting maximum visibility, premium event presence, and direct engagement with the Microsoft community ecosystem. Platinum Sponsors receive prominent branding throughout the event, premium expo hall positioning, attendee engagement opportunities, workshop access, and high-impact visibility across both physical and digital event experiences.
-            </p>
-          </div>
-        </div>
-
-        <!-- Gold -->
-        <div class="border border-secondary/50 rounded-2xl overflow-hidden">
-          <div class="bg-secondary px-8 py-6">
-            <div>
-              <p class="text-gray-700 text-sm font-medium uppercase tracking-wider mb-1">Gold Sponsor</p>
-              <p class="text-4xl font-bold text-gray-900">£3,000</p>
-              <p class="text-gray-600 text-sm mt-1">3 available</p>
-            </div>
-          </div>
-          <div class="p-8">
-            <p class="text-text-light leading-relaxed">
-              The Gold Sponsor package is designed for organisations wanting a strong and highly visible presence at East of England Power Platform Summit 2027, with premium expo positioning, enhanced branding opportunities, attendee engagement, and direct access to the Microsoft community ecosystem. Gold Sponsors receive prominent visibility across the event while supporting one of the UK's growing Microsoft community conferences.
-            </p>
-          </div>
-        </div>
-
-        <!-- Silver -->
-        <div class="border border-gray-300 rounded-2xl overflow-hidden">
-          <div class="bg-gray-600 px-8 py-6 text-white">
-            <div>
-              <p class="text-white/70 text-sm font-medium uppercase tracking-wider mb-1">Silver Sponsor</p>
-              <p class="text-4xl font-bold">£1,500</p>
-              <p class="text-white/60 text-sm mt-1">5 of 6 available</p>
-            </div>
-          </div>
-          <div class="p-8">
-            <p class="text-text-light leading-relaxed">
-              The Silver Sponsor package is designed for organisations wanting a visible and engaging presence at East of England Power Platform Summit 2027, with expo hall access, event branding opportunities, and direct interaction with attendees throughout the conference. Silver Sponsors receive strong visibility across the event while supporting the continued growth of the Microsoft community ecosystem.
-            </p>
-          </div>
-        </div>
-
-        <!-- Community -->
-        <div class="border border-primary/30 rounded-2xl overflow-hidden">
-          <div class="bg-primary px-8 py-6 text-white">
-            <div>
-              <p class="text-white/70 text-sm font-medium uppercase tracking-wider mb-1">Community Sponsor</p>
-              <p class="text-4xl font-bold">£750</p>
-            </div>
-          </div>
-          <div class="p-8">
-            <p class="text-text-light leading-relaxed">
-              The Community Sponsor package is designed for organisations, creators, training providers, conferences, and community-focused businesses who want to support East of England Power Platform Summit while gaining visibility within the Microsoft ecosystem. Community Sponsors receive digital and event-wide brand exposure through website placement, keynote recognition, social media promotion, rotating venue screen content, and sponsor showcase videos throughout the event. Sponsors may also include a branded item in attendee bags, either supplied directly by the sponsor or arranged by EoEPPS for an additional cost.
-            </p>
-          </div>
-        </div>
-
-        <!-- Friend of EoEPPS -->
-        <div class="border border-primary/20 rounded-2xl overflow-hidden">
-          <div class="bg-primary/60 px-8 py-6 text-white">
-            <div>
-              <p class="text-white/70 text-sm font-medium uppercase tracking-wider mb-1">Friend of EoEPPS</p>
-              <p class="text-4xl font-bold">£250</p>
-            </div>
-          </div>
-          <div class="p-8">
-            <p class="text-text-light leading-relaxed">
-              An entry-level tier for local businesses, course creators, freelancers, podcasters, and community supporters who want to back EoEPPS 2027. Friends receive a grouped logo placement on the EoEPPS website, inclusion on a shared Friends rotating slide during breaks, and the option to include a branded item in attendee goodie bags (sponsor-supplied).
-            </p>
-          </div>
-        </div>
-
-      </div>
-
-      <div class="text-center mt-12">
-        <p class="text-text-light text-lg mb-6">Ready to sponsor EoEPPS 2027? Get in touch and we'll send you the full sponsorship prospectus.</p>
-        <a
-          href="mailto:info@eoepps.co.uk?subject=Sponsorship%20Enquiry%20-%20EoEPPS%202027"
-          class="inline-block bg-primary text-white px-8 py-4 rounded-xl font-bold text-lg hover:bg-primary-dark transition-colors"
-        >
-          Get in Touch
-        </a>
-      </div>
+<section class="section section--tight">
+  <div class="container">
+    <div class="section-head section-head--center">
+      <div class="eyebrow eyebrow--center">— Your audience —</div>
+      <h2 class="display-3">Who you'll<br><span class="display-italic">reach.</span></h2>
     </div>
-  </section>
 
-  <!-- 2026 Sponsors -->
-  <section class="py-16 bg-background-alt">
-    <div class="container mx-auto px-4 text-center">
-      <h2 class="text-3xl font-bold text-text mb-4">2026 Sponsors</h2>
-      <p class="text-text-light text-lg mb-8">Thank you to everyone who supported EoEPPS 2026.</p>
-      <a
-        href="/sponsors/2026"
-        class="inline-flex items-center text-primary font-semibold hover:text-primary-dark transition-colors"
-      >
-        View 2026 Sponsors
-        <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-        </svg>
+    <div class="grid-3">
+      {audiences.map((audience, index) => (
+        <article class="card" style="text-align: center;">
+          <div class:list={['card-icon', ['yellow', 'pink', 'cyan'][index]]} style="margin: 0 auto 16px;" aria-hidden="true">+</div>
+          <h3 class="card-title">{audience.title}</h3>
+          <ul class="muted clean-list">
+            {audience.items.map(item => <li>{item}</li>)}
+          </ul>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="section-head section-head--center">
+      <div class="eyebrow eyebrow--center">— 2027 Packages —</div>
+      <h2 class="display-3">Compare all<br><span class="display-italic">packages.</span></h2>
+      <p class="sub">Support EoES 2027 and put your brand in front of Power Platform professionals from across the East of England.</p>
+    </div>
+
+    <div class="editorial-table-wrap">
+      <table class="editorial-table">
+        <caption class="sr-only">Sponsorship package comparison</caption>
+        <thead>
+          <tr>
+            <th scope="col">Benefit</th>
+            {tiers.map(tier => (
+              <th scope="col" class={tier.className}>
+                <span class="tier-name">{tier.name}</span>
+                <span class="tier-price">{tier.price}</span>
+                {tier.availability && <span class="tier-avail">{tier.availability}</span>}
+              </th>
+            ))}
+          </tr>
+        </thead>
+        <tbody>
+          {comparisonSections.map(section => (
+            <>
+              <tr class="group-row"><td colspan="6">{section.group}</td></tr>
+              {section.rows.map(row => (
+                <tr>
+                  <th scope="row">{row[0]}</th>
+                  {row.slice(1).map(value => (
+                    <td>
+                      {value === true ? (
+                        <>
+                          <span class="sr-only">Included</span>
+                          <span class="yes" aria-hidden="true">✓</span>
+                        </>
+                      ) : value === false ? (
+                        <>
+                          <span class="sr-only">Not included</span>
+                          <span class="no" aria-hidden="true">×</span>
+                        </>
+                      ) : value === null ? (
+                        <>
+                          <span class="sr-only">Not applicable</span>
+                          <span class="no" aria-hidden="true">—</span>
+                        </>
+                      ) : (
+                        <span class="cell-mono" aria-label={cellLabel(value)}>{value}</span>
+                      )}
+                    </td>
+                  ))}
+                </tr>
+              ))}
+            </>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<section class="section section--tight">
+  <div class="container">
+    <div class="section-head section-head--center">
+      <div class="eyebrow eyebrow--center">— Premium add-ons —</div>
+      <h2 class="display-3">Sponsorship<br><span class="display-italic">add-ons.</span></h2>
+      <p class="sub">Available to any sponsorship tier. Each add-on is £1,000.</p>
+    </div>
+
+    <div class="grid-3">
+      {addOns.map(addOn => (
+        <article class="card addon-card">
+          <div class="row" style="justify-content: space-between; gap: 16px; margin-bottom: 16px;">
+            <div class="chip chip--purple" style="margin: 0;"><span>Add-on</span></div>
+            <div style="text-align: right;">
+              <div class="addon-price">£1,000</div>
+              <div class="mono" style="font-size: 11px; color: var(--ink-3);">1 available</div>
+            </div>
+          </div>
+          <h3 class="h3" style="margin-bottom: 10px;">{addOn.title}</h3>
+          <p class="muted" style="font-size: 14px; line-height: 1.7;">{addOn.text}</p>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
+
+<section class="section section--tight">
+  <div class="container" style="max-width: 900px;">
+    <div class="section-head section-head--center">
+      <div class="eyebrow eyebrow--center">— Tier details —</div>
+      <h2 class="display-3">What's included<br><span class="display-italic">at each level.</span></h2>
+    </div>
+
+    <div class="stack-6">
+      {tierDetails.map(tier => (
+        <article class:list={['card', 'tier-detail', tier.className]}>
+          <div class="tier-detail-head">
+            <div>
+              <div class="mono tier-detail-name">{tier.name}</div>
+              <div class="tier-detail-price">{tier.price}</div>
+              {tier.meta && <div class="mono tier-detail-meta">{tier.meta}</div>}
+            </div>
+            {tier.badge && <div class="tier-detail-badge">{tier.badge}</div>}
+          </div>
+          <p class="muted" style="line-height: 1.75; margin: 0;">{tier.text}</p>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
+
+<section class="cta-strip">
+  <div class="container center">
+    <div class="eyebrow eyebrow--center" style="margin-bottom: 22px;">— Get in touch —</div>
+    <h2 class="display-2" style="max-width: 22ch; margin: 0 auto 22px;">Ready to<br><span class="display-italic">sponsor EoES?</span></h2>
+    <p class="lead muted" style="max-width: 52ch; margin: 0 auto 32px;">Get in touch and we'll send you the full sponsorship prospectus.</p>
+    <div class="row" style="justify-content: center; gap: 12px;">
+      <a href="mailto:info@eoes.co.uk?subject=Sponsorship%20Enquiry%20-%20EoES%202027" class="btn btn--primary btn--lg">
+        Get in touch
+        <svg class="arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"/></svg>
       </a>
+      <a href="/sponsors/2026" class="btn btn--ghost btn--lg">View 2026 sponsors</a>
     </div>
-  </section>
+  </div>
+</section>
+
 </BaseLayout>
+
+<style>
+  .clean-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    font-size: 14px;
+    line-height: 1.8;
+    text-align: left;
+  }
+
+  .clean-list li + li {
+    margin-top: 8px;
+  }
+
+  .addon-card {
+    border-color: rgba(124,58,237,0.3);
+    background: linear-gradient(180deg, rgba(124,58,237,0.08) 0%, transparent 100%);
+  }
+
+  .addon-price {
+    font-family: var(--font-display);
+    font-size: 22px;
+    letter-spacing: -0.04em;
+    color: var(--ink-0);
+  }
+
+  .tier-detail {
+    padding: 0;
+    overflow: hidden;
+  }
+
+  .tier-detail-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+    padding: 28px 32px;
+    border-bottom: 1px solid var(--line-1);
+  }
+
+  .tier-detail > p {
+    padding: 28px 32px;
+  }
+
+  .tier-detail-name {
+    font-size: 11px;
+    color: rgba(255,255,255,0.62);
+    margin-bottom: 6px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  .tier-detail-price {
+    font-family: var(--font-display);
+    font-size: 48px;
+    line-height: 0.9;
+    letter-spacing: -0.06em;
+    color: var(--ink-0);
+  }
+
+  .tier-detail-meta {
+    font-size: 11px;
+    color: var(--ink-3);
+    margin-top: 6px;
+  }
+
+  .tier-detail-badge {
+    padding: 10px 16px;
+    background: rgba(255,255,255,0.14);
+    border-radius: 8px;
+    border: 1px solid rgba(255,255,255,0.2);
+    font-family: var(--font-mono);
+    font-size: 11px;
+    font-weight: 700;
+    color: rgba(255,255,255,0.9);
+  }
+
+  .tier-detail--platinum .tier-detail-head {
+    background: linear-gradient(135deg, rgba(124,58,237,0.5) 0%, rgba(236,72,153,0.5) 100%);
+  }
+
+  .tier-detail--gold .tier-detail-head {
+    background: rgba(251,191,36,0.85);
+  }
+
+  .tier-detail--gold .tier-detail-name,
+  .tier-detail--gold .tier-detail-meta {
+    color: rgba(0,0,0,0.55);
+  }
+
+  .tier-detail--gold .tier-detail-price {
+    color: #1a0f00;
+  }
+
+  .tier-detail--silver .tier-detail-head {
+    background: rgba(148,163,184,0.14);
+  }
+
+  .tier-detail--community .tier-detail-head {
+    background: rgba(124,58,237,0.52);
+  }
+
+  .tier-detail--friend .tier-detail-head {
+    background: rgba(124,58,237,0.28);
+  }
+</style>

@@ -1,6 +1,5 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import Hero from '../components/Hero.astro';
 import { getCollection } from 'astro:content';
 
 const allSpeakers = await getCollection('speakers');
@@ -9,320 +8,181 @@ const findSpeaker = (slug: string) => allSpeakers.find(s => s.slug === slug);
 type Speaker = NonNullable<ReturnType<typeof findSpeaker>>;
 const notUndefined = (s: Speaker | undefined): s is Speaker => s != null;
 
-const directors  = [findSpeaker('duncan-boyne'), findSpeaker('adam-bezance')].filter(notUndefined);
-const committee  = [
+const directors = [findSpeaker('duncan-boyne'), findSpeaker('adam-bezance')].filter(notUndefined);
+const committee = [
   'sarah-jones', 'stuart-baxter', 'emily-lacey', 'jon-russell',
   'gemma-peck', 'reece-harsley', 'chris-hinchcliffe', 'simon-greenall',
 ].map(slug => findSpeaker(slug)).filter(notUndefined);
 
 const displayRoles: Record<string, { role: string; company: string }> = {
-  'duncan-boyne':      { role: 'Co-Event Director',      company: 'CPiO' },
-  'adam-bezance':      { role: 'Co-Event Director',      company: 'Robiquity' },
-  'sarah-jones':       { role: 'Organising Committee',   company: '' },
-  'stuart-baxter':     { role: 'Organising Committee',   company: '' },
-  'emily-lacey':       { role: 'Organising Committee',   company: '' },
-  'jon-russell':       { role: 'Organising Committee',   company: '' },
-  'gemma-peck':        { role: 'Co-Founder',             company: 'GTP Tech Recruitment' },
-  'reece-harsley':     { role: 'Organising Committee',   company: '' },
-  'chris-hinchcliffe': { role: 'Organising Committee',   company: '' },
-  'simon-greenall':    { role: 'Organising Committee',   company: '' },
+  'duncan-boyne':      { role: 'Co-Event Director', company: 'CPiO' },
+  'adam-bezance':      { role: 'Co-Event Director', company: 'Robiquity' },
+  'sarah-jones':       { role: 'Committee',          company: '' },
+  'stuart-baxter':     { role: 'Committee',          company: '' },
+  'emily-lacey':       { role: 'Committee',          company: '' },
+  'jon-russell':       { role: 'Committee',          company: '' },
+  'gemma-peck':        { role: 'Co-Founder',         company: 'GTP Tech Recruitment' },
+  'reece-harsley':     { role: 'Committee',          company: '' },
+  'chris-hinchcliffe': { role: 'Committee',          company: '' },
+  'simon-greenall':    { role: 'Committee',          company: '' },
 };
+
+const initials = (name: string) => name.split(' ').map(n => n[0]).join('');
 ---
 
-<BaseLayout title="About EoEPPS" description="Learn about the East of England Power Platform Summit (EoEPPS) — a community-led event in Norwich covering Power Apps, Power Automate, Power BI, and Copilot Studio. Meet the organising team.">
-  <Hero
-    title="About EoEPPS"
-    subtitle="A community-led Power Platform conference, returning in 2027."
-  />
+<BaseLayout
+  title="About EoES"
+  description="A community-led Power Platform conference in Norwich. Returning 30 April – 1 May 2027. Meet the organising team."
+>
 
-  <!-- What is EoEPPS -->
-  <section class="py-20 md:py-28">
-    <div class="container mx-auto px-4">
-      <div class="max-w-4xl mx-auto">
-        <h2 class="text-4xl md:text-5xl font-extrabold text-text mb-4 tracking-tight">What is EoEPPS?</h2>
-        <div class="w-14 h-1.5 bg-secondary rounded-full mb-8" aria-hidden="true"></div>
-        <p class="text-lg text-text-light mb-6 leading-relaxed">
-          The East of England Power Platform Summit (EoEPPS) is a community-led, two-day conference bringing together Power Platform professionals, enthusiasts, and newcomers from across the East of England and beyond.
-        </p>
-        <p class="text-lg text-text-light mb-6 leading-relaxed">
-          Organised by the team behind the <a href="https://www.nppug.co.uk" target="_blank" rel="noopener noreferrer" class="text-primary hover:underline font-semibold">Norfolk Power Platform User Group</a>, EoEPPS is designed to provide a larger platform for the region's growing Power Platform community — with hands-on workshops on Day 1 and a full conference programme on Day 2.
-        </p>
-        <p class="text-lg text-text-light mb-12 leading-relaxed">
-          Whether you're just getting started with Power Apps, building complex automation with Power Automate, creating insights with Power BI, or exploring the world of Copilot Studio — there's something at EoEPPS for you.
-        </p>
+<section class="page-hero">
+  <div class="bg-year" aria-hidden="true">.</div>
+  <span class="spark" style="top: 22%; left: 7%;"></span>
+  <span class="spark sm" style="top: 70%; right: 12%;"></span>
+  <span class="spark sm" style="top: 38%; right: 22%;"></span>
+  <div class="container">
+    <div class="hero-eyebrow"><div class="chip chip--cyan"><span class="dot"></span><span>About · Vol 02 · 2027</span></div></div>
+    <h1 class="display-1 hero-title" style="max-width: 18ch;">A community-led<br><span class="display-italic">Power Platform</span> conference.</h1>
+    <p class="hero-sub">EoES — the East of England Summit — is a two-day, community-led conference based in Norwich, organised entirely by volunteers from the Norfolk Power Platform User Group.</p>
+  </div>
+  <div class="issue-mark"><b>Vol — 02</b> &nbsp;·&nbsp; About</div>
+</section>
 
-        <div class="grid md:grid-cols-2 gap-6 mb-12">
-          <div class="about-card bg-white p-7 rounded-2xl shadow-md">
-            <h3 class="text-xl font-bold text-text mb-4">Your Two Days</h3>
-            <ul class="space-y-3 text-text-light">
-              <li class="flex items-start gap-3">
-                <svg class="w-5 h-5 text-primary mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
-                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
-                </svg>
-                <span>Day 1 at The Digital Hub, Townshend House: choose a hands-on workshop and spend the day building something real</span>
-              </li>
-              <li class="flex items-start gap-3">
-                <svg class="w-5 h-5 text-primary mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
-                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
-                </svg>
-                <span>Day 2 at The Digital Hub, Townshend House: a full conference programme with parallel tracks and a keynote</span>
-              </li>
-              <li class="flex items-start gap-3">
-                <svg class="w-5 h-5 text-primary mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
-                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
-                </svg>
-                <span>Talks from practitioners who work with Power Platform every day in real businesses</span>
-              </li>
-              <li class="flex items-start gap-3">
-                <svg class="w-5 h-5 text-primary mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
-                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
-                </svg>
-                <span>An exhibition area on Day 2 with sponsors and vendors to browse during breaks</span>
-              </li>
-              <li class="flex items-start gap-3">
-                <svg class="w-5 h-5 text-primary mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
-                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
-                </svg>
-                <span>A friendly, inclusive atmosphere — no experience required to get something out of it</span>
-              </li>
-            </ul>
-          </div>
-
-          <div class="about-card bg-white p-7 rounded-2xl shadow-md">
-            <h3 class="text-xl font-bold text-text mb-4">Who's Coming</h3>
-            <ul class="space-y-3 text-text-light">
-              <li class="flex items-start gap-3">
-                <svg class="w-5 h-5 text-secondary-dark mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
-                  <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd"/>
-                </svg>
-                <span>Power Platform users from East of England organisations looking to deepen their skills</span>
-              </li>
-              <li class="flex items-start gap-3">
-                <svg class="w-5 h-5 text-secondary-dark mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
-                  <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd"/>
-                </svg>
-                <span>Developers curious about low-code, pro-code, and everything in between</span>
-              </li>
-              <li class="flex items-start gap-3">
-                <svg class="w-5 h-5 text-secondary-dark mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
-                  <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd"/>
-                </svg>
-                <span>Business analysts and IT leaders evaluating Power Platform for their organisation</span>
-              </li>
-              <li class="flex items-start gap-3">
-                <svg class="w-5 h-5 text-secondary-dark mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
-                  <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd"/>
-                </svg>
-                <span>Students and career-changers exploring the Microsoft ecosystem</span>
-              </li>
-              <li class="flex items-start gap-3">
-                <svg class="w-5 h-5 text-secondary-dark mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
-                  <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd"/>
-                </svg>
-                <span>NPPUG regulars ready to experience the community at summit scale</span>
-              </li>
-            </ul>
-          </div>
-        </div>
-
-        <!-- Event Stats -->
-        <div class="grid md:grid-cols-3 gap-8 bg-gradient-to-br from-primary/5 to-accent/5 rounded-2xl p-10">
-          <div class="text-center">
-            <div class="text-5xl font-extrabold text-primary mb-2 tracking-tight">2</div>
-            <div class="text-text-light font-medium">Full Days</div>
-          </div>
-          <div class="text-center">
-            <div class="text-5xl font-extrabold text-primary mb-2 tracking-tight">Free</div>
-            <div class="text-text-light font-medium">Conference Day (Sat)</div>
-          </div>
-          <div class="text-center">
-            <div class="text-5xl font-extrabold text-primary mb-2 tracking-tight">Norwich</div>
-            <div class="text-text-light font-medium">May 2026</div>
-          </div>
-        </div>
-      </div>
+<section class="section">
+  <div class="container" style="max-width: 980px;">
+    <div class="section-head">
+      <div class="eyebrow">— Our story —</div>
+      <h2 class="display-2">What is EoES?</h2>
     </div>
-  </section>
 
-  <!-- Meet the Team -->
-  <section class="py-20 md:py-28 bg-gradient-to-br from-primary/5 to-accent/5">
-    <div class="container mx-auto px-4 max-w-6xl">
-      <div class="text-center mb-16">
-        <h2 class="text-4xl md:text-5xl font-extrabold text-text mb-4 tracking-tight">Meet the Team</h2>
-        <div class="w-14 h-1.5 bg-secondary rounded-full mx-auto mb-5" aria-hidden="true"></div>
-        <p class="text-text-light text-lg max-w-2xl mx-auto">
-          EoEPPS is organised entirely by volunteers from the Norfolk Power Platform User Group community.
-        </p>
-      </div>
+    <div class="stack-5" style="font-size: 17px; line-height: 1.65; color: var(--ink-2); max-width: 70ch;">
+      <p>The East of England Summit (EoES) is a community-led, two-day conference bringing together Power Platform professionals, enthusiasts and newcomers from across the East of England and beyond.</p>
+      <p>Organised by the team behind the <a href="https://www.nppug.co.uk" target="_blank" rel="noopener noreferrer" style="color: var(--yellow);">Norfolk Power Platform User Group</a>, EoES provides a larger platform for the region's growing Power Platform community — with hands-on workshops on Friday and a full conference programme on Saturday.</p>
+      <p>Whether you're getting started with Power Apps, building complex automation with Power Automate, creating insights with Power BI, or exploring Copilot Studio — there's something at EoES for you.</p>
+    </div>
 
-      <!-- Co-Event Directors -->
-      <p class="text-xs font-bold uppercase tracking-widest text-primary/50 text-center mb-8">Co-Event Directors</p>
-      <div class="grid md:grid-cols-2 gap-6 mb-16">
-        {directors.map((person) => {
-          const { role, company } = displayRoles[person.slug];
-          return (
-            <div class="team-director-card bg-white rounded-2xl shadow-md overflow-hidden flex flex-col sm:flex-row">
-              <a href={`/speakers/${person.slug}`} class="block shrink-0 group" aria-hidden="true" tabindex="-1">
-                <div class="w-full sm:w-52 h-60 sm:h-full overflow-hidden">
-                  {person.data.image ? (
-                    <img src={person.data.image} alt={person.data.name} loading="lazy"
-                      class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-300" />
-                  ) : (
-                    <div class="w-full h-full bg-gradient-to-br from-primary to-accent flex items-center justify-center text-white text-5xl font-bold">
-                      {person.data.name.split(' ').map((n: string) => n[0]).join('')}
-                    </div>
-                  )}
-                </div>
-              </a>
-              <div class="p-6 flex flex-col justify-between flex-1">
-                <div>
-                  <span class="inline-block bg-primary/10 text-primary text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-full mb-3">{role}</span>
-                  <h3 class="text-xl font-extrabold text-text mb-1">
-                    <a href={`/speakers/${person.slug}`} class="hover:text-primary transition-colors">{person.data.name}</a>
-                  </h3>
-                  {company && <p class="text-text-light text-sm mb-3">{company}</p>}
-                  {person.data.bio && <p class="text-text-light text-sm leading-relaxed line-clamp-3">{person.data.bio}</p>}
-                </div>
-                {person.data.linkedin && (
-                  <a href={person.data.linkedin} target="_blank" rel="noopener noreferrer"
-                    class="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-primary hover:text-primary-dark transition-colors self-start"
-                    aria-label={`${person.data.name} on LinkedIn (opens in new tab)`}>
-                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                      <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
-                    </svg>
-                    LinkedIn
-                  </a>
-                )}
-              </div>
+    <div class="grid-2" style="margin-top: 56px;">
+      <article class="card">
+        <span class="card-num">01</span>
+        <h3 class="card-title">Your two days</h3>
+        <ul style="list-style: none; padding: 0; margin: 16px 0 0; display: flex; flex-direction: column; gap: 10px;">
+          <li style="display: flex; gap: 10px; color: var(--ink-2); font-size: 15px; line-height: 1.55;"><span style="color: var(--yellow);">+</span> Friday workshop day: choose a hands-on workshop and build something real</li>
+          <li style="display: flex; gap: 10px; color: var(--ink-2); font-size: 15px; line-height: 1.55;"><span style="color: var(--yellow);">+</span> Saturday conference: full programme with parallel tracks and a keynote</li>
+          <li style="display: flex; gap: 10px; color: var(--ink-2); font-size: 15px; line-height: 1.55;"><span style="color: var(--yellow);">+</span> Talks from practitioners who work with Power Platform every day in real businesses</li>
+          <li style="display: flex; gap: 10px; color: var(--ink-2); font-size: 15px; line-height: 1.55;"><span style="color: var(--yellow);">+</span> Saturday exhibition area with sponsors and vendors to browse during breaks</li>
+          <li style="display: flex; gap: 10px; color: var(--ink-2); font-size: 15px; line-height: 1.55;"><span style="color: var(--yellow);">+</span> A friendly, inclusive atmosphere — no experience required to get value</li>
+        </ul>
+      </article>
+
+      <article class="card">
+        <span class="card-num">02</span>
+        <h3 class="card-title">Who's coming</h3>
+        <ul style="list-style: none; padding: 0; margin: 16px 0 0; display: flex; flex-direction: column; gap: 10px;">
+          <li style="display: flex; gap: 10px; color: var(--ink-2); font-size: 15px; line-height: 1.55;"><span style="color: var(--pink);">+</span> Power Platform users from East of England organisations</li>
+          <li style="display: flex; gap: 10px; color: var(--ink-2); font-size: 15px; line-height: 1.55;"><span style="color: var(--pink);">+</span> Developers curious about low-code, pro-code and everything in between</li>
+          <li style="display: flex; gap: 10px; color: var(--ink-2); font-size: 15px; line-height: 1.55;"><span style="color: var(--pink);">+</span> Business analysts and IT leaders evaluating Power Platform</li>
+          <li style="display: flex; gap: 10px; color: var(--ink-2); font-size: 15px; line-height: 1.55;"><span style="color: var(--pink);">+</span> Students and career-changers exploring the Microsoft ecosystem</li>
+          <li style="display: flex; gap: 10px; color: var(--ink-2); font-size: 15px; line-height: 1.55;"><span style="color: var(--pink);">+</span> NPPUG regulars ready to experience the community at summit scale</li>
+        </ul>
+      </article>
+    </div>
+
+    <div class="stats" style="margin-top: 56px;">
+      <div class="stat"><div class="num yellow">2</div><div class="label">Full Days</div></div>
+      <div class="stat"><div class="num">Free</div><div class="label">Conference Day (Sat)</div></div>
+      <div class="stat"><div class="num" style="color: var(--pink);">Norwich</div><div class="label">East of England</div></div>
+      <div class="stat"><div class="num" style="color: var(--cyan);">2027</div><div class="label">30 April – 1 May</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="section-head section-head--center">
+      <div class="eyebrow eyebrow--center">— Meet the Team —</div>
+      <h2 class="display-2">Volunteers,<br><span class="display-italic">all the way down.</span></h2>
+      <p class="sub">EoES is organised entirely by volunteers from the Norfolk Power Platform User Group community.</p>
+    </div>
+
+    <div class="mono" style="text-align: center; margin-bottom: 24px; color: var(--yellow);">— Co-Event Directors —</div>
+    <div class="grid-2" style="margin-bottom: 64px;">
+      {directors.map((person) => {
+        const { role, company } = displayRoles[person.slug];
+        return (
+          <article class="speaker-tile" style="display: grid; grid-template-columns: 200px 1fr;">
+            <div class="photo">
+              {person.data.image
+                ? <img src={person.data.image} alt={person.data.name} loading="lazy" />
+                : <div style={`display:grid;place-items:center;background:linear-gradient(180deg,var(--purple-soft),var(--surface-2));`}><div style="font-family:var(--font-display);font-size:48px;color:var(--ink-0);">{initials(person.data.name)}</div></div>
+              }
             </div>
-          );
-        })}
-      </div>
-
-      <!-- Divider -->
-      <div class="w-full h-px bg-border mb-16" aria-hidden="true"></div>
-
-      <!-- Organising Committee -->
-      <p class="text-xs font-bold uppercase tracking-widest text-primary/50 text-center mb-8">Organising Committee</p>
-      <div class="grid grid-cols-2 md:grid-cols-4 gap-5">
-        {committee.map((person) => {
-          const { role, company } = displayRoles[person.slug];
-          const initials = person.data.name.split(' ').map((n: string) => n[0]).join('');
-          return (
-            <div class="team-card bg-white rounded-2xl shadow-sm overflow-hidden flex flex-col">
-              <a href={`/speakers/${person.slug}`} class="block group" aria-hidden="true" tabindex="-1">
-                <div class="w-full aspect-square overflow-hidden bg-gradient-to-br from-primary/10 to-accent/10">
-                  {person.data.image ? (
-                    <img src={person.data.image} alt={person.data.name} loading="lazy"
-                      class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-300" />
-                  ) : (
-                    <div class="w-full h-full flex items-center justify-center text-primary text-4xl font-bold">
-                      {initials}
-                    </div>
-                  )}
-                </div>
-              </a>
-              <div class="p-4 flex flex-col flex-1">
-                <span class="inline-block bg-primary/10 text-primary text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full mb-2 self-start">{role}</span>
-                <h3 class="font-extrabold text-text text-base leading-tight mb-1">
-                  <a href={`/speakers/${person.slug}`} class="hover:text-primary transition-colors">{person.data.name}</a>
-                </h3>
-                {company && <p class="text-text-light text-xs mb-2">{company}</p>}
-                {person.data.bio && <p class="text-text-light text-xs leading-relaxed line-clamp-3 flex-1">{person.data.bio}</p>}
-                {person.data.linkedin && (
-                  <a href={person.data.linkedin} target="_blank" rel="noopener noreferrer"
-                    class="mt-3 text-text-light hover:text-primary transition-colors self-start"
-                    aria-label={`${person.data.name} on LinkedIn (opens in new tab)`}>
-                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                      <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
-                    </svg>
-                  </a>
-                )}
-              </div>
+            <div class="meta" style="padding: 22px;">
+              <span class="role" style="color: var(--yellow);">{role}</span>
+              <h3 class="name" style="font-size: 22px; margin-bottom: 4px;">{person.data.name}</h3>
+              {company && <div class="company">{company}</div>}
             </div>
-          );
-        })}
-      </div>
+          </article>
+        );
+      })}
     </div>
-  </section>
 
-  <!-- NPPUG Connection -->
-  <section class="py-20 md:py-28">
-    <div class="container mx-auto px-4">
-      <div class="max-w-4xl mx-auto text-center">
-        <h2 class="text-4xl md:text-5xl font-extrabold text-text mb-4 tracking-tight">About NPPUG</h2>
-        <div class="w-14 h-1.5 bg-secondary rounded-full mx-auto mb-6" aria-hidden="true"></div>
-        <p class="text-lg text-text-light mb-10 leading-relaxed max-w-2xl mx-auto">
-          EoEPPS is organised by the Norfolk Power Platform User Group — a community of Microsoft Power Platform enthusiasts based in Norwich and Norfolk who run monthly meetups throughout the year.
-        </p>
-        <a
-          href="https://www.nppug.co.uk"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="inline-flex items-center gap-2 bg-primary text-white px-8 py-3.5 rounded-xl font-bold text-lg hover:bg-primary-dark hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200 shadow-md"
-        >
-          Visit nppug.co.uk<span class="sr-only"> (opens in new tab)</span>
-          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-          </svg>
-        </a>
-      </div>
-    </div>
-  </section>
+    <hr class="divider" />
 
-  <!-- CTA -->
-  <section class="relative py-20 md:py-28 bg-primary text-white overflow-hidden">
-    <div class="absolute -top-32 -right-32 w-96 h-96 rounded-full bg-secondary/10 blur-3xl pointer-events-none" aria-hidden="true"></div>
-    <div class="relative container mx-auto px-4 text-center">
-      <h2 class="text-4xl md:text-5xl font-extrabold mb-4 tracking-tight">Stay Connected</h2>
-      <div class="w-14 h-1.5 bg-secondary rounded-full mx-auto mb-6" aria-hidden="true"></div>
-      <p class="text-xl text-white/80 mb-10 max-w-2xl mx-auto leading-relaxed">
-        EoEPPS returns in 2027. Follow us on LinkedIn for announcements on dates, speakers, and how to get involved.
-      </p>
-      <div class="flex flex-col sm:flex-row gap-4 justify-center">
-        <a
-          href="https://www.linkedin.com/company/eoepps/"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="inline-flex items-center justify-center gap-2 bg-secondary text-gray-900 px-8 py-3.5 rounded-xl font-bold text-lg hover:bg-secondary-light hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200 shadow-lg"
-        >
-          Follow on LinkedIn<span class="sr-only"> (opens in new tab)</span>
-        </a>
-        <a
-          href="/sponsorship"
-          class="inline-flex items-center justify-center gap-2 border-2 border-white text-white px-8 py-3.5 rounded-xl font-bold text-lg hover:bg-white/10 hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200"
-        >
-          Become a Sponsor
-        </a>
-      </div>
+    <div class="mono" style="text-align: center; margin-bottom: 24px; color: var(--pink);">— Organising Committee —</div>
+    <div class="grid-4">
+      {committee.map((person) => {
+        const { role, company } = displayRoles[person.slug];
+        const hasPhoto = Boolean(person.data.image);
+        const gradients = {
+          'emily-lacey':     'linear-gradient(180deg,var(--purple-soft),var(--surface-2))',
+          'reece-harsley':   'linear-gradient(180deg,var(--pink-soft),var(--surface-2))',
+          'chris-hinchcliffe': 'linear-gradient(180deg,var(--cyan-soft),var(--surface-2))',
+        };
+        const fallbackGradient = gradients[person.slug] ?? 'linear-gradient(180deg,var(--purple-soft),var(--surface-2))';
+        return (
+          <article class="speaker-tile">
+            <div class="photo">
+              {hasPhoto
+                ? <img src={person.data.image} alt={person.data.name} loading="lazy" />
+                : <div style={`display:grid;place-items:center;background:${fallbackGradient};`}><div style="font-family:var(--font-display);font-size:48px;color:var(--ink-0);">{initials(person.data.name)}</div></div>
+              }
+            </div>
+            <div class="meta">
+              <span class="role">Committee</span>
+              <h3 class="name">{person.data.name}</h3>
+              {company && <div class="company">{company}</div>}
+            </div>
+          </article>
+        );
+      })}
     </div>
-  </section>
+  </div>
+</section>
+
+<section class="section section--tight">
+  <div class="container">
+    <div class="frame-panel center" style="max-width: 920px; margin: 0 auto;">
+      <div class="eyebrow eyebrow--center" style="margin-bottom: 22px;">— Powered by —</div>
+      <h2 class="display-3" style="margin-bottom: 22px;">About <span class="display-italic">NPPUG.</span></h2>
+      <p class="lead muted" style="max-width: 60ch; margin: 0 auto 32px;">EoES is organised by the Norfolk Power Platform User Group — a community of Microsoft Power Platform enthusiasts based in Norwich and Norfolk who run monthly meetups throughout the year.</p>
+      <a href="https://www.nppug.co.uk" target="_blank" rel="noopener noreferrer" class="btn btn--primary btn--lg">
+        Visit nppug.co.uk
+        <svg class="arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="cta-strip">
+  <div class="container center">
+    <div class="eyebrow eyebrow--center" style="margin-bottom: 22px;">— Stay Connected —</div>
+    <h2 class="display-2" style="max-width: 22ch; margin: 0 auto 22px;">EoES returns<br><span class="display-italic">30 Apr – 1 May 2027.</span></h2>
+    <p class="lead muted" style="max-width: 56ch; margin: 0 auto 36px;">Follow us on LinkedIn for announcements on dates, speakers, and how to get involved.</p>
+    <div class="row" style="justify-content: center; gap: 12px;">
+      <a href="https://www.linkedin.com/company/eoes/" target="_blank" rel="noopener noreferrer" class="btn btn--primary btn--lg">Follow on LinkedIn</a>
+      <a href="/sponsorship" class="btn btn--ghost btn--lg">Become a sponsor</a>
+    </div>
+  </div>
+</section>
+
 </BaseLayout>
-
-<style>
-  .about-card {
-    border-top: 4px solid transparent;
-    transition: transform 0.2s ease, box-shadow 0.2s ease, border-top-color 0.2s ease;
-  }
-  .about-card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 12px 32px -4px rgba(236, 72, 153, 0.2), 0 4px 12px -2px rgba(0, 0, 0, 0.08);
-    border-top-color: #EC4899;
-  }
-  .team-director-card {
-    border-left: 4px solid transparent;
-    transition: transform 0.2s ease, box-shadow 0.2s ease, border-left-color 0.2s ease;
-  }
-  .team-director-card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 12px 32px -4px rgba(91, 33, 182, 0.15), 0 4px 12px -2px rgba(0, 0, 0, 0.08);
-    border-left-color: #5B21B6;
-  }
-  .team-card {
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-  }
-  .team-card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 12px 32px -4px rgba(91, 33, 182, 0.15), 0 4px 12px -2px rgba(0, 0, 0, 0.08);
-  }
-</style>
