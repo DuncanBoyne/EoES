@@ -27,6 +27,10 @@ const displayRoles: Record<string, { role: string; company: string }> = {
   'simon-greenall':    { role: 'Committee',          company: 'Durham University' },
 };
 
+const aboutPageImages: Record<string, string> = {
+  'gemma-peck': '/images/gallery/2026/_MG_0058.jpg',
+};
+
 const initials = (name: string) => name.split(' ').map(n => n[0]).join('');
 ---
 
@@ -107,11 +111,12 @@ const initials = (name: string) => name.split(' ').map(n => n[0]).join('');
     <div class="grid-2" style="margin-bottom: 64px;">
       {directors.map((person) => {
         const { role, company } = displayRoles[person.slug];
+        const image = aboutPageImages[person.slug] ?? person.data.image;
         return (
           <article class="speaker-tile" style="display: grid; grid-template-columns: 200px 1fr;">
             <div class="photo">
-              {person.data.image
-                ? <img src={person.data.image} alt={person.data.name} loading="lazy" />
+              {image
+                ? <img src={image} alt={person.data.name} loading="lazy" />
                 : <div style={`display:grid;place-items:center;background:linear-gradient(180deg,var(--purple-soft),var(--surface-2));`}><div style="font-family:var(--font-display);font-size:48px;color:var(--ink-0);">{initials(person.data.name)}</div></div>
               }
             </div>
@@ -131,7 +136,8 @@ const initials = (name: string) => name.split(' ').map(n => n[0]).join('');
     <div class="grid-4">
       {committee.map((person) => {
         const { role, company } = displayRoles[person.slug];
-        const hasPhoto = Boolean(person.data.image);
+        const image = aboutPageImages[person.slug] ?? person.data.image;
+        const hasPhoto = Boolean(image);
         const gradients = {
           'emily-lacey':     'linear-gradient(180deg,var(--purple-soft),var(--surface-2))',
           'reece-harsley':   'linear-gradient(180deg,var(--pink-soft),var(--surface-2))',
@@ -142,7 +148,7 @@ const initials = (name: string) => name.split(' ').map(n => n[0]).join('');
           <article class="speaker-tile">
             <div class="photo">
               {hasPhoto
-                ? <img src={person.data.image} alt={person.data.name} loading="lazy" />
+                ? <img src={image} alt={person.data.name} loading="lazy" />
                 : <div style={`display:grid;place-items:center;background:${fallbackGradient};`}><div style="font-family:var(--font-display);font-size:48px;color:var(--ink-0);">{initials(person.data.name)}</div></div>
               }
             </div>
