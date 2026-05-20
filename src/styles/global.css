@@ -1301,6 +1301,38 @@ p:last-child { margin-bottom: 0; }
 }
 
 /* ---------- Sessionize dark overrides ----------------------------------- */
+.sessionize-embed {
+  color: var(--ink-1);
+}
+
+.sessionize-embed [class*="speaker"],
+.sessionize-embed [class*="speaker"] *,
+.sessionize-embed h1,
+.sessionize-embed h2,
+.sessionize-embed h3,
+.sessionize-embed h4,
+.sessionize-embed p,
+.sessionize-embed span,
+.sessionize-embed li {
+  color: var(--ink-1) !important;
+}
+
+.sessionize-embed [class*="speaker"] a,
+.sessionize-embed a {
+  color: var(--yellow) !important;
+}
+
+.sessionize-embed [class*="name"],
+.sessionize-embed [class*="title"] {
+  color: var(--ink-0) !important;
+}
+
+.sessionize-embed [class*="tagline"],
+.sessionize-embed [class*="company"],
+.sessionize-embed [class*="bio"] {
+  color: var(--ink-3) !important;
+}
+
 .sz-session__title { color: var(--ink-0) !important; }
 .sz-session a { color: var(--yellow) !important; }
 
