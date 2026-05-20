@@ -1,12 +1,12 @@
 ---
 name: Simon Greenall
 title: Senior Analyst in HE | Low Code Jedi
-company: ""
-bio: Self-taught Power Platform specialist working in higher education. Beginning with a single Power App assignment in 2019, he expanded into developing multiple applications and workflows that enhanced university operations. By 2023, he transitioned to full-time staff, managing administration, strategy, governance, and policies.
+company: Durham University
+bio: I lead the development and rollout of a Power Platform strategy at Durham University, focused on governance, adoption, and enablement. By empowering citizen developers (Makers) through training and hands-on support, building capability in processes, data, and continuous improvement. This human-centred approach is driving strong adoption, delivering measurable efficiencies and cost savings across the university.
 isOrganizer: true
 linkedin: https://www.linkedin.com/in/simon-greenall
-image: /images/speakers/Simon-Greenall.jpg
+image: /images/speakers/Simon G.jpeg
 presentations: []
 ---
 
-Self-taught Power Platform specialist working in higher education. Beginning with a single Power App assignment in 2019, he expanded into developing multiple applications and workflows that enhanced university operations. By 2023, he transitioned to full-time staff, managing administration, strategy, governance, and policies. Despite holding a degree in Human Health and Illness, he leveraged self-acquired HTML and coding skills to master the Power Platform and foster community learning.
+I lead the development and rollout of a Power Platform strategy at Durham University, focused on governance, adoption, and enablement. By empowering citizen developers (Makers) through training and hands-on support, building capability in processes, data, and continuous improvement. This human-centred approach is driving strong adoption, delivering measurable efficiencies and cost savings across the university.
