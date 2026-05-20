@@ -24,7 +24,7 @@ const displayRoles: Record<string, { role: string; company: string }> = {
   'gemma-peck':        { role: 'Co-Founder',         company: 'GTP Tech Recruitment' },
   'reece-harsley':     { role: 'Committee',          company: '' },
   'chris-hinchcliffe': { role: 'Committee',          company: '' },
-  'simon-greenall':    { role: 'Committee',          company: '' },
+  'simon-greenall':    { role: 'Committee',          company: 'Durham University' },
 };
 
 const initials = (name: string) => name.split(' ').map(n => n[0]).join('');
@@ -150,6 +150,11 @@ const initials = (name: string) => name.split(' ').map(n => n[0]).join('');
               <span class="role">Committee</span>
               <h3 class="name">{person.data.name}</h3>
               {company && <div class="company">{company}</div>}
+              {person.slug === 'simon-greenall' && (
+                <p style="color: var(--ink-3); font-size: 13px; line-height: 1.55; margin: 12px 0 0;">
+                  {person.data.bio}
+                </p>
+              )}
             </div>
           </article>
         );
