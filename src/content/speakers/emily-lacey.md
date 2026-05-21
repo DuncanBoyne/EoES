@@ -5,6 +5,6 @@ company: ""
 bio: ""
 isOrganizer: true
 linkedin: ""
-image: ""
+image: "/images/speakers/emily-lacey.jpg"
 presentations: []
 ---
