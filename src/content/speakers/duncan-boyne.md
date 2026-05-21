@@ -6,7 +6,7 @@ bio: Duncan is a Power BI Consultant who believes every messy Excel sheet deserv
 isOrganizer: true
 linkedin: https://www.linkedin.com/in/duncanboyne/
 website: https://www.duncanboyne.co.uk/
-image: /images/gallery/2026/_MG_0466.jpg
+image: /images/speakers/duncan-boyne.png
 presentations: []
 ---
 
