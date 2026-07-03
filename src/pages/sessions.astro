@@ -5,12 +5,18 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 const gridRes = await fetch('https://sessionize.com/api/v2/9q20ek5l/view/GridSmart?under=True', {
   headers: { 'User-Agent': 'Mozilla/5.0' }
 });
+if (!gridRes.ok) {
+  throw new Error(`Sessionize GridSmart request failed (${gridRes.status} ${gridRes.statusText}) — the /sessions room filter cannot be built.`);
+}
 const gridHtml = await gridRes.text();
 
 // Map: sessionId -> trackId
 const roomMap: Record<string, string> = {};
 for (const m of gridHtml.matchAll(/data-sessionid="(\d+)"[^>]*grid-column[^"]*track-(\d+)/g)) {
   roomMap[m[1]] = m[2];
+}
+if (Object.keys(roomMap).length === 0) {
+  throw new Error('Sessionize GridSmart returned no session→room mappings — the embed markup may have changed and the /sessions room filter would be silently broken.');
 }
 
 const rooms = [

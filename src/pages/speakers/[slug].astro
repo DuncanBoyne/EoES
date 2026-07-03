@@ -4,10 +4,13 @@ import { getCollection } from 'astro:content';
 
 export async function getStaticPaths() {
   const speakers = await getCollection('speakers');
-  return speakers.map((speaker) => ({
-    params: { slug: speaker.slug },
-    props: { speaker },
-  }));
+  return speakers
+    // Skip profiles with no bio and no body — nothing to show on a page yet
+    .filter((speaker) => speaker.data.bio.trim() !== '' || (speaker.body ?? '').trim() !== '')
+    .map((speaker) => ({
+      params: { slug: speaker.slug },
+      props: { speaker },
+    }));
 }
 
 const { speaker } = Astro.props;

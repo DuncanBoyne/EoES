@@ -39,10 +39,18 @@ const photos = existsSync(galleryDir)
         // both are unnumbered — sort by file size ascending
         return a.size - b.size;
       })
-      .map(({ fileName }, index) => ({
-        src: encodeURI(`/images/gallery/2026/${fileName}`),
-        alt: `${toTitle(fileName)} - EoES 2026 photo ${index + 1}`,
-      }))
+      .map(({ fileName }, index) => {
+        // Grid shows a pre-generated 640px thumb; the lightbox loads the original.
+        const thumbName = fileName.replace(/\.[^.]+$/, '.jpg');
+        const hasThumb = existsSync(join(galleryDir, 'thumbs', thumbName));
+        return {
+          src: encodeURI(`/images/gallery/2026/${fileName}`),
+          thumb: hasThumb
+            ? encodeURI(`/images/gallery/2026/thumbs/${thumbName}`)
+            : encodeURI(`/images/gallery/2026/${fileName}`),
+          alt: `${toTitle(fileName)} - EoES 2026 photo ${index + 1}`,
+        };
+      })
   : [];
 ---
 
@@ -101,7 +109,7 @@ const photos = existsSync(galleryDir)
             aria-label={`Open ${photo.alt}`}
           >
             <img
-              src={photo.src}
+              src={photo.thumb}
               alt={photo.alt}
               width="640"
               height="480"
