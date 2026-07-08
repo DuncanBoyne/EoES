@@ -11,7 +11,7 @@ const notUndefined = (s: Speaker | undefined): s is Speaker => s != null;
 const directors = [findSpeaker('duncan-boyne'), findSpeaker('adam-bezance')].filter(notUndefined);
 const committee = [
   'sarah-jones', 'stuart-baxter', 'emily-lacey', 'jon-russell',
-  'gemma-peck', 'reece-harsley', 'chris-hinchcliffe', 'simon-greenall',
+  'gemma-peck', 'keith-atherton', 'chris-hinchcliffe', 'simon-greenall',
 ].map(slug => findSpeaker(slug)).filter(notUndefined);
 
 const displayRoles: Record<string, { role: string; company: string }> = {
@@ -22,7 +22,7 @@ const displayRoles: Record<string, { role: string; company: string }> = {
   'emily-lacey':       { role: 'Committee',          company: '' },
   'jon-russell':       { role: 'Committee',          company: '' },
   'gemma-peck':        { role: 'Co-Founder',         company: 'GTP Tech Recruitment' },
-  'reece-harsley':     { role: 'Committee',          company: '' },
+  'keith-atherton':    { role: 'Committee',          company: '' },
   'chris-hinchcliffe': { role: 'Committee',          company: '' },
   'simon-greenall':    { role: 'Committee',          company: 'Durham University' },
 };
@@ -140,7 +140,7 @@ const initials = (name: string) => name.split(' ').map(n => n[0]).join('');
         const hasPhoto = Boolean(image);
         const gradients = {
           'emily-lacey':     'linear-gradient(180deg,var(--purple-soft),var(--surface-2))',
-          'reece-harsley':   'linear-gradient(180deg,var(--pink-soft),var(--surface-2))',
+          'keith-atherton':  'linear-gradient(180deg,var(--pink-soft),var(--surface-2))',
           'chris-hinchcliffe': 'linear-gradient(180deg,var(--cyan-soft),var(--surface-2))',
         };
         const fallbackGradient = gradients[person.slug] ?? 'linear-gradient(180deg,var(--purple-soft),var(--surface-2))';
