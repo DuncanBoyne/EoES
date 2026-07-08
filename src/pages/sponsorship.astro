@@ -5,8 +5,8 @@ const tiers = [
   { key: 'friend', name: 'Friend', price: '£250', availability: '', className: 'tier-friend' },
   { key: 'community', name: 'Community', price: '£750', availability: '', className: 'tier-community' },
   { key: 'silver', name: 'Silver', price: '£1,500', availability: '5 of 6 available', className: 'tier-silver' },
-  { key: 'gold', name: 'Gold', price: '£3,000', availability: '3 available', className: 'tier-gold' },
-  { key: 'platinum', name: 'Platinum', price: '£5,000', availability: '1 available', className: 'tier-platinum' },
+  { key: 'gold', name: 'Gold', price: '£3,500', availability: '3 available', className: 'tier-gold' },
+  { key: 'platinum', name: 'Platinum', price: '£6,000', availability: '1 available', className: 'tier-platinum' },
 ] as const;
 
 const comparisonSections = [
@@ -69,12 +69,12 @@ const reasons = [
   {
     tone: 'yellow',
     title: 'Promote your brand',
-    text: 'Reach a targeted audience of Power Platform professionals, decision-makers, and innovators from across the East of England.',
+    text: 'Reach a targeted audience of Microsoft professionals, decision-makers, and innovators from across the East of England.',
   },
   {
     tone: 'pink',
     title: 'Showcase your expertise',
-    text: "Position your brand at the centre of the East of England's fast-growing Microsoft Power Platform ecosystem.",
+    text: "Position your brand at the centre of the East of England's fast-growing Microsoft community.",
   },
   {
     tone: 'cyan',
@@ -92,7 +92,7 @@ const audiences = [
   {
     title: 'The audience',
     items: [
-      'Power Platform professionals from across the East of England',
+      'Microsoft professionals from across the East of England',
       'Developers, analysts, and IT decision-makers',
       'Two full days of direct engagement',
     ],
@@ -110,7 +110,7 @@ const audiences = [
     items: [
       'Your logo on the EoES website throughout the event year',
       'Social media promotion to the NPPUG community and beyond',
-      "Association with the East of England's Power Platform community event",
+      "Association with the East of England's Microsoft community event",
     ],
   },
 ] as const;
@@ -118,15 +118,28 @@ const audiences = [
 const addOns = [
   {
     title: 'Workshop Day',
+    price: '£1,000',
     text: 'The workshop day is presented by your company, with your brand name attached to Day 1 across event materials and communications.',
   },
   {
     title: 'Summit Lunch',
+    price: '£1,000',
     text: 'Sponsor the conference day lunch. Your brand is recognised across signage, slides, and announcements on the day.',
   },
   {
     title: 'T-shirt Sponsor',
+    price: '£1,000',
     text: 'Your logo appears on the official EoES t-shirts worn by speakers and staff throughout both days of the event.',
+  },
+  {
+    title: 'Speaker Dinner',
+    price: '£1,500',
+    text: 'The night before the conference, our speakers, MVPs, and community leaders sit down together, and your brand hosts the table. Recognition throughout the dinner, and a couple of seats at it.',
+  },
+  {
+    title: 'End of Day Drinks',
+    price: '£1,000',
+    text: 'When the sessions wrap and the room relaxes, the real conversations start. Signage, recognition, and your logo attached to the moment everyone remembers.',
   },
 ] as const;
 
@@ -134,7 +147,7 @@ const tierDetails = [
   {
     className: 'tier-detail--platinum',
     name: 'Platinum Sponsor',
-    price: '£5,000',
+    price: '£6,000',
     meta: '1 available',
     badge: 'Exclusive Headline Sponsor',
     text: 'The exclusive headline partnership tier for organisations wanting maximum visibility, premium event presence, and direct engagement with the Microsoft community ecosystem.',
@@ -142,7 +155,7 @@ const tierDetails = [
   {
     className: 'tier-detail--gold',
     name: 'Gold Sponsor',
-    price: '£3,000',
+    price: '£3,500',
     meta: '3 available',
     badge: '',
     text: 'A strong and highly visible presence with premium expo positioning, enhanced branding opportunities, attendee engagement, and direct access to the Microsoft community ecosystem.',
@@ -173,6 +186,23 @@ const tierDetails = [
   },
 ] as const;
 
+const recruitmentPartner = {
+  name: 'Recruitment Partner',
+  price: '£5,000',
+  meta: '1 available · Exclusive',
+  badge: 'Official Talent Partner',
+  intro: 'One recruitment or talent business owns hiring at EoES 2027. No competing agencies on site, and no shared spotlight. A single mid-level Microsoft hire through an agency costs an employer £8,000 to £10,000 in fees on a £40,000 salary, so this package is less than one placement.',
+  includes: [
+    'Category exclusivity as the sole recruitment and talent partner. No other agency can sponsor or exhibit.',
+    'Official Talent Partner billing across the website, event slides, and social throughout the campaign.',
+    'Premium expo hall stand, 3m x 3m, with premium positioning.',
+    'A dedicated careers-focused session or panel.',
+    'Opt-in candidate access. An "open to opportunities" list of attendees who want to hear from you, collected in a GDPR-compliant way.',
+    'Podcast invite, plus the full brand package: website, banners, keynote reel video, branded item in attendee bags, and 50% or more of build-up posts.',
+    'Two workshop tickets, and early access to attendee information.',
+  ],
+} as const;
+
 function cellLabel(value: boolean | string | null) {
   if (value === true) return 'Included';
   if (value === false) return 'Not included';
@@ -183,7 +213,7 @@ function cellLabel(value: boolean | string | null) {
 
 <BaseLayout
   title="Become a Sponsor"
-  description="Sponsor EoES 2027 and put your brand in front of Power Platform professionals, developers, and decision-makers from across the East of England."
+  description="Sponsor EoES 2027 and put your brand in front of Microsoft professionals, developers, and decision-makers from across the East of England."
 >
 
 <section class="page-hero">
@@ -193,7 +223,7 @@ function cellLabel(value: boolean | string | null) {
   <div class="container">
     <div class="hero-eyebrow"><div class="chip chip--yellow"><span class="dot"></span><span>Sponsorship · 2027</span></div></div>
     <h1 class="display-1 hero-title" style="max-width: 18ch;">Sponsor<br><span class="display-italic">EoES 2027.</span></h1>
-    <p class="hero-sub">Five tiers from £250 to £5,000, plus three premium add-ons. Put your brand in front of Power Platform professionals from across the East of England.</p>
+    <p class="hero-sub">Five tiers from £250 to £6,000, an exclusive Recruitment Partner package, and five add-ons. Put your brand in front of Microsoft professionals from across the East of England.</p>
   </div>
 </section>
 
@@ -242,7 +272,7 @@ function cellLabel(value: boolean | string | null) {
     <div class="section-head section-head--center">
       <div class="eyebrow eyebrow--center">— 2027 Packages —</div>
       <h2 class="display-3">Compare all<br><span class="display-italic">packages.</span></h2>
-      <p class="sub">Support EoES 2027 and put your brand in front of Power Platform professionals from across the East of England.</p>
+      <p class="sub">Support EoES 2027 and put your brand in front of Microsoft professionals from across the East of England.</p>
     </div>
 
     <div class="editorial-table-wrap">
@@ -300,11 +330,37 @@ function cellLabel(value: boolean | string | null) {
 </section>
 
 <section class="section section--tight">
+  <div class="container" style="max-width: 900px;">
+    <div class="section-head section-head--center">
+      <div class="eyebrow eyebrow--center">— Exclusive —</div>
+      <h2 class="display-3">The only recruiter<br><span class="display-italic">in the room.</span></h2>
+    </div>
+
+    <article class="card tier-detail tier-detail--recruitment">
+      <div class="tier-detail-head">
+        <div>
+          <div class="mono tier-detail-name">{recruitmentPartner.name}</div>
+          <div class="tier-detail-price">{recruitmentPartner.price}</div>
+          <div class="mono tier-detail-meta">{recruitmentPartner.meta}</div>
+        </div>
+        <div class="tier-detail-badge">{recruitmentPartner.badge}</div>
+      </div>
+      <div class="recruitment-body">
+        <p class="muted" style="line-height: 1.75; margin: 0 0 24px;">{recruitmentPartner.intro}</p>
+        <ul class="clean-list recruitment-list">
+          {recruitmentPartner.includes.map(item => <li>{item}</li>)}
+        </ul>
+      </div>
+    </article>
+  </div>
+</section>
+
+<section class="section section--tight">
   <div class="container">
     <div class="section-head section-head--center">
       <div class="eyebrow eyebrow--center">— Premium add-ons —</div>
       <h2 class="display-3">Sponsorship<br><span class="display-italic">add-ons.</span></h2>
-      <p class="sub">Available to any sponsorship tier. Each add-on is £1,000.</p>
+      <p class="sub">Available with any sponsorship tier. From £1,000. One of each available.</p>
     </div>
 
     <div class="grid-3">
@@ -313,7 +369,7 @@ function cellLabel(value: boolean | string | null) {
           <div class="row" style="justify-content: space-between; gap: 16px; margin-bottom: 16px;">
             <div class="chip chip--purple" style="margin: 0;"><span>Add-on</span></div>
             <div style="text-align: right;">
-              <div class="addon-price">£1,000</div>
+              <div class="addon-price">{addOn.price}</div>
               <div class="mono" style="font-size: 11px; color: var(--ink-3);">1 available</div>
             </div>
           </div>
@@ -471,5 +527,34 @@ function cellLabel(value: boolean | string | null) {
 
   .tier-detail--friend .tier-detail-head {
     background: rgba(124,58,237,0.28);
+  }
+
+  /* Recruitment Partner sits outside the ladder, so it gets its own pink identity. */
+  .tier-detail--recruitment .tier-detail-head {
+    background: linear-gradient(135deg, rgba(236,72,153,0.55) 0%, rgba(124,58,237,0.40) 100%);
+  }
+
+  .recruitment-body {
+    padding: 28px 32px;
+  }
+
+  .recruitment-list {
+    font-size: 14px;
+  }
+
+  .recruitment-list li {
+    position: relative;
+    padding-left: 22px;
+    color: var(--ink-2);
+  }
+
+  .recruitment-list li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0.65em;
+    width: 8px;
+    height: 2px;
+    background: var(--pink);
   }
 </style>
