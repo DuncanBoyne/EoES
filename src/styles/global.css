@@ -190,6 +190,12 @@ p:last-child { margin-bottom: 0; }
   -webkit-background-clip: text; background-clip: text;
   -webkit-text-fill-color: transparent;
   letter-spacing: -0.04em;
+  /* Archivo Black has no true italic, so the browser synthesises an oblique.
+     The slant overhangs the inline background box and background-clip:text
+     then shears the final glyph (visible on "Microsoft", "sponsor."). Pad the
+     paint area, then pull the space back so word spacing is unchanged. */
+  padding-right: 0.14em;
+  margin-right: -0.10em;
 }
 
 .gradient-pink-purple {
