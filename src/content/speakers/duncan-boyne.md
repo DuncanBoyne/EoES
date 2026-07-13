@@ -1,6 +1,6 @@
 ---
 name: Duncan Boyne
-title: Founder
+title: Freelance Power BI Consultant
 company: ""
 bio: Duncan is a Power BI Consultant who believes every messy Excel sheet deserves a second chance. Known as the Power BI Kinda Guy, he spends his days transforming chaos into clean visuals and his evenings building community through the Norfolk Power Platform User Group.
 isOrganizer: true

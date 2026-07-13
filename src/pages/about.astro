@@ -14,17 +14,19 @@ const committee = [
   'gemma-peck', 'keith-atherton', 'chris-hinchcliffe', 'simon-greenall',
 ].map(slug => findSpeaker(slug)).filter(notUndefined);
 
+// `role` is the job on the EoES team, not the day job. The day job lives in the
+// speaker's own frontmatter (title + company) and renders underneath.
 const displayRoles: Record<string, { role: string; company: string }> = {
-  'duncan-boyne':      { role: 'Co-Event Director', company: 'CPiO' },
-  'adam-bezance':      { role: 'Co-Event Director', company: 'Robiquity' },
-  'sarah-jones':       { role: 'Committee',          company: '' },
-  'stuart-baxter':     { role: 'Committee',          company: '' },
-  'emily-lacey':       { role: 'Committee',          company: '' },
-  'jon-russell':       { role: 'Committee',          company: '' },
-  'gemma-peck':        { role: 'Co-Founder',         company: 'GTP Tech Recruitment' },
-  'keith-atherton':    { role: 'Committee',          company: '' },
-  'chris-hinchcliffe': { role: 'Committee',          company: '' },
-  'simon-greenall':    { role: 'Committee',          company: 'Durham University' },
+  'duncan-boyne':      { role: 'Event Director',                  company: '' },
+  'adam-bezance':      { role: 'Event Director',                  company: 'Robiquity' },
+  'sarah-jones':       { role: 'Attendee Engagement & Sponsorship', company: 'Extra Life & Empowered Careers' },
+  'stuart-baxter':     { role: 'Workshop Coordinator',            company: 'Capgemini' },
+  'emily-lacey':       { role: 'Operations & Childcare',          company: '' },
+  'jon-russell':       { role: 'Organising Committee',            company: 'Capgemini' },
+  'gemma-peck':        { role: 'Organising Committee',            company: 'GTP Tech Recruitment' },
+  'keith-atherton':    { role: 'Organising Committee',            company: 'Capgemini' },
+  'chris-hinchcliffe': { role: 'Treasurer',                       company: 'Crimson Ibis Ltd' },
+  'simon-greenall':    { role: 'Organising Committee',            company: 'Durham University' },
 };
 
 const aboutPageImages: Record<string, string> = {
@@ -107,7 +109,7 @@ const initials = (name: string) => name.split(' ').map(n => n[0]).join('');
       <p class="sub">EoES is organised entirely by volunteers from across the East of England tech community.</p>
     </div>
 
-    <div class="mono" style="text-align: center; margin-bottom: 24px; color: var(--yellow);">— Co-Event Directors —</div>
+    <div class="mono" style="text-align: center; margin-bottom: 24px; color: var(--yellow);">— Event Directors —</div>
     <div class="grid-2" style="margin-bottom: 64px;">
       {directors.map((person) => {
         const { role, company } = displayRoles[person.slug];
@@ -123,7 +125,12 @@ const initials = (name: string) => name.split(' ').map(n => n[0]).join('');
             <div class="meta" style="padding: 22px;">
               <span class="role" style="color: var(--yellow);">{role}</span>
               <h3 class="name" style="font-size: 22px; margin-bottom: 4px;">{person.data.name}</h3>
-              {company && <div class="company">{company}</div>}
+              {person.data.title && <div class="company">{person.data.title}{company && `, ${company}`}</div>}
+              {person.data.bio && (
+                <p style="color: var(--ink-3); font-size: 13px; line-height: 1.55; margin: 12px 0 0;">
+                  {person.data.bio}
+                </p>
+              )}
             </div>
           </article>
         );
@@ -153,9 +160,9 @@ const initials = (name: string) => name.split(' ').map(n => n[0]).join('');
               }
             </div>
             <div class="meta">
-              <span class="role">Committee</span>
+              <span class="role">{role}</span>
               <h3 class="name">{person.data.name}</h3>
-              {company && <div class="company">{company}</div>}
+              {person.data.title && <div class="company">{person.data.title}{company && `, ${company}`}</div>}
               {person.data.bio && (
                 <p style="color: var(--ink-3); font-size: 13px; line-height: 1.55; margin: 12px 0 0;">
                   {person.data.bio}

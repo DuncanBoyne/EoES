@@ -1,11 +1,11 @@
 ---
 name: Adam Bezance
-title: Founder
+title: Managing Consultant
 company: Robiquity
-bio: Adam is a Power Platform Principal Consultant at Robiquity and the founder of the Norfolk Power Platform User Group. With 15 Microsoft certifications, he brings deep technical expertise to the community. Adam is also a Pluralsight Author, creating courses on AI and Prompt Engineering.
+bio: Adam is a Managing Consultant at Robiquity, a dual-award Copilot MVP, and the founder of the Norfolk Power Platform User Group, the meetup EoES grew out of. He is also a Pluralsight Author, creating courses on AI and Prompt Engineering.
 isOrganizer: true
 linkedin: https://www.linkedin.com/in/adambezance/
-image: /images/speakers/Adam-Bezance.jpg
+image: /images/speakers/adam-bezance-2027.jpg
 presentations: []
 ---
 
