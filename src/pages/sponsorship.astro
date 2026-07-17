@@ -4,8 +4,8 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 const tiers = [
   { key: 'friend', name: 'Friend', price: '£250', availability: '', className: 'tier-friend' },
   { key: 'community', name: 'Community', price: '£750', availability: '', className: 'tier-community' },
-  { key: 'silver', name: 'Silver', price: '£1,500', availability: '5 of 6 available', className: 'tier-silver' },
-  { key: 'gold', name: 'Gold', price: '£3,500', availability: '3 available', className: 'tier-gold' },
+  { key: 'silver', name: 'Silver', price: '£1,500', availability: '', className: 'tier-silver' },
+  { key: 'gold', name: 'Gold', price: '£3,500', availability: '', className: 'tier-gold' },
   { key: 'platinum', name: 'Platinum', price: '£6,000', availability: '1 available', className: 'tier-platinum' },
 ] as const;
 
@@ -16,15 +16,14 @@ const comparisonSections = [
       ['Website logo placement', 'Grouped panel', true, true, true, true],
       ['Rotating sponsor slides', 'Shared slide', true, true, true, true],
       ['Logo on venue roller banners', false, false, false, true, true],
-      ['Headline logo placement alongside EoES branding', false, false, false, false, true],
-      ['Exclusive branding on attendee lanyards', false, false, false, false, true],
+      ['Logo on the attendee lanyards', false, false, true, true, true],
+      ['Sole logo on the lanyard insert card', false, false, false, false, 'Exclusive'],
     ],
   },
   {
     group: 'Social Media',
     rows: [
       ['Sponsor recognition and visibility', false, true, true, true, true],
-      ['Featured throughout the build-up campaign', false, false, false, false, true],
     ],
   },
   {
@@ -58,12 +57,21 @@ const comparisonSections = [
     ],
   },
   {
+    group: 'Recruitment & Podcast',
+    rows: [
+      ['Live roles listed on the EoES website', false, false, '1 at a time', '2 at a time', '4 at a time'],
+      ['30-second advert on every podcast episode', false, false, false, false, true],
+    ],
+  },
+  {
     group: 'Attendee Bags',
     rows: [
       ['Branded item in attendee bags', true, true, true, true, true],
     ],
   },
 ] as const;
+
+const comparisonNote = 'Bag inserts are supplied directly by you. We can also source and print the item on your behalf, purchased separately.';
 
 const reasons = [
   {
@@ -88,30 +96,21 @@ const reasons = [
   },
 ] as const;
 
-const audiences = [
+const reachProof = [
   {
-    title: 'The audience',
-    items: [
-      'Microsoft professionals from across the East of England',
-      'Developers, analysts, and IT decision-makers',
-      'Two full days of direct engagement',
-    ],
+    tone: 'yellow',
+    title: 'Over 15 countries in the room',
+    text: 'EoES 2026 drew people from more than 15 countries, from Brazil to South Africa to Italy. This is not a local user group. It is an international event that happens to be in Norwich.',
   },
   {
-    title: 'On the day',
-    items: [
-      'Exhibition area at the conference venue on Day 2',
-      'Your logo on event slides throughout both days',
-      'Verbal recognition in opening and closing remarks',
-    ],
+    tone: 'pink',
+    title: 'The biggest names came to talk',
+    text: 'Some of the biggest names in the Microsoft scene have stood on this stage. 174 sessions were submitted by 88 speakers for 31 slots, and the ones who got them averaged 4.98 out of 5.',
   },
   {
-    title: 'Beyond the event',
-    items: [
-      'Your logo on the EoES website throughout the event year',
-      'Social media promotion to the EoES community and beyond',
-      "Association with the East of England's Microsoft community event",
-    ],
+    tone: 'cyan',
+    title: 'Microsoft was here',
+    text: 'Microsoft themselves were in the room, with two of their own speakers on the line-up. Your stand sits in the same hall the whole ecosystem walks through.',
   },
 ] as const;
 
@@ -156,7 +155,7 @@ const tierDetails = [
     className: 'tier-detail--gold',
     name: 'Gold Sponsor',
     price: '£3,500',
-    meta: '3 available',
+    meta: '',
     badge: '',
     text: 'A strong and highly visible presence with premium expo positioning, enhanced branding opportunities, attendee engagement, and direct access to the Microsoft community ecosystem.',
   },
@@ -164,7 +163,7 @@ const tierDetails = [
     className: 'tier-detail--silver',
     name: 'Silver Sponsor',
     price: '£1,500',
-    meta: '5 of 6 available',
+    meta: '',
     badge: '',
     text: 'A visible and engaging presence with expo hall access, event branding opportunities, and direct interaction with attendees throughout the conference.',
   },
@@ -191,14 +190,15 @@ const recruitmentPartner = {
   price: '£5,000',
   meta: '1 available · Exclusive',
   badge: 'Official Talent Partner',
-  intro: 'One recruitment or talent business owns hiring at EoES 2027. No competing agencies on site, and no shared spotlight. A single mid-level Microsoft hire through an agency costs an employer £8,000 to £10,000 in fees on a £40,000 salary, so this package is less than one placement.',
+  intro: 'Category exclusivity as the official talent partner of EoES 2027, with the room, the stage and the airtime to use it properly. The UK’s top Microsoft talent is in the room for two days, as speakers and as attendees. At the standard 15% agency fee, a single hire out of it covers the cost of the package.',
   includes: [
-    'Category exclusivity as the sole recruitment and talent partner. No other agency can sponsor or exhibit.',
-    'Official Talent Partner billing across the website, event slides, and social throughout the campaign.',
+    'Category exclusivity as the sole recruitment and talent partner, with Official Talent Partner billing across the website, event slides, and social throughout the campaign.',
+    'Your careers speaking slot. A dedicated session on the agenda, in front of the whole room.',
+    'Dedicated recruitment presence. Up to 10 live roles listed on the EoES website, plus a 30-second advert closing every episode of the podcast.',
+    'A private room for meetings, so you can take candidates aside and talk properly across both days.',
     'Premium expo hall stand, 3m x 3m, with premium positioning.',
-    'A dedicated careers-focused session or panel.',
     'Opt-in candidate access. An "open to opportunities" list of attendees who want to hear from you, collected in a GDPR-compliant way.',
-    'Podcast invite, plus the full brand package: website, banners, keynote reel video, branded item in attendee bags, and a regular presence throughout the build-up campaign.',
+    'The full brand package: website, banners, keynote reel video, and a branded item in the attendee bags.',
     'Two workshop tickets, and early access to attendee information.',
   ],
 } as const;
@@ -223,7 +223,7 @@ function cellLabel(value: boolean | string | null) {
   <div class="container">
     <div class="hero-eyebrow"><div class="chip chip--yellow"><span class="dot"></span><span>Sponsorship · 2027</span></div></div>
     <h1 class="display-1 hero-title" style="max-width: 18ch;">Sponsor<br><span class="display-italic">EoES 2027.</span></h1>
-    <p class="hero-sub">Five tiers from £250 to £6,000, an exclusive Recruitment Partner package, and five add-ons. Put your brand in front of Microsoft professionals from across the East of England.</p>
+    <p class="hero-sub">Five tiers from £250 to £6,000, an exclusive Recruitment Partner package, and five add-ons anyone can buy. Last year the room drew people from over 15 countries, and Microsoft themselves were on the speaker line-up. In 2027 we are aiming for 250+ in the room.</p>
   </div>
 </section>
 
@@ -249,20 +249,26 @@ function cellLabel(value: boolean | string | null) {
 <section class="section section--tight">
   <div class="container">
     <div class="section-head section-head--center">
-      <div class="eyebrow eyebrow--center">— Your audience —</div>
-      <h2 class="display-3">Who you'll<br><span class="display-italic">reach.</span></h2>
+      <div class="eyebrow eyebrow--center">— The reach —</div>
+      <h2 class="display-3">The room your brand<br><span class="display-italic">stands in.</span></h2>
+      <p class="sub">These numbers are from our first year. 2027 is built to beat every one of them.</p>
     </div>
 
     <div class="grid-3">
-      {audiences.map((audience, index) => (
-        <article class="card" style="text-align: center;">
-          <div class:list={['card-icon', ['yellow', 'pink', 'cyan'][index]]} style="margin: 0 auto 16px;" aria-hidden="true">+</div>
-          <h3 class="card-title">{audience.title}</h3>
-          <ul class="muted clean-list">
-            {audience.items.map(item => <li>{item}</li>)}
-          </ul>
+      {reachProof.map(item => (
+        <article class="card">
+          <div class:list={['card-icon', item.tone]} aria-hidden="true">+</div>
+          <h3 class="card-title">{item.title}</h3>
+          <p class="card-body">{item.text}</p>
         </article>
       ))}
+    </div>
+
+    <div class="stats" style="margin-top: 56px;">
+      <div class="stat"><div class="num yellow">250+</div><div class="label">Expected in 2027</div></div>
+      <div class="stat"><div class="num">15+</div><div class="label">Countries at EoES 2026</div></div>
+      <div class="stat"><div class="num" style="color: var(--pink);">4.98</div><div class="label">Avg speaker rating / 5</div></div>
+      <div class="stat"><div class="num" style="color: var(--cyan);">65,000</div><div class="label">Committee LinkedIn followers</div></div>
     </div>
   </div>
 </section>
@@ -326,6 +332,7 @@ function cellLabel(value: boolean | string | null) {
         </tbody>
       </table>
     </div>
+    <p class="muted" style="margin: 20px auto 0; max-width: 760px; text-align: center; font-size: 14px;">{comparisonNote}</p>
   </div>
 </section>
 
@@ -333,7 +340,7 @@ function cellLabel(value: boolean | string | null) {
   <div class="container" style="max-width: 900px;">
     <div class="section-head section-head--center">
       <div class="eyebrow eyebrow--center">— Exclusive —</div>
-      <h2 class="display-3">The only recruiter<br><span class="display-italic">in the room.</span></h2>
+      <h2 class="display-3">Be our exclusive<br><span class="display-italic">recruitment partner.</span></h2>
     </div>
 
     <article class="card tier-detail tier-detail--recruitment">
@@ -360,7 +367,7 @@ function cellLabel(value: boolean | string | null) {
     <div class="section-head section-head--center">
       <div class="eyebrow eyebrow--center">— Premium add-ons —</div>
       <h2 class="display-3">Sponsorship<br><span class="display-italic">add-ons.</span></h2>
-      <p class="sub">Available with any sponsorship tier. From £1,000. One of each available.</p>
+      <p class="sub">Open to everyone, from £1,000. You don't need a sponsorship package to take one: buy an add-on on its own, or alongside any tier. Each one goes to a single sponsor.</p>
     </div>
 
     <div class="grid-3">
@@ -370,7 +377,6 @@ function cellLabel(value: boolean | string | null) {
             <div class="chip chip--purple" style="margin: 0;"><span>Add-on</span></div>
             <div style="text-align: right;">
               <div class="addon-price">{addOn.price}</div>
-              <div class="mono" style="font-size: 11px; color: var(--ink-3);">1 available</div>
             </div>
           </div>
           <h3 class="h3" style="margin-bottom: 10px;">{addOn.title}</h3>
@@ -402,6 +408,26 @@ function cellLabel(value: boolean | string | null) {
           <p class="muted" style="line-height: 1.75; margin: 0;">{tier.text}</p>
         </article>
       ))}
+    </div>
+  </div>
+</section>
+
+<section class="section section--tight">
+  <div class="container" style="max-width: 900px;">
+    <div class="section-head section-head--center">
+      <div class="eyebrow eyebrow--center">— In their words —</div>
+      <h2 class="display-3">What 2026 sponsors<br><span class="display-italic">said afterwards.</span></h2>
+    </div>
+
+    <div class="stack-6">
+      <figure class="sponsor-quote">
+        <blockquote>"Not only did we see brand awareness increase throughout the event, we had sales we can directly attribute to having sponsored. Top class."</blockquote>
+        <figcaption class="mono">Franco Musso <span>· Power Pages Mastery · 2026 sponsor</span></figcaption>
+      </figure>
+      <figure class="sponsor-quote sponsor-quote--pink">
+        <blockquote>"You understood from a sponsor's perspective that just throwing our logo somewhere is a waste of time. Sponsors need the undivided attention of the audience to make their pitch, and you gave that to us."</blockquote>
+        <figcaption class="mono">Sean Astrakhan <span>· Untethered365 · 2026 sponsor</span></figcaption>
+      </figure>
     </div>
   </div>
 </section>
@@ -556,5 +582,37 @@ function cellLabel(value: boolean | string | null) {
     width: 8px;
     height: 2px;
     background: var(--pink);
+  }
+
+  .sponsor-quote {
+    margin: 0;
+    padding-top: 22px;
+    border-top: 1px solid var(--line-2);
+  }
+
+  .sponsor-quote blockquote {
+    margin: 0;
+    font-size: 19px;
+    line-height: 1.55;
+    font-style: italic;
+    color: var(--ink-1);
+  }
+
+  .sponsor-quote figcaption {
+    margin-top: 14px;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--yellow);
+  }
+
+  .sponsor-quote figcaption span {
+    color: var(--ink-3);
+    font-weight: 500;
+  }
+
+  .sponsor-quote--pink figcaption {
+    color: var(--pink);
   }
 </style>
