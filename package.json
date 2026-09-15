@@ -7,12 +7,16 @@
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "thumbs": "node scripts/make-thumbs.mjs"
+    "thumbs": "node scripts/make-thumbs.mjs",
+    "deploy": "astro build && wrangler deploy"
   },
   "dependencies": {
     "@astrojs/sitemap": "^3.7.2",
     "@tailwindcss/vite": "^4.1.18",
     "astro": "^5.17.1",
     "tailwindcss": "^4.1.18"
+  },
+  "devDependencies": {
+    "wrangler": "^4.131.2"
   }
 }

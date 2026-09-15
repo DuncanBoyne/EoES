@@ -1,0 +1,25 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="Page not found"
+  description="That page doesn't exist on the East of England Summit site."
+>
+
+<section class="page-hero">
+  <div class="bg-year" aria-hidden="true">404</div>
+  <span class="spark" style="top: 22%; left: 7%;"></span>
+  <span class="spark sm" style="top: 60%; right: 12%;"></span>
+  <div class="container">
+    <div class="hero-eyebrow"><div class="chip chip--cyan"><span class="dot"></span><span>404 · Not found</span></div></div>
+    <h1 class="display-1 hero-title" style="max-width: 16ch;">Wrong turn.<br><span class="display-italic">Nothing here.</span></h1>
+    <p class="hero-sub">That page doesn't exist, or it moved when the site was rebuilt for 2027.</p>
+    <div style="display: flex; gap: 12px; flex-wrap: wrap; margin-top: 28px;">
+      <a href="/" class="btn btn--primary btn--lg">Back to the summit</a>
+      <a href="/sponsorship" class="btn btn--ghost btn--lg">Sponsor 2027</a>
+    </div>
+  </div>
+</section>
+
+</BaseLayout>

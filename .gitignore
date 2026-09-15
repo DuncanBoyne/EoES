@@ -28,3 +28,6 @@ pnpm-debug.log*
 
 # Local gallery photos not ready to publish
 .gallery-hold/
+
+# wrangler local state
+.wrangler/
