@@ -1,0 +1,58 @@
+---
+// Sessionize's embed creates its own #sz-modal-container and shows/hides it with
+// .is-hidden. This makes it behave like a dialog: focus moves in, the rest of the
+// page goes inert, Escape closes it, and focus returns to whatever opened it.
+---
+<script is:inline>
+  (function () {
+    var modal = null;
+    var opener = null;
+
+    // Inert every sibling of the modal and of each of its ancestors, so the modal
+    // stays usable wherever Sessionize put it.
+    function setInert(on) {
+      for (var el = modal; el && el.parentElement; el = el.parentElement) {
+        Array.prototype.forEach.call(el.parentElement.children, function (sib) {
+          if (sib !== el) sib.inert = on;
+        });
+        if (el.parentElement === document.body) break;
+      }
+    }
+
+    // Runs on open/close (class) and when the content swaps, e.g. session -> speaker.
+    function sync() {
+      var open = document.querySelector('#sz-modal-container:not(.is-hidden)');
+      if (open) {
+        if (!modal) {
+          modal = open;
+          opener = document.activeElement;
+          modal.setAttribute('role', 'dialog');
+          modal.setAttribute('aria-modal', 'true');
+          setInert(true);
+        }
+        var heading = modal.querySelector('h2, h3');
+        if (heading) modal.setAttribute('aria-label', heading.textContent.trim());
+        var close = modal.querySelector('.sz-modal__close');
+        if (close) {
+          close.setAttribute('aria-label', 'Close');
+          if (!modal.contains(document.activeElement)) close.focus();
+        }
+      } else if (modal) {
+        setInert(false);
+        modal = null;
+        if (opener && opener.focus) opener.focus();
+        opener = null;
+      }
+    }
+
+    new MutationObserver(sync).observe(document.body, {
+      attributes: true, attributeFilter: ['class'], childList: true, subtree: true,
+    });
+
+    document.addEventListener('keydown', function (e) {
+      if (e.key !== 'Escape' || !modal) return;
+      var close = modal.querySelector('.sz-modal__close');
+      if (close) close.click();
+    });
+  })();
+</script>

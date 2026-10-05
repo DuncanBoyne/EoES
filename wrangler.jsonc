@@ -8,8 +8,8 @@
     "binding": "ASSETS",
     "html_handling": "auto-trailing-slash",
     "not_found_handling": "404-page",
-    // The worker must see every request so it can 301 the apex to www;
-    // for everything else it just hands off to the asset binding.
+    // The worker must see every request so it can 301 http and the apex to
+    // https://www and add security headers; then it hands off to the asset binding.
     "run_worker_first": true
   },
   "observability": { "enabled": true },

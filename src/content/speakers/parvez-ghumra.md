@@ -8,7 +8,7 @@ linkedin: https://www.linkedin.com/in/parvezghumra
 image: /images/speakers/parvez-ghumra.jpg
 presentations:
   - title: "From Manual Exports to Confident ALM"
-    url: "https://EoEStickets.netlify.app/sessions/IOnkuLU8ekXNGalm3iWX"
+    url: "https://eoeppstickets.netlify.app/sessions/IOnkuLU8ekXNGalm3iWX"
     event: "EoES Workshop Day, Friday 1st May 2026"
 ---
 

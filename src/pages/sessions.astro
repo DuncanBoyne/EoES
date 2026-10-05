@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import SessionizeModal from '../components/SessionizeModal.astro';
 
 // Fetch room assignments from GridSmart at build time
 const gridRes = await fetch('https://sessionize.com/api/v2/9q20ek5l/view/GridSmart?under=True', {
@@ -94,15 +95,15 @@ const roomMapJson = JSON.stringify(roomMap);
 </section>
 
 <!-- Modal container required by Sessionize -->
-<div id="sz-modal-container" class="is-hidden"></div>
+<SessionizeModal />
 
 <section class="cta-strip">
   <div class="container center">
     <div class="eyebrow eyebrow--center" style="margin-bottom: 22px;">— EoES Returns —</div>
     <h2 class="display-2" style="max-width: 22ch; margin: 0 auto 22px;">More sessions<br><span class="display-italic">in 2027.</span></h2>
-    <p class="lead muted" style="max-width: 52ch; margin: 0 auto 32px;">These are the sessions from EoES 2026. Follow us on LinkedIn for updates on EoES 2027.</p>
+    <p class="lead muted" style="max-width: 52ch; margin: 0 auto 32px;">These are the sessions from EoES 2026. The call for speakers for EoES 2027 is open until Thursday 14 January 2027.</p>
     <div class="row" style="justify-content: center; gap: 12px;">
-      <a href="https://www.linkedin.com/company/eoes/" target="_blank" rel="noopener noreferrer" class="btn btn--primary btn--lg">Follow on LinkedIn</a>
+      <a href="https://sessionize.com/east-of-england-summit-2027/" target="_blank" rel="noopener noreferrer" class="btn btn--primary btn--lg">Submit a talk<span class="sr-only"> (opens in new tab)</span></a>
       <a href="/schedule" class="btn btn--ghost btn--lg">2027 Schedule</a>
     </div>
   </div>
@@ -240,6 +241,11 @@ const roomMapJson = JSON.stringify(roomMap);
     font-size: 0.75rem;
     font-weight: 600;
     color: var(--purple);
+    background: none;
+    border: 0;
+    padding: 0;
+    font-family: inherit;
+    cursor: pointer;
   }
 
   /* ── Modal overlay ── */
@@ -515,11 +521,15 @@ const roomMapJson = JSON.stringify(roomMap);
 
     function makeCardsClickable() {
       document.querySelectorAll('li.sz-session').forEach(function (card) {
-        // Add "View details" hint if not already added
+        // Add a real "View details" button so keyboard users can open the card too;
+        // its click bubbles to the card handler below.
         if (!card.querySelector('.sz-session__view-hint')) {
-          var hint = document.createElement('span');
+          var title = card.querySelector('.sz-session__title');
+          var hint = document.createElement('button');
+          hint.type = 'button';
           hint.className = 'sz-session__view-hint';
-          hint.innerHTML = 'View details &rarr;';
+          hint.textContent = 'View details →';
+          if (title) hint.setAttribute('aria-label', 'View details: ' + title.textContent.trim());
           card.appendChild(hint);
         }
         // Click anywhere on card (except speaker links) opens session modal

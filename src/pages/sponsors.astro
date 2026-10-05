@@ -1,5 +1,33 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+
+// Set live: true once a sponsor has signed AND paid; until then they stay off the site.
+const sponsors = [
+  {
+    live: true,
+    name: 'iThink365',
+    logo: '/images/sponsors/iThink365.png',
+    blurb: 'Microsoft 365 and SharePoint specialists, building products and consultancy that help organisations get more out of the tools they already have.',
+    url: 'https://ithink365.co.uk/',
+    urlLabel: 'ithink365.co.uk',
+  },
+  {
+    live: false,
+    name: 'Robiquity',
+    logo: '/images/sponsors/robiquity.svg',
+    blurb: 'AI and low-code specialists who help organisations automate their operations and get more done with the people they have.',
+    url: 'https://www.robiquity.com/',
+    urlLabel: 'robiquity.com',
+  },
+  {
+    live: false,
+    name: 'Connected Innovation',
+    logo: '/images/sponsors/connected-innovation.png',
+    blurb: 'The network that links the innovation hubs, universities, research institutes and business clusters across Norfolk, Suffolk and Essex.',
+    url: 'https://connectedinnovation.co.uk/',
+    urlLabel: 'connectedinnovation.co.uk',
+  },
+].filter((s) => s.live);
 ---
 
 <BaseLayout
@@ -20,17 +48,19 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
 <section class="section">
   <div class="container" style="max-width: 880px;">
-    <div class="eyebrow eyebrow--center" style="margin-bottom: 18px;">— Silver Sponsor · 2027 —</div>
-    <article class="card" style="border-color: rgba(148,163,184,0.45); padding: 0; background: linear-gradient(180deg, rgba(148,163,184,0.10) 0%, transparent 100%); margin-bottom: 56px;">
-      <div style="background: #fff; height: 140px; display: grid; place-items: center; padding: 24px; border-radius: 22px 22px 0 0;">
-        <img src="/images/sponsors/iThink365.png" alt="iThink365" loading="lazy" style="max-height: 100%; max-width: 80%;">
-      </div>
-      <div style="padding: 32px; text-align: center;">
-        <h3 class="h3" style="font-size: 22px; margin-bottom: 12px;">iThink365</h3>
-        <p class="muted" style="margin-bottom: 24px;">Microsoft 365 and SharePoint specialists, building products and consultancy that help organisations get more out of the tools they already have.</p>
-        <a href="https://ithink365.co.uk/" target="_blank" rel="noopener noreferrer" class="btn btn--primary">Visit ithink365.co.uk</a>
-      </div>
-    </article>
+    <div class="eyebrow eyebrow--center" style="margin-bottom: 18px;">— Silver Sponsor{sponsors.length > 1 ? "s" : ""} · 2027 —</div>
+    {sponsors.map((s) => (
+      <article class="card" style="border-color: rgba(148,163,184,0.45); padding: 0; background: linear-gradient(180deg, rgba(148,163,184,0.10) 0%, transparent 100%); margin-bottom: 56px;">
+        <div style="background: #fff; height: 140px; display: grid; place-items: center; padding: 24px; border-radius: 22px 22px 0 0;">
+          <img src={s.logo} alt={s.name} loading="lazy" style="max-height: 100%; max-width: 80%;">
+        </div>
+        <div style="padding: 32px; text-align: center;">
+          <h3 class="h3" style="font-size: 22px; margin-bottom: 12px;">{s.name}</h3>
+          <p class="muted" style="margin-bottom: 24px;">{s.blurb}</p>
+          <a href={s.url} target="_blank" rel="noopener noreferrer" class="btn btn--primary">Visit {s.urlLabel}</a>
+        </div>
+      </article>
+    ))}
 
     <div class="frame-panel center">
       <div class="eyebrow eyebrow--center" style="margin-bottom: 18px;">— More to come —</div>

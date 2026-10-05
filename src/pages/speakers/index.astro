@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import SessionizeModal from '../../components/SessionizeModal.astro';
 ---
 
 <BaseLayout
@@ -70,15 +71,15 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 </section>
 
 <!-- Modal container required by Sessionize -->
-<div id="sz-modal-container" class="is-hidden"></div>
+<SessionizeModal />
 
 <section class="cta-strip">
   <div class="container center">
     <div class="eyebrow eyebrow--center" style="margin-bottom: 22px;">— EoES Returns —</div>
     <h2 class="display-2" style="max-width: 22ch; margin: 0 auto 22px;">More great speakers<br><span class="display-italic">in 2027.</span></h2>
-    <p class="lead muted" style="max-width: 52ch; margin: 0 auto 32px;">Follow us on LinkedIn to be the first to hear about EoES 2027 — speakers, schedule, and how to get involved.</p>
+    <p class="lead muted" style="max-width: 52ch; margin: 0 auto 32px;">The call for speakers for EoES 2027 is open until Thursday 14 January 2027.</p>
     <div class="row" style="justify-content: center; gap: 12px;">
-      <a href="https://www.linkedin.com/company/eoes/" target="_blank" rel="noopener noreferrer" class="btn btn--primary btn--lg">Follow on LinkedIn</a>
+      <a href="https://sessionize.com/east-of-england-summit-2027/" target="_blank" rel="noopener noreferrer" class="btn btn--primary btn--lg">Submit a talk<span class="sr-only"> (opens in new tab)</span></a>
       <a href="/sessions" class="btn btn--ghost btn--lg">View 2026 sessions</a>
     </div>
   </div>
