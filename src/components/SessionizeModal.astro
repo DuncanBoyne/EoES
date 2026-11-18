@@ -49,10 +49,19 @@
       attributes: true, attributeFilter: ['class'], childList: true, subtree: true,
     });
 
-    document.addEventListener('keydown', function (e) {
-      if (e.key !== 'Escape' || !modal) return;
+    // Sessionize only adds its close button once the content has loaded. If the request
+    // fails there is no button, so hide the container ourselves rather than leave the page inert.
+    function dismiss() {
       var close = modal.querySelector('.sz-modal__close');
       if (close) close.click();
+      else modal.classList.add('is-hidden');
+    }
+
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && modal) dismiss();
+    });
+    document.addEventListener('click', function (e) {
+      if (modal && e.target.classList && e.target.classList.contains('sz-modal-overlay') && !modal.querySelector('.sz-modal__close')) dismiss();
     });
   })();
 </script>

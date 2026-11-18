@@ -1,0 +1,72 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const updated = '18 November 2026';
+const sections = [
+  {
+    heading: 'Who is responsible',
+    items: [
+      'East of England Tech Community Ltd organises the East of England Summit and is the data controller for this website.',
+      'Questions or requests: info@eoepps.co.uk.',
+    ],
+  },
+  {
+    heading: 'What this website collects',
+    items: [
+      'There are no accounts and no forms on this website, and we set no cookies of our own.',
+      'Visit statistics: we use Umami Cloud to count page views. It sets no cookies and does not build a profile of you. Lawful basis: legitimate interests (knowing which pages are used).',
+      'If you email us, we keep your message and address for as long as it takes to deal with your enquiry.',
+    ],
+  },
+  {
+    heading: 'Other services your browser contacts',
+    items: [
+      'Google Fonts: the fonts on every page are loaded from Google, which sees your IP address when your browser fetches them.',
+      'Sessionize: the speaker, session and schedule pages load their content from Sessionize, which sees your IP address when they load.',
+      'YouTube: the 2026 sponsors page embeds videos in YouTube\'s privacy-enhanced mode. Google sets cookies only if you play a video.',
+    ],
+  },
+  {
+    heading: 'Tickets and the event app',
+    items: [
+      'Tickets, the agenda and sponsor meetings are handled in the event app at app.eoes.co.uk. It has its own privacy notice, which covers what you give us when you register.',
+    ],
+  },
+  {
+    heading: 'Your rights',
+    items: [
+      'You can ask for a copy of any data we hold about you, or ask us to correct or delete it, by emailing the address above. We answer within one month.',
+      'If you are unhappy with how your data is handled, contact us first. You can also complain to the Information Commissioner\'s Office at ico.org.uk.',
+    ],
+  },
+];
+---
+
+<BaseLayout
+  title="Privacy"
+  description="What the East of England Summit website collects, which other services it loads, and how to contact the organisers about your data."
+>
+
+<section class="page-hero">
+  <div class="container">
+    <div class="hero-eyebrow"><div class="chip chip--purple"><span class="dot"></span><span>Privacy · EoES</span></div></div>
+    <h1 class="display-1 hero-title" style="max-width: 14ch;">Privacy.</h1>
+    <p class="hero-sub">What this website collects and who else your browser talks to. Last updated {updated}.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container" style="max-width: 72ch;">
+    {sections.map((s) => (
+      <div style="margin-bottom: 40px;">
+        <h2 class="display-3" style="margin-bottom: 16px;">{s.heading}</h2>
+        <ul style="display: grid; gap: 10px; padding-left: 1.2em; list-style: disc; color: var(--ink-2); line-height: 1.6;">
+          {s.items.map((item) => <li>{item}</li>)}
+        </ul>
+      </div>
+    ))}
+    <p><a href="https://app.eoes.co.uk/privacy" style="color: var(--yellow);">Read the event app's privacy notice</a></p>
+  </div>
+</section>
+
+</BaseLayout>

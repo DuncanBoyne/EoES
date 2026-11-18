@@ -1466,7 +1466,8 @@ p:last-child { margin-bottom: 0; }
   scrollbar-width: thin;
 }
 
-.sz-modal { position: relative; padding: 2rem; }
+/* Sessionize's own sheet paints .sz-modal white at ID specificity; keep our dark card showing. */
+.sz-modal { position: relative; padding: 2rem; background: transparent !important; }
 
 .sz-modal__close {
   position: absolute; top: 1rem; right: 1rem;
@@ -1476,7 +1477,7 @@ p:last-child { margin-bottom: 0; }
   border: 1px solid var(--line-2);
   cursor: pointer;
   font-size: 0.875rem;
-  color: var(--ink-3);
+  color: var(--ink-3) !important;
   display: flex; align-items: center; justify-content: center;
   transition: background 0.15s, color 0.15s;
   line-height: 1;
