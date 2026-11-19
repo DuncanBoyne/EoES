@@ -1,0 +1,82 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const sections = [
+  {
+    heading: 'The short version',
+    items: [
+      'EoES is a community event run by volunteers. We want everyone to feel welcome and safe, whoever they are and however long they have been in tech.',
+      'Be kind, be respectful, and look out for each other.',
+    ],
+  },
+  {
+    heading: 'Who this covers',
+    items: [
+      'Everyone at the summit: attendees, speakers, sponsors, volunteers and organisers.',
+      'It applies at the venue, at the workshops, at social events around the summit, and online in the event app and our community channels.',
+    ],
+  },
+  {
+    heading: 'What we expect',
+    items: [
+      'Treat people with respect. Disagree with ideas, not with people.',
+      'Ask before you photograph or record someone, and accept a no.',
+      'Speakers and sponsors: keep talks, slides, stands and giveaways free of sexual or discriminatory material.',
+    ],
+  },
+  {
+    heading: 'What is not acceptable',
+    items: [
+      'Offensive comments about gender, gender identity or expression, age, sexual orientation, disability, physical appearance, body size, race, ethnicity, religion or technology choices.',
+      'Sexual images in public spaces, unwelcome sexual attention, and inappropriate physical contact.',
+      'Deliberate intimidation, stalking or following, and harassing photography or recording.',
+      'Sustained disruption of talks or other sessions.',
+    ],
+  },
+  {
+    heading: 'If something happens',
+    items: [
+      'Tell any organiser or volunteer, or go to the registration desk. You can also email info@eoepps.co.uk at any time.',
+      'We will listen, keep what you tell us as confidential as we can, and help you feel safe. That can include finding venue staff or contacting the police if you want us to.',
+    ],
+  },
+  {
+    heading: 'What we will do',
+    items: [
+      'Anyone asked to stop unacceptable behaviour is expected to stop straight away.',
+      'The organisers may warn someone or ask them to leave the event, without a refund where a ticket was paid for.',
+    ],
+  },
+];
+---
+
+<BaseLayout
+  title="Code of conduct"
+  description="How we expect everyone at the East of England Summit to treat each other, and what to do if something goes wrong."
+>
+
+<section class="page-hero">
+  <div class="container">
+    <div class="hero-eyebrow"><div class="chip chip--purple"><span class="dot"></span><span>Code of conduct · EoES</span></div></div>
+    <h1 class="display-1 hero-title" style="max-width: 14ch;">Code of conduct.</h1>
+    <p class="hero-sub">How we expect everyone at the summit to treat each other, and what to do if something goes wrong.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container" style="max-width: 72ch;">
+    {sections.map((s) => (
+      <div style="margin-bottom: 40px;">
+        <h2 class="display-3" style="margin-bottom: 16px;">{s.heading}</h2>
+        <ul style="display: grid; gap: 10px; padding-left: 1.2em; list-style: disc; color: var(--ink-2); line-height: 1.6;">
+          {s.items.map((item) => <li>{item}</li>)}
+        </ul>
+      </div>
+    ))}
+    <p style="color: var(--ink-3); font-size: 14px; line-height: 1.6;">
+      Adapted from the <a href="https://confcodeofconduct.com/" target="_blank" rel="noopener noreferrer" style="color: var(--yellow);">Conference Code of Conduct</a>, licensed under a <a href="https://creativecommons.org/licenses/by/3.0/deed.en_US" target="_blank" rel="noopener noreferrer" style="color: var(--yellow);">Creative Commons Attribution 3.0 Unported License</a>.
+    </p>
+  </div>
+</section>
+
+</BaseLayout>
