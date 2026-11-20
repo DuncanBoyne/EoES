@@ -131,6 +131,13 @@ const initials = (name: string) => name.split(' ').map(n => n[0]).join('');
                   {person.data.bio}
                 </p>
               )}
+              {(person.data.website || person.data.linkedin) && (
+                <p class="mono" style="margin: 12px 0 0; font-size: 12px;">
+                  {person.data.website && <a href={person.data.website} target="_blank" rel="noopener" style="color: var(--yellow);">{new URL(person.data.website).hostname.replace('www.', '')}</a>}
+                  {person.data.website && person.data.linkedin && ' · '}
+                  {person.data.linkedin && <a href={person.data.linkedin} target="_blank" rel="noopener" style="color: var(--yellow);">LinkedIn</a>}
+                </p>
+              )}
             </div>
           </article>
         );
@@ -166,6 +173,13 @@ const initials = (name: string) => name.split(' ').map(n => n[0]).join('');
               {person.data.bio && (
                 <p style="color: var(--ink-3); font-size: 13px; line-height: 1.55; margin: 12px 0 0;">
                   {person.data.bio}
+                </p>
+              )}
+              {(person.data.website || person.data.linkedin) && (
+                <p class="mono" style="margin: 12px 0 0; font-size: 12px;">
+                  {person.data.website && <a href={person.data.website} target="_blank" rel="noopener" style="color: var(--yellow);">{new URL(person.data.website).hostname.replace('www.', '')}</a>}
+                  {person.data.website && person.data.linkedin && ' · '}
+                  {person.data.linkedin && <a href={person.data.linkedin} target="_blank" rel="noopener" style="color: var(--yellow);">LinkedIn</a>}
                 </p>
               )}
             </div>
