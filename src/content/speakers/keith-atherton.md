@@ -3,6 +3,8 @@ name: Keith Atherton
 title: Power Platform & AI Solution Architect
 company: Capgemini
 bio: Keith is a Microsoft MVP in Business Applications and a Microsoft Certified Trainer, based in the Edinburgh area. He runs the Scottish Power Platform User Group, co-hosts the Power Platform Community High Five to bring new speakers on, and volunteers at DATA:Scotland.
+metaTitle: "Keith Atherton, Organising Committee | EoES"
+metaDescription: "Keith Atherton, on the East of England Summit organising committee, is a Microsoft MVP in Business Applications and runs the Scottish Power Platform User Group."
 isOrganizer: true
 linkedin: https://www.linkedin.com/in/keith-atherton/
 image: "/images/speakers/keith-atherton.jpg"

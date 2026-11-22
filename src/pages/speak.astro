@@ -1,0 +1,72 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+// Every fact here is already on the site: the call-for-speakers card on /contact,
+// the 2026 numbers on /sponsorship, and the tracks on the homepage.
+const sessionizeUrl = 'https://sessionize.com/east-of-england-summit-2027';
+---
+
+<BaseLayout
+  title="Speak at EoES 2027"
+  fullTitle="Speak at EoES 2027 | Call for Speakers, Norwich"
+  description="The call for speakers for the East of England Summit 2027 is open on Sessionize until Thursday 14 January 2027. Talks, lightning talks and panels, four tracks."
+>
+
+<section class="page-hero">
+  <div class="bg-year" aria-hidden="true">27</div>
+  <span class="spark" style="top: 22%; left: 7%;"></span>
+  <span class="spark sm" style="top: 60%; right: 10%;"></span>
+  <div class="container">
+    <div class="hero-eyebrow"><div class="chip chip--yellow"><span class="dot"></span><span>Call for speakers · 2027</span></div></div>
+    <h1 class="display-1 hero-title" style="max-width: 16ch;">Speak at<br><span class="display-italic">EoES 2027.</span></h1>
+    <p class="hero-sub">The call for speakers for the East of England Summit 2027 is open on Sessionize until <b>Thursday 14 January 2027, 11:59pm UK</b>. The conference day is Saturday 1 May 2027 at The Space, Norwich.</p>
+    <div class="row" style="gap: 12px; margin-top: 28px;">
+      <a href={sessionizeUrl} target="_blank" rel="noopener noreferrer" class="btn btn--primary btn--lg">Submit a talk on Sessionize<span class="sr-only"> (opens in new tab)</span></a>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="grid-2">
+      <article class="card">
+        <h2 class="card-title">Four tracks</h2>
+        <p class="card-body">AI, Technical, Business Adoption and The Human Track. The 2027 summit covers the whole Microsoft stack plus AI: AI and Copilot, Fabric, Azure, Dynamics 365, Microsoft 365 and Power Platform.</p>
+      </article>
+      <article class="card">
+        <h2 class="card-title">Three formats</h2>
+        <p class="card-body">A 45-minute talk, a 15-minute lightning talk or a 45-minute panel, at any level from 100 to 400.</p>
+      </article>
+      <article class="card">
+        <h2 class="card-title">How selection works</h2>
+        <p class="card-body">Selection is anonymous, and everyone who submits hears back by 21 January 2027.</p>
+      </article>
+      <article class="card">
+        <h2 class="card-title">Speaker dinner</h2>
+        <p class="card-body">Every selected speaker is invited to a free speaker dinner.</p>
+      </article>
+    </div>
+
+    <div class="stats" style="margin-top: 56px;">
+      <div class="stat"><div class="num yellow">174</div><div class="label">Sessions submitted in 2026</div></div>
+      <div class="stat"><div class="num">31</div><div class="label">Sessions chosen</div></div>
+      <div class="stat"><div class="num" style="color: var(--pink);">4</div><div class="label">Tracks in 2027</div></div>
+      <div class="stat"><div class="num" style="color: var(--cyan);">14 Jan</div><div class="label">Call for speakers closes</div></div>
+    </div>
+
+    <p class="muted" style="max-width: 70ch; margin: 40px auto 0; text-align: center;">EoES is organised entirely by volunteers. In 2026 the summit ran as the East of England Power Platform Summit. See the <a href="/sessions/" style="color: var(--yellow);">2026 sessions</a> and <a href="/speakers/" style="color: var(--yellow);">2026 speakers</a> for the kind of talks that were chosen.</p>
+  </div>
+</section>
+
+<section class="cta-strip">
+  <div class="container center">
+    <h2 class="display-2" style="max-width: 22ch; margin: 0 auto 22px;">Closes Thursday<br><span class="display-italic">14 January 2027.</span></h2>
+    <p class="lead muted" style="max-width: 56ch; margin: 0 auto 36px;">Submissions are taken on Sessionize. Questions about speaking? Email <a href="mailto:info@eoes.co.uk" style="color: var(--yellow);">info@eoes.co.uk</a>.</p>
+    <div class="row" style="justify-content: center; gap: 12px;">
+      <a href={sessionizeUrl} target="_blank" rel="noopener noreferrer" class="btn btn--primary btn--lg">Submit a talk on Sessionize<span class="sr-only"> (opens in new tab)</span></a>
+      <a href="https://app.eoes.co.uk/e/eoes-2027/register" class="btn btn--ghost btn--lg">Get your free ticket</a>
+    </div>
+  </div>
+</section>
+
+</BaseLayout>

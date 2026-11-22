@@ -3,16 +3,25 @@ const navLinks = [
   { href: '/', label: 'Home' },
   { href: '/about/', label: 'About' },
   { href: '/why-attend/', label: 'Why Attend' },
-  { href: '/gallery-2026/', label: '2026 Gallery' },
-  { href: '/sessions/', label: '2026 Sessions' },
-  { href: '/speakers/', label: '2026 Speakers' },
+  { href: '/schedule/', label: 'Schedule' },
+  { href: '/venue/', label: 'Venue' },
+  { href: '/speak/', label: 'Speak' },
   {
     href: '/sponsors/',
     label: 'Sponsors',
     children: [
       { href: '/sponsors/', label: '2027 Sponsors' },
-      { href: '/sponsors/2026/', label: '2026 Sponsors' },
       { href: '/sponsorship/', label: 'Become a Sponsor' },
+      { href: '/sponsors/2026/', label: '2026 Sponsors' },
+    ],
+  },
+  {
+    href: '/gallery-2026/',
+    label: '2026',
+    children: [
+      { href: '/gallery-2026/', label: 'Gallery' },
+      { href: '/sessions/', label: 'Sessions' },
+      { href: '/speakers/', label: 'Speakers' },
     ],
   },
 ];

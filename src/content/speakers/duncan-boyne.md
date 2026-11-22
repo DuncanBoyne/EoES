@@ -3,6 +3,8 @@ name: Duncan Boyne
 title: Freelance Power BI Consultant
 company: ""
 bio: Duncan is a Power BI Consultant who believes every messy Excel sheet deserves a second chance. Known as the Power BI Kinda Guy, he spends his days transforming chaos into clean visuals and his evenings building community through the Norfolk Power Platform User Group.
+metaTitle: "Duncan Boyne, Event Director | EoES"
+metaDescription: "Duncan Boyne is an Event Director of the East of England Summit, a freelance Power BI consultant, and a volunteer with the Norfolk Power Platform User Group."
 isOrganizer: true
 linkedin: https://www.linkedin.com/in/duncanboyne/
 website: https://www.duncanboyne.co.uk/

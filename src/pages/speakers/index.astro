@@ -14,7 +14,8 @@ const profiles = (await getCollection('speakers'))
 
 <BaseLayout
   title="2026 Speakers"
-  description="Meet the expert Power Platform speakers from EoES 2026 — practitioners from across the East of England and beyond who shared real-world experience with Power Apps, Power Automate, Power BI, and Copilot Studio."
+  fullTitle="EoES 2026 Speakers | East of England Summit"
+  description="Speakers from the 2026 summit in Norwich, including keynote Chris Huntingford. Want to speak in 2027? The call for speakers is open until 14 January 2027."
 >
 
 <section class="page-hero">
@@ -24,7 +25,13 @@ const profiles = (await getCollection('speakers'))
   <div class="container">
     <div class="hero-eyebrow"><div class="chip"><span class="dot" style="background: var(--ink-3); box-shadow: 0 0 0 4px rgba(255,255,255,0.08);"></span><span>2026 Archive · Speakers</span></div></div>
     <h1 class="display-1 hero-title" style="max-width: 18ch;">2026 <span class="display-italic">speakers.</span></h1>
-    <p class="hero-sub">The inspiring voices from EoES 2026 — practitioners sharing real-world Power Platform experience.</p>
+    <p class="hero-sub">The inspiring voices from EoES 2026 — practitioners sharing real-world Power Platform experience. From the 2026 summit, then called the East of England Power Platform Summit.</p>
+  </div>
+</section>
+
+<section class="section section--tight" style="padding-bottom: 0;">
+  <div class="container" style="max-width: 820px;">
+    <p class="lead muted" style="margin: 0;">These are the speakers from the 2026 summit, with keynote speaker Chris Huntingford. Their 31 sessions were chosen from 174 submissions across four tracks: Technical, Business Adoption, Non-Technical and New Speaker. The call for speakers for 2027 closes on Thursday 14 January 2027: <a href="/speak/" style="color: var(--yellow);">how to submit a talk</a>.</p>
   </div>
 </section>
 
@@ -101,10 +108,27 @@ const profiles = (await getCollection('speakers'))
     <h2 class="display-2" style="max-width: 22ch; margin: 0 auto 22px;">More great speakers<br><span class="display-italic">in 2027.</span></h2>
     <p class="lead muted" style="max-width: 52ch; margin: 0 auto 32px;">The call for speakers for EoES 2027 is open until Thursday 14 January 2027.</p>
     <div class="row" style="justify-content: center; gap: 12px;">
-      <a href="https://sessionize.com/east-of-england-summit-2027/" target="_blank" rel="noopener noreferrer" class="btn btn--primary btn--lg">Submit a talk<span class="sr-only"> (opens in new tab)</span></a>
+      <a href="https://app.eoes.co.uk/e/eoes-2027/register" class="btn btn--primary btn--lg">Get your free ticket</a>
+      <a href="https://sessionize.com/east-of-england-summit-2027/" target="_blank" rel="noopener noreferrer" class="btn btn--ghost btn--lg">Submit a talk<span class="sr-only"> (opens in new tab)</span></a>
       <a href="/sessions/" class="btn btn--ghost btn--lg">View 2026 sessions</a>
     </div>
   </div>
 </section>
 
 </BaseLayout>
+
+<style is:global>
+  /* Initials in place of a speaker photo whose Sessionize image is gone (see lib/sessionize.ts). */
+  .sz-speaker__photo .sz-initials {
+    display: grid;
+    place-items: center;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background: rgba(124,58,237,0.3);
+    font-family: var(--font-display);
+    font-size: 40px;
+    letter-spacing: -0.04em;
+    color: var(--ink-0);
+  }
+</style>

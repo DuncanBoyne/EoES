@@ -5,6 +5,8 @@ import Footer from '../components/Footer.astro';
 
 interface Props {
   title: string;
+  /** Exact <title>; otherwise "title | East of England Summit". */
+  fullTitle?: string;
   description?: string;
   canonical?: string;
   noindex?: boolean;
@@ -14,6 +16,7 @@ interface Props {
 
 const {
   title,
+  fullTitle: fullTitleProp,
   description = 'East of England Summit — returning 30 April–1 May 2027. A community-led conference covering the whole Microsoft stack: AI and Copilot, Fabric, Azure, Dynamics 365, Microsoft 365 and Power Platform. Based in Norwich, Norfolk.',
   canonical = Astro.url.href,
   noindex = false,
@@ -22,7 +25,7 @@ const {
 } = Astro.props;
 
 const siteName = 'East of England Summit';
-const fullTitle = title === 'Home' ? siteName : `${title} | ${siteName}`;
+const fullTitle = fullTitleProp ?? (title === 'Home' ? siteName : `${title} | ${siteName}`);
 
 const SITE = 'https://www.eoes.co.uk/';
 const ORG_ID = `${SITE}#organization`;
@@ -87,7 +90,7 @@ const eventSchema = isHomepage ? {
   '@id': `${SITE}#event-2027`,
   name: 'East of England Summit 2027',
   alternateName: 'EoES 2027',
-  description: 'East of England Summit 2027 is a community-led Microsoft conference in Norwich covering the whole Microsoft stack plus AI: AI and Copilot, Fabric, Azure, Dynamics 365, Microsoft 365 and Power Platform. Paid hands-on workshops on Friday 30 April 2027 and a free conference on Saturday 1 May 2027.',
+  description: 'The East of England Summit (EoES), a volunteer-run community conference covering the whole Microsoft stack and AI: Copilot, Fabric, Azure, Dynamics 365, Microsoft 365 and Power Platform. 30 April to 1 May 2027 at The Space, Norwich.',
   url: SITE,
   startDate: '2027-04-30T09:00:00+01:00',
   endDate: '2027-05-01T17:30:00+01:00',

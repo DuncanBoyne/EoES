@@ -4,7 +4,8 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
 <BaseLayout
   title="Home"
-  description="EoES 2027 — East of England Summit returns 30 April – 1 May 2027. Two days of hands-on workshops and conference sessions in Norwich, Norfolk."
+  fullTitle="East of England Summit 2027 | Microsoft & AI, Norwich"
+  description="Free Microsoft and AI community conference in Norwich on Saturday 1 May 2027, with paid hands-on workshops on Friday 30 April. Get your free ticket today."
 >
 
 <section class="page-hero">
@@ -20,7 +21,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       <div>
         <div class="chip chip--yellow" style="margin-bottom: 28px;">
           <span class="dot"></span>
-          <span>Save the Date · 2027</span>
+          <span>Free tickets open · 2027</span>
         </div>
 
         <h1 class="display-1" style="margin-bottom: 28px;">
@@ -37,12 +38,11 @@ import BaseLayout from '../layouts/BaseLayout.astro';
             Get your free ticket
             <svg class="arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </a>
-          <a href="https://sessionize.com/east-of-england-summit-2027/" target="_blank" rel="noopener noreferrer" class="btn btn--ghost btn--lg">
-            Submit a talk<span class="sr-only"> (opens in new tab)</span>
+          <a href="/speak/" class="btn btn--ghost btn--lg">
+            Submit a talk by 14 Jan
             <svg class="arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </a>
           <a href="/sponsorship/" class="btn btn--ghost btn--lg">Sponsor EoES 2027</a>
-          <a href="https://app.eoes.co.uk/e/eoes-2027" class="btn btn--ghost btn--lg">Get the app</a>
         </div>
       </div>
 
@@ -227,6 +227,13 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         <div class="mono" style="margin-top: 22px; color: var(--ink-0);">Browse catalogue &nbsp;→</div>
       </a>
     </div>
+
+    <div class="stats" style="margin-top: 40px;">
+      <div class="stat"><div class="num yellow">112</div><div class="label">Attendees in 2026</div></div>
+      <div class="stat"><div class="num">31</div><div class="label">Sessions chosen</div></div>
+      <div class="stat"><div class="num" style="color: var(--pink);">174</div><div class="label">Sessions submitted</div></div>
+      <div class="stat"><div class="num" style="color: var(--cyan);">374</div><div class="label">Photos in the gallery</div></div>
+    </div>
   </div>
 </section>
 
@@ -295,12 +302,13 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     <h2 class="display-2" style="max-width: 22ch; margin: 0 auto 22px;">
       Be first to hear<br><span class="display-italic">EoES 2027 news.</span>
     </h2>
-    <p class="lead muted" style="max-width: 56ch; margin: 0 auto 36px;">Speaker reveals, workshop schedule, venue confirmation, sponsor announcements — all dropping on LinkedIn first.</p>
+    <p class="lead muted" style="max-width: 56ch; margin: 0 auto 36px;">Speaker reveals, the workshop line-up and sponsor announcements, all on LinkedIn first.</p>
     <div class="row" style="justify-content: center; gap: 12px;">
-      <a href="https://www.linkedin.com/company/eoes/" target="_blank" rel="noopener noreferrer" class="btn btn--primary btn--lg">
-        Follow on LinkedIn
-        <svg class="arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <a href="https://app.eoes.co.uk/e/eoes-2027/register" class="btn btn--primary btn--lg">
+        Get your free ticket
+        <svg class="arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"/></svg>
       </a>
+      <a href="https://www.linkedin.com/company/eoes/" target="_blank" rel="noopener noreferrer" class="btn btn--ghost btn--lg">Follow on LinkedIn<span class="sr-only"> (opens in new tab)</span></a>
       <a href="/sponsorship/" class="btn btn--ghost btn--lg">Sponsor 2027</a>
     </div>
   </div>

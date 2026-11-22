@@ -18,12 +18,12 @@ const { Content } = await speaker.render();
 
 const initials = speaker.data.name.split(' ').map(n => n[0]).join('').toUpperCase();
 
-// Truncate bio to 155 chars for meta description
-const metaDescription = speaker.data.bio.length > 155
-  ? speaker.data.bio.slice(0, 152) + '…'
-  : speaker.data.bio;
-
-const pageDescription = `${speaker.data.name}${speaker.data.company ? ` from ${speaker.data.company}` : ''} — speaking at the East of England Summit 2026, Norwich. ${metaDescription}`;
+// Meta description: the written one from frontmatter, else the bio cut at a word
+// boundary (never mid-word) to stay within 160 characters.
+const cutAtWord = (text: string, max: number) =>
+  text.length <= max ? text : text.slice(0, text.lastIndexOf(' ', max - 1)).replace(/[\s,;:.]+$/, '') + '…';
+const pageDescription = speaker.data.metaDescription ?? cutAtWord(speaker.data.bio, 160);
+const chipLabel = speaker.data.isOrganizer ? 'EoES team' : '2026 Speaker';
 
 // ProfilePage JSON-LD with the Person as its main entity
 const SITE = 'https://www.eoes.co.uk/';
@@ -48,7 +48,7 @@ const personSchema = {
 };
 ---
 
-<BaseLayout title={speaker.data.name} description={pageDescription.slice(0, 155)}>
+<BaseLayout title={speaker.data.name} fullTitle={speaker.data.metaTitle} description={pageDescription} noindex={speaker.data.noindex}>
   <script is:inline type="application/ld+json" set:html={JSON.stringify(personSchema)} />
 
   <section class="page-hero" style="padding-bottom: 60px;">
@@ -56,7 +56,7 @@ const personSchema = {
     <span class="spark" style="top: 22%; left: 7%;"></span>
     <div class="container">
       <div class="hero-eyebrow">
-        <div class="chip"><span class="dot" style="background: var(--ink-3); box-shadow: 0 0 0 4px rgba(255,255,255,0.08);"></span><span>2026 Speaker</span></div>
+        <div class="chip"><span class="dot" style="background: var(--ink-3); box-shadow: 0 0 0 4px rgba(255,255,255,0.08);"></span><span>{chipLabel}</span></div>
       </div>
       <div style="display: flex; flex-direction: column; align-items: flex-start; gap: 24px;">
         <div style="display: flex; flex-wrap: wrap; align-items: flex-end; gap: 28px;">
@@ -155,25 +155,28 @@ const personSchema = {
         <div style="margin-top: 48px;">
           <div class="eyebrow" style="margin-bottom: 18px;">— Presentations —</div>
           <div class="stack-4">
-            {speaker.data.presentations.map((presentation) => (
-              <a
-                href={presentation.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                class="card"
-                style="display: flex; align-items: center; gap: 16px; padding: 20px 24px; text-decoration: none; transition: border-color 0.2s;"
-              >
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color: var(--yellow); flex-shrink: 0;" aria-hidden="true">
-                  <path d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-                <div>
-                  <div style="font-weight: 600; color: var(--ink-0); font-size: 15px;">{presentation.title}<span class="sr-only"> (opens in new tab)</span></div>
-                  {presentation.event && (
-                    <div class="mono" style="font-size: 12px; color: var(--ink-3); margin-top: 3px;">{presentation.event}</div>
-                  )}
-                </div>
-              </a>
-            ))}
+            {speaker.data.presentations.map((presentation) => {
+              // Linked presentations open in a new tab; ones without a URL are plain text.
+              const Tag = presentation.url ? 'a' : 'div';
+              const linkProps = presentation.url ? { href: presentation.url, target: '_blank', rel: 'noopener noreferrer' } : {};
+              return (
+                <Tag
+                  {...linkProps}
+                  class="card"
+                  style="display: flex; align-items: center; gap: 16px; padding: 20px 24px; text-decoration: none; transition: border-color 0.2s;"
+                >
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color: var(--yellow); flex-shrink: 0;" aria-hidden="true">
+                    <path d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                  <div>
+                    <div style="font-weight: 600; color: var(--ink-0); font-size: 15px;">{presentation.title}{presentation.url && <span class="sr-only"> (opens in new tab)</span>}</div>
+                    {presentation.event && (
+                      <div class="mono" style="font-size: 12px; color: var(--ink-3); margin-top: 3px;">{presentation.event}</div>
+                    )}
+                  </div>
+                </Tag>
+              );
+            })}
           </div>
         </div>
       )}

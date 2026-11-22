@@ -3,6 +3,8 @@ name: Gemma Peck
 title: Microsoft Technology Recruitment Specialist
 company: GTP Tech Recruitment
 bio: Gemma founded GTP Tech Recruitment in Ipswich, placing Dynamics 365 and Power Platform talent across the Microsoft ecosystem, and she has backed this region's community from the start. She trained in psychotherapy and CBT before she ever recruited anyone, which is the tidiest explanation of why people say she actually listens.
+metaTitle: "Gemma Peck, Organising Committee | EoES"
+metaDescription: "Gemma Peck sits on the East of England Summit organising committee. She founded GTP Tech Recruitment in Ipswich, placing Dynamics 365 and Power Platform talent."
 isOrganizer: true
 linkedin: https://www.linkedin.com/in/gemmapeck/
 website: https://gtptech.co.uk/

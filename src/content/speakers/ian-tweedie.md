@@ -3,13 +3,14 @@ name: Ian Tweedie
 title: Senior Technical Consultant
 company: Capgemini
 bio: Ian is a senior technical consultant at Capgemini, specialising in the Microsoft Power Platform and cloud-native development. Holding 16 Microsoft certifications, he is also the creator of TechTweedie — a popular blog demystifying Power Platform DevOps and secure design practices.
-isOrganizer: true
+metaTitle: "Ian Tweedie, 2026 Workshop Speaker | EoES"
+metaDescription: "Ian Tweedie, a senior technical consultant at Capgemini and author of the TechTweedie blog, co-ran the 2026 workshop From Manual Exports to Confident ALM."
+isOrganizer: false
 linkedin: https://www.linkedin.com/in/iantweedie/
 image: /images/speakers/Ian-Tweedie.jpg
 presentations:
   - title: "From Manual Exports to Confident ALM"
-    url: "https://eoeppstickets.netlify.app/sessions/IOnkuLU8ekXNGalm3iWX"
-    event: "EoES Workshop Day, Friday 1st May 2026"
+    event: "Workshop Day, Friday 1 May 2026 (East of England Power Platform Summit)"
 ---
 
 Ian Tweedie is a senior technical consultant at Capgemini, specialising in the Microsoft Power Platform and cloud-native development. With a background as an IT manager turned low-code developer, Ian has charted a distinctive path from citizen development to professional-grade solutions, fusing automation with deep enterprise architecture expertise. Holding 16 Microsoft certifications, including Power Platform Solution Architect Expert and Azure Developer Associate, Ian combines technical depth with real-world delivery.

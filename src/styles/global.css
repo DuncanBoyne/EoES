@@ -872,7 +872,8 @@ p:last-child { margin-bottom: 0; }
   margin-top: 8px;
   text-align: center;
 }
-@media (max-width: 900px) {
+/* 1010px: below this the eight nav items plus the ticket button wrap onto two rows. */
+@media (max-width: 1010px) {
   .site-header nav { display: none; }
   .site-header .nav-cta { display: none; }
   .site-header .mobile-menu-btn { display: flex; align-items: center; justify-content: center; }
@@ -1335,6 +1336,9 @@ p:last-child { margin-bottom: 0; }
   letter-spacing: 0.04em;
   color: var(--ink-3);
 }
+/* Five-figure row (/sponsorship): five across on wide screens, smaller numbers so they fit. */
+@media (min-width: 1101px) { .stats.stats--5 { grid-template-columns: repeat(5, minmax(0,1fr)); } .stats.stats--5 .stat .num { font-size: clamp(32px, 3.4vw, 48px); } }
+@media (min-width: 701px) and (max-width: 1100px) { .stats.stats--5 { grid-template-columns: repeat(3, minmax(0,1fr)); } }
 @media (max-width: 700px) { .stats { grid-template-columns: repeat(2, minmax(0,1fr)); padding: var(--sp-6); } }
 @media (max-width: 460px) { .stats { grid-template-columns: 1fr; } }
 

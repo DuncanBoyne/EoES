@@ -1,0 +1,104 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+// Answers use only what the site already says (schedule, venue, workshops,
+// about, privacy, code of conduct, contact). Questions the site cannot answer
+// yet (lunch details, childcare, recordings, refunds) are deliberately left out.
+// Plain visible Q&A: no FAQPage schema.
+const ticketUrl = 'https://app.eoes.co.uk/e/eoes-2027/register';
+const link = 'color: var(--yellow);';
+
+const faqs = [
+  {
+    q: 'When and where is EoES 2027?',
+    a: `Friday 30 April and Saturday 1 May 2027, both days at The Space, Roundtree Way, Norwich NR7 8SQ. Friday runs 09:00 to 16:30 and Saturday 08:00 to 17:30. See the <a href="/schedule/" style="${link}">schedule</a>.`,
+  },
+  {
+    q: 'Is it free?',
+    a: `Saturday 1 May, the conference day, is free. You still need a ticket, which you get in the EoES app: <a href="${ticketUrl}" style="${link}">get your free ticket</a>. Friday 30 April is a day of paid, hands-on workshops with limited places. Workshop topics and tickets are still to be announced, on LinkedIn first. See the <a href="/workshops/" style="${link}">workshop day</a>.`,
+  },
+  {
+    q: 'What does it cover?',
+    a: 'The whole Microsoft stack plus AI: AI and Copilot, Fabric, Azure, Dynamics 365, Microsoft 365 and Power Platform. There are four tracks in 2027: AI, Technical, Business Adoption and the Human Track.',
+  },
+  {
+    q: 'Is there parking?',
+    a: 'Yes, free. There are 40 spaces at The Space, including 5 Blue Badge bays right outside, plus another 150 free spaces a few minutes\' walk away.',
+  },
+  {
+    q: 'Is the venue accessible?',
+    a: `The Space has a shallow ramp to the main entrance, every room on the ground floor, Blue Badge bays right outside, accessible toilets, and a hearing loop in the Auditorium and the Blue Space. If you have specific requirements, <a href="/contact/" style="${link}">get in touch</a>.`,
+  },
+  {
+    q: 'How do I get there by train or bus?',
+    a: `The Space is 2 miles from Norwich Railway Station: a short taxi ride, or a bus from the city centre. The 19, 19A, 20, 11, 24 and 24A all stop nearby. The <a href="/venue/" style="${link}">venue page</a> has the stops and directions.`,
+  },
+  {
+    q: 'Who runs EoES?',
+    a: `A team of volunteers from across the East of England. The summit is run by East of England Tech Community Ltd (company no. 16951004, registered in England and Wales). <a href="/about/" style="${link}">Meet the team</a>.`,
+  },
+  {
+    q: 'Was it called something else before?',
+    a: 'Yes. In 2026 the summit ran as the East of England Power Platform Summit (EoEPPS), a Power Platform event. For 2027 it became the East of England Summit, covering the whole Microsoft stack plus AI.',
+  },
+  {
+    q: 'Is there a code of conduct?',
+    a: `Yes. Everyone at the summit is expected to follow the <a href="/code-of-conduct/" style="${link}">code of conduct</a>. If something happens, tell any organiser or volunteer, go to the registration desk, or email <a href="mailto:info@eoes.co.uk" style="${link}">info@eoes.co.uk</a>.`,
+  },
+  {
+    q: 'How can I speak?',
+    a: `The call for speakers is open on Sessionize until Thursday 14 January 2027. <a href="/speak/" style="${link}">How to submit a talk</a>.`,
+  },
+  {
+    q: 'How can my company sponsor?',
+    a: `See the <a href="/sponsorship/" style="${link}">sponsorship packages</a>, or email <a href="mailto:info@eoes.co.uk" style="${link}">info@eoes.co.uk</a>.`,
+  },
+  {
+    q: 'How do I contact the organisers?',
+    a: `Email <a href="mailto:info@eoes.co.uk" style="${link}">info@eoes.co.uk</a>, or see the <a href="/contact/" style="${link}">contact page</a>.`,
+  },
+];
+---
+
+<BaseLayout
+  title="FAQ"
+  fullTitle="EoES 2027 FAQ | Tickets, Venue and Travel, Norwich"
+  description="Answers about the East of England Summit 2027: dates, the free Saturday ticket, paid Friday workshops, parking, access, trains and buses, speaking and sponsoring."
+>
+
+<section class="page-hero">
+  <div class="bg-year" aria-hidden="true">?</div>
+  <span class="spark" style="top: 22%; left: 7%;"></span>
+  <span class="spark sm" style="top: 60%; right: 12%;"></span>
+  <div class="container">
+    <div class="hero-eyebrow"><div class="chip chip--cyan"><span class="dot"></span><span>FAQ · 2027</span></div></div>
+    <h1 class="display-1 hero-title" style="max-width: 16ch;">Questions,<br><span class="display-italic">answered.</span></h1>
+    <p class="hero-sub">The practical details for EoES 2027: tickets, the venue, getting there, and how to speak or sponsor.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container" style="max-width: 860px;">
+    <div class="stack-4">
+      {faqs.map(({ q, a }) => (
+        <article class="card" style="padding: 28px;">
+          <h2 class="card-title" style="margin: 0 0 10px;">{q}</h2>
+          <p class="card-body" style="margin: 0;" set:html={a} />
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
+
+<section class="cta-strip">
+  <div class="container center">
+    <h2 class="display-2" style="max-width: 22ch; margin: 0 auto 22px;">Saturday is free. <span class="display-italic">Book your place.</span></h2>
+    <p class="lead muted" style="max-width: 56ch; margin: 0 auto 36px;">Free tickets for Saturday 1 May 2027 are taken in the EoES app. Workshop topics and tickets for Friday 30 April are announced on LinkedIn first.</p>
+    <div class="row" style="justify-content: center; gap: 12px;">
+      <a href={ticketUrl} class="btn btn--primary btn--lg">Get your free ticket</a>
+      <a href="/contact/" class="btn btn--ghost btn--lg">Contact us</a>
+    </div>
+  </div>
+</section>
+
+</BaseLayout>

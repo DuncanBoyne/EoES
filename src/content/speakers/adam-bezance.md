@@ -3,6 +3,8 @@ name: Adam Bezance
 title: Managing Consultant
 company: Robiquity
 bio: Adam is a Managing Consultant at Robiquity, a dual-award Copilot MVP, and the founder of the Norfolk Power Platform User Group, the meetup EoES grew out of. He is also a Pluralsight Author, creating courses on AI and Prompt Engineering.
+metaTitle: "Adam Bezance, Event Director | EoES"
+metaDescription: "Adam Bezance is an Event Director of the East of England Summit, a Managing Consultant at Robiquity, and founder of NPPUG, the meetup the summit grew out of."
 isOrganizer: true
 linkedin: https://www.linkedin.com/in/adambezance/
 image: /images/speakers/adam-bezance-2027.jpg
