@@ -25,17 +25,26 @@ const metaDescription = speaker.data.bio.length > 155
 
 const pageDescription = `${speaker.data.name}${speaker.data.company ? ` from ${speaker.data.company}` : ''} — speaking at the East of England Summit 2026, Norwich. ${metaDescription}`;
 
-// Person JSON-LD
+// ProfilePage JSON-LD with the Person as its main entity
+const SITE = 'https://www.eoes.co.uk/';
+const profileUrl = new URL(`speakers/${speaker.slug}/`, SITE).href;
 const personSchema = {
   '@context': 'https://schema.org',
-  '@type': 'Person',
-  name: speaker.data.name,
-  jobTitle: speaker.data.title,
-  ...(speaker.data.company && { worksFor: { '@type': 'Organization', name: speaker.data.company } }),
-  ...(speaker.data.image && { image: speaker.data.image }),
-  ...(speaker.data.linkedin && { sameAs: [speaker.data.linkedin] }),
-  ...(speaker.data.website && { url: speaker.data.website }),
-  description: speaker.data.bio,
+  '@type': 'ProfilePage',
+  '@id': `${profileUrl}#profile`,
+  url: profileUrl,
+  isPartOf: { '@id': `${SITE}#website` },
+  mainEntity: {
+    '@type': 'Person',
+    '@id': `${profileUrl}#person`,
+    name: speaker.data.name,
+    ...(speaker.data.title && { jobTitle: speaker.data.title }),
+    ...(speaker.data.company && { worksFor: { '@type': 'Organization', name: speaker.data.company } }),
+    ...(speaker.data.image && { image: new URL(speaker.data.image, SITE).href }),
+    ...(speaker.data.linkedin && { sameAs: [speaker.data.linkedin] }),
+    ...(speaker.data.website && { url: speaker.data.website }),
+    description: speaker.data.bio,
+  },
 };
 ---
 
@@ -57,6 +66,8 @@ const personSchema = {
               <img
                 src={speaker.data.image}
                 alt={speaker.data.name}
+                width="120"
+                height="120"
                 style="width: 100%; height: 100%; object-fit: cover;"
               />
             </div>
@@ -168,7 +179,7 @@ const personSchema = {
       )}
 
       <div style="margin-top: 48px; padding-top: 32px; border-top: 1px solid var(--line-1);">
-        <a href="/speakers" class="btn btn--ghost btn--sm">
+        <a href="/speakers/" class="btn btn--ghost btn--sm">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M15 19l-7-7 7-7" stroke-linecap="round" stroke-linejoin="round"/></svg>
           Back to All Speakers
         </a>

@@ -1,0 +1,32 @@
+# East of England Summit 2027 (EoES 2027)
+
+> A community-led Microsoft conference in Norwich, run by volunteers. It covers the whole Microsoft stack plus AI: AI and Copilot, Fabric, Azure, Dynamics 365, Microsoft 365 and Power Platform. Formerly the East of England Power Platform Summit (EoEPPS).
+
+- When: Friday 30 April 2027, paid hands-on workshops (09:00 to 16:30, lunch included). Saturday 1 May 2027, free conference day (08:00 to 17:30).
+- Where: The Space, Roundtree Way, Norwich NR7 8SQ. Free parking on site.
+- Cost: the Saturday conference is free. The Friday workshops are a paid ticket with limited places.
+- Register for a free ticket: https://app.eoes.co.uk/e/eoes-2027/register
+- Speak: the call for speakers is on Sessionize and is open until Thursday 14 January 2027: https://sessionize.com/east-of-england-summit-2027
+- Sponsor: https://www.eoes.co.uk/sponsorship/ or email info@eoes.co.uk
+- Organiser: East of England Tech Community Ltd (company no. 16951004).
+- Contact: info@eoes.co.uk
+
+## Key pages
+
+- [Home](https://www.eoes.co.uk/)
+- [About and organising team](https://www.eoes.co.uk/about/)
+- [Why attend](https://www.eoes.co.uk/why-attend/)
+- [Schedule](https://www.eoes.co.uk/schedule/)
+- [Workshop day](https://www.eoes.co.uk/workshops/)
+- [Venue](https://www.eoes.co.uk/venue/)
+- [Become a sponsor](https://www.eoes.co.uk/sponsorship/)
+- [2027 sponsors](https://www.eoes.co.uk/sponsors/)
+- [Contact](https://www.eoes.co.uk/contact/)
+- [Code of conduct](https://www.eoes.co.uk/code-of-conduct/)
+
+## 2026 archive
+
+- [2026 sessions](https://www.eoes.co.uk/sessions/)
+- [2026 speakers](https://www.eoes.co.uk/speakers/)
+- [2026 sponsors](https://www.eoes.co.uk/sponsors/2026/)
+- [2026 gallery](https://www.eoes.co.uk/gallery-2026/)

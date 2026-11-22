@@ -4,6 +4,30 @@
 // page goes inert, Escape closes it, and focus returns to whatever opened it.
 ---
 <script is:inline>
+  // Pages that render the Sessionize lists at build time do not load the embed
+  // script, so define the one function their markup calls (onclick="return
+  // sessionize.showModal(...)"). Same request the embed makes. Where the embed
+  // script did load (schedule, or the fallback), its own showModal is kept.
+  window.sessionize = window.sessionize || {};
+  if (!window.sessionize.showModal) {
+    window.sessionize.showModal = function (id, type, itemId) {
+      var box = document.getElementById('sz-modal-container');
+      if (!box) return false;
+      box.innerHTML = '<div class="sz-modal-overlay"><div class="sz-spinner"></div></div>';
+      box.classList.remove('is-hidden');
+      fetch('https://sessionize.com/api/v2/' + id + '/' + type + '?id=' + encodeURIComponent(itemId), { method: 'POST' })
+        .then(function (r) { if (!r.ok) throw new Error(r.status); return r.text(); })
+        .then(function (html) {
+          box.innerHTML = html;
+          box.querySelectorAll('.sz-modal__close-on-click').forEach(function (el) {
+            el.onclick = function () { box.classList.add('is-hidden'); };
+          });
+        })
+        .catch(function () { box.classList.add('is-hidden'); });
+      return false;
+    };
+  }
+
   (function () {
     var modal = null;
     var opener = null;

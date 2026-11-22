@@ -24,6 +24,17 @@ export default {
     const res = await env.ASSETS.fetch(request);
     const out = new Response(res.body, res);
     for (const [k, v] of Object.entries(SECURITY_HEADERS)) out.headers.set(k, v);
+    const cache = res.status === 200 && cacheControl(url.pathname);
+    if (cache) out.headers.set('Cache-Control', cache);
     return out;
   },
 };
+
+// Browser caching for static files; HTML keeps the asset binding's default.
+// /_astro/ files are content-hashed, so they never change under the same name.
+const STATIC_EXT = /\.(png|jpe?g|gif|webp|avif|svg|ico|woff2?|ttf|otf)$/i;
+function cacheControl(path) {
+  if (path.startsWith('/_astro/')) return 'public, max-age=31536000, immutable';
+  if (path.startsWith('/images/') || STATIC_EXT.test(path)) return 'public, max-age=604800';
+  return null;
+}

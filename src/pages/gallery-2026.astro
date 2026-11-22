@@ -114,6 +114,7 @@ const photos = existsSync(galleryDir)
               width="640"
               height="480"
               loading={index < 8 ? 'eager' : 'lazy'}
+              fetchpriority={index === 0 ? 'high' : undefined}
               decoding="async"
             />
           </button>

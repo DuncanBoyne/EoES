@@ -1,6 +1,15 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import SessionizeModal from '../../components/SessionizeModal.astro';
+import { getCollection } from 'astro:content';
+import { sessionizeView } from '../../lib/sessionize';
+
+const wallHtml = await sessionizeView('SpeakerWall', 'sz-speaker');
+
+// Same filter as [slug].astro, so every link here has a page behind it.
+const profiles = (await getCollection('speakers'))
+  .filter((s) => s.data.bio.trim() !== '' || (s.body ?? '').trim() !== '')
+  .sort((a, b) => a.data.name.localeCompare(b.data.name));
 ---
 
 <BaseLayout
@@ -64,8 +73,21 @@ import SessionizeModal from '../../components/SessionizeModal.astro';
       <p class="sub">Click any speaker to learn more about them and the sessions they presented at EoES 2026.</p>
     </div>
     <link rel="stylesheet" href="https://sessionize.com/api/v2/9q20ek5l/embedstyle" />
-    <div class="sessionize-embed">
-      <script is:inline src="https://sessionize.com/api/v2/9q20ek5l/view/SpeakerWall"></script>
+    {wallHtml ? (
+      <div class="sessionize-embed" set:html={wallHtml} />
+    ) : (
+      <div class="sessionize-embed">
+        <script is:inline src="https://sessionize.com/api/v2/9q20ek5l/view/SpeakerWall"></script>
+      </div>
+    )}
+
+    <div style="margin-top: 56px; text-align: center;">
+      <div class="eyebrow eyebrow--center" style="margin-bottom: 18px;">Team and speaker profiles</div>
+      <div class="row" style="justify-content: center; gap: 10px; flex-wrap: wrap;">
+        {profiles.map((p) => (
+          <a href={`/speakers/${p.slug}/`} class="btn btn--ghost btn--sm">{p.data.name}</a>
+        ))}
+      </div>
     </div>
   </div>
 </section>
@@ -80,7 +102,7 @@ import SessionizeModal from '../../components/SessionizeModal.astro';
     <p class="lead muted" style="max-width: 52ch; margin: 0 auto 32px;">The call for speakers for EoES 2027 is open until Thursday 14 January 2027.</p>
     <div class="row" style="justify-content: center; gap: 12px;">
       <a href="https://sessionize.com/east-of-england-summit-2027/" target="_blank" rel="noopener noreferrer" class="btn btn--primary btn--lg">Submit a talk<span class="sr-only"> (opens in new tab)</span></a>
-      <a href="/sessions" class="btn btn--ghost btn--lg">View 2026 sessions</a>
+      <a href="/sessions/" class="btn btn--ghost btn--lg">View 2026 sessions</a>
     </div>
   </div>
 </section>

@@ -1,29 +1,30 @@
 ---
 const navLinks = [
   { href: '/', label: 'Home' },
-  { href: '/about', label: 'About' },
-  { href: '/why-attend', label: 'Why Attend' },
-  { href: '/gallery-2026', label: '2026 Gallery' },
-  { href: '/sessions', label: '2026 Sessions' },
-  { href: '/speakers', label: '2026 Speakers' },
+  { href: '/about/', label: 'About' },
+  { href: '/why-attend/', label: 'Why Attend' },
+  { href: '/gallery-2026/', label: '2026 Gallery' },
+  { href: '/sessions/', label: '2026 Sessions' },
+  { href: '/speakers/', label: '2026 Speakers' },
   {
-    href: '/sponsors',
+    href: '/sponsors/',
     label: 'Sponsors',
     children: [
-      { href: '/sponsors', label: '2027 Sponsors' },
-      { href: '/sponsors/2026', label: '2026 Sponsors' },
-      { href: '/sponsorship', label: 'Become a Sponsor' },
+      { href: '/sponsors/', label: '2027 Sponsors' },
+      { href: '/sponsors/2026/', label: '2026 Sponsors' },
+      { href: '/sponsorship/', label: 'Become a Sponsor' },
     ],
   },
 ];
 
 const ticketUrl = 'https://app.eoes.co.uk/e/eoes-2027/register';
 
-const currentPath = Astro.url.pathname;
+// Nav hrefs end in '/', so compare against the slash form of the current path.
+const currentPath = Astro.url.pathname.endsWith('/') ? Astro.url.pathname : Astro.url.pathname + '/';
 
 function isActive(href: string): boolean {
   if (href === '/') return currentPath === '/';
-  return currentPath === href || currentPath.startsWith(href + '/');
+  return currentPath.startsWith(href);
 }
 
 function isLinkActive(link: typeof navLinks[number]): boolean {
@@ -35,7 +36,7 @@ function isLinkActive(link: typeof navLinks[number]): boolean {
   <div class="color-bar" aria-hidden="true"></div>
   <div class="container nav-row">
     <a href="/" class="brand">
-      <img src="/images/logo-hero.png" alt="" aria-hidden="true" />
+      <img src="/images/logo-hero-96.png" alt="" aria-hidden="true" width="32" height="32" />
       <span>EoES</span>
     </a>
     <nav aria-label="Main">

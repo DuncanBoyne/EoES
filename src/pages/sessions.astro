@@ -1,6 +1,9 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import SessionizeModal from '../components/SessionizeModal.astro';
+import { sessionizeView } from '../lib/sessionize';
+
+const sessionsHtml = await sessionizeView('Sessions', 'sz-session');
 
 // Fetch room assignments from GridSmart at build time
 const gridRes = await fetch('https://sessionize.com/api/v2/9q20ek5l/view/GridSmart?under=True', {
@@ -88,9 +91,13 @@ const roomMapJson = JSON.stringify(roomMap);
 <section class="section" style="padding-top: 48px;">
   <div class="container">
     <link rel="stylesheet" href="https://sessionize.com/api/v2/9q20ek5l/embedstyle" />
-    <div class="sessionize-embed" id="sessions-embed-wrapper">
-      <script is:inline src="https://sessionize.com/api/v2/9q20ek5l/view/Sessions"></script>
-    </div>
+    {sessionsHtml ? (
+      <div class="sessionize-embed" id="sessions-embed-wrapper" set:html={sessionsHtml} />
+    ) : (
+      <div class="sessionize-embed" id="sessions-embed-wrapper">
+        <script is:inline src="https://sessionize.com/api/v2/9q20ek5l/view/Sessions"></script>
+      </div>
+    )}
   </div>
 </section>
 
@@ -104,7 +111,7 @@ const roomMapJson = JSON.stringify(roomMap);
     <p class="lead muted" style="max-width: 52ch; margin: 0 auto 32px;">These are the sessions from EoES 2026. The call for speakers for EoES 2027 is open until Thursday 14 January 2027.</p>
     <div class="row" style="justify-content: center; gap: 12px;">
       <a href="https://sessionize.com/east-of-england-summit-2027/" target="_blank" rel="noopener noreferrer" class="btn btn--primary btn--lg">Submit a talk<span class="sr-only"> (opens in new tab)</span></a>
-      <a href="/schedule" class="btn btn--ghost btn--lg">2027 Schedule</a>
+      <a href="/schedule/" class="btn btn--ghost btn--lg">2027 Schedule</a>
     </div>
   </div>
 </section>
